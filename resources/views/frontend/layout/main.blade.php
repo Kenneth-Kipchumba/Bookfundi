@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap/bootstrap.css') }}">
 
     <!-- Fontawesome -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/fontawesome/fontawesome.css') }}">
+    <script src="https://kit.fontawesome.com/63b4fcb6d3.js" crossorigin="anonymous"></script>
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('assets/styles/custom/custom.css') }}">
@@ -44,10 +44,10 @@
           <ul class="navbar-nav my-2 my-md-0">
             
             <li class="nav-item ">
-              <a class="nav-link " href="#">Caselaws</a>
+              <a class="nav-link " href="{{ url('home') }}">Caselaws</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="{{ url('pricing') }}">Pricing</a>
             </li>
             
           </ul>

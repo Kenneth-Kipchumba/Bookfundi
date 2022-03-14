@@ -26,6 +26,10 @@ Route::get('search_result', function () {
     return view('frontend.pages.search_results');
 });
 
+Route::get('pricing', function () {
+    return view('frontend.pages.pricing');
+});
+
 //Backend Routes
 Route::prefix('backend')->name('backend.')->group(function ()
 {
