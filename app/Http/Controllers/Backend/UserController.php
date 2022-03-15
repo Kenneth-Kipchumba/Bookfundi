@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        dd('Hey');
+        return view('backend.layout.main');
     }
 
     /**

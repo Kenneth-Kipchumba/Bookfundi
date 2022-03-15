@@ -6,9 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "fortawesome/font-awesome": "^6.0",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
+        "infyomlabs/laravel-ui-adminlte": "^4.0",
         "laravel/fortify": "^1.10",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",

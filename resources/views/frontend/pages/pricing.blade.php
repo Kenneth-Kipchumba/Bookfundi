@@ -2,10 +2,10 @@
 
 @section('content')
 
-<section class="jumbotron rounded-0 mb-0">
+<section class="rounded-0 mb-0" style="background-color: #f27a21;">
         <div class="container py-5">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5 text-light">
                     <h1 class="mb-2">Billing Information</h1>
                    
                 </div>
@@ -15,11 +15,11 @@
           <div class="row mt-5">
             
             
-            <div class="col-md-7 mb-3">
+            <div class="col-md-7 mb-3 text-light">
                 <h3 class="font-weight-bold"> Customer Name</h3>
                 <p class="lead mb-0" >Email: customer@bookfundi.com</p>
                 <p class="lead mb-0">Phone: 0123456789</p>
-                <a href="#" class="btn btn-outline-primary my-3">Edit billing Info</a>            
+                <a href="#" class="btn btn-primary my-3">Edit billing Info</a>            
               
             
             </div>

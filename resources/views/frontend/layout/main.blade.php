@@ -11,13 +11,13 @@
 
     <title>{{ config('app.name', 'BookFundi Caselaw') }}</title>
 
-    <!-- favicons -->
+    <!-- Favicon -->
     <link rel="shortcut icon" href="http://127.0.0.1:8000/favicon.ico" type="image/x-icon">
     
     <!-- Twitter Bootstrap -->
     <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap/bootstrap.css') }}">
 
-    <!-- Fontawesome -->
+    <!-- Fortawesome -->
     <script src="https://kit.fontawesome.com/63b4fcb6d3.js" crossorigin="anonymous"></script>
 
     <!-- Custom Styles -->
@@ -48,6 +48,9 @@
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="{{ url('pricing') }}">Pricing</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="{{ url('backend/users') }}">Backend</a>
             </li>
             
           </ul>

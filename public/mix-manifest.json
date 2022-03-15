@@ -1,6 +1,4 @@
 {
-    "/assets/js/app.js": "/assets/js/app.js",
-    "/assets/js/bootstrap/bootstrap.bundle.min.js": "/assets/js/bootstrap/bootstrap.bundle.min.js",
-    "/assets/styles/fontawesome/fontawesome.css": "/assets/styles/fontawesome/fontawesome.css",
-    "/assets/styles/bootstrap/bootstrap.css": "/assets/styles/bootstrap/bootstrap.css"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css"
 }
