@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\CourtController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,5 @@ Route::get('pricing', function () {
 Route::prefix('backend')->name('backend.')->group(function ()
 {
     Route::resource('/users', UserController::class);
+    Route::resource('/courts', CourtController::class);
 });
