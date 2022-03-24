@@ -17,7 +17,8 @@ class Court extends Model
     protected $fillable = [
         'court_name',
         'court_level',
-        'court_location',
         'court_country',
+        'court_county',
+        'court_town'
     ];
 }

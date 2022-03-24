@@ -51,8 +51,9 @@ class CourtController extends Controller
         Court::create([
             'court_name' => $request->court_name,
             'court_level' => $request->court_level,
-            'court_location' => $request->court_location,
             'court_country' => $request->court_country,
+            'court_county' => $request->court_county,
+            'court_town' => $request->court_town,
         ]);
 
         return redirect()->back()->with('success','Court successfully added to the system');

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('court_name');
             $table->string('court_level');
-            $table->string('court_location');
             $table->string('court_country');
+            $table->string('court_county');
+            $table->string('court_town');
             $table->timestamps();
         });
     }
