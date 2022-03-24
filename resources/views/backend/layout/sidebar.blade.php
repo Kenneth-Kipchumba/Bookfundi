@@ -15,7 +15,7 @@
     <img src="{{ asset('assets/images/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
     </div>
     <div class="info">
-    <a href="#" class="d-block">User Name</a>
+    <a href="#" class="d-block">{{ auth()->user()->last_name ?? '' }}</a>
     </div>
     </div>
 
@@ -62,7 +62,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{ route('backend.courts.index') }}" class="nav-link active">
                     <i class="fas fa-landmark nav-icon"></i>
                     <p>Courts</p>
                 </a>

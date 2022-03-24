@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourtRequest;
 use App\Http\Requests\UpdateCourtRequest;
 use App\Models\Court;
+use Illuminate\Http\Request;
 
 class CourtController extends Controller
 {
@@ -16,7 +17,9 @@ class CourtController extends Controller
      */
     public function index()
     {
-        return view('backend.courts.index');
+        $data['courts'] = Court::paginate(10);
+
+        return view('backend.courts.index', $data);
     }
 
     /**
@@ -35,9 +38,24 @@ class CourtController extends Controller
      * @param  \App\Http\Requests\StoreCourtRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCourtRequest $request)
+    public function store(Request $request)
     {
-        //
+        //dd($request);
+        $validated_data = $request->validate([
+            'court_name' => 'required',
+            'court_level' => 'required',
+            'court_location' => 'required',
+            'court_country' => 'required',
+        ]);
+
+        Court::create([
+            'court_name' => $request->court_name,
+            'court_level' => $request->court_level,
+            'court_location' => $request->court_location,
+            'court_country' => $request->court_country,
+        ]);
+
+        return redirect()->back()->with('success','Court successfully added to the system');
     }
 
     /**
@@ -80,8 +98,10 @@ class CourtController extends Controller
      * @param  \App\Models\Court  $court
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Court $court)
+    public function destroy($id)
     {
-        //
+        Court::destroy($id);
+
+        return redirect()->back()->with('success','Court successfully removed from the system');
     }
 }

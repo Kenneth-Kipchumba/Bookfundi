@@ -65,7 +65,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-            <h1 class="m-0">Entries</h1>
+            @if(session('success'))
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+              <div>
+                {{ session('success') }}
+              </div>
+             </div>
+            @endif
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">

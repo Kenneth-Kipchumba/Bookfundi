@@ -24,7 +24,10 @@ class StoreCourtRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'court_name'     => 'required',
+            'court_level'    => 'required',
+            'court_location' => 'required',
+            'court_country'  => 'required',
         ];
     }
 }
