@@ -23,82 +23,112 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-        <li class="nav-item menu-open">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fa-solid fa-lock"></i>
+                    <p>
+                    User Management
+                    <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa-solid fa-person-circle-exclamation"></i>
+                            <p>Roles</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                User Management
-                <i class="right fas fa-angle-left"></i>
-                </p>
+            <i class="nav-icon fa-solid fa-book"></i>
+            <p>
+            Caselaws
+            <i class="right fas fa-angle-left"></i>
+            </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-users nav-icon"></i>
-                        <p>Users</p>
+                        <i class="far fa-hand-point-left nav-icon"></i>
+                        <p>Appellants</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="fas fa-lock nav-icon"></i>
-                        <p>Roles</p>
+                    <a href="{{ route('backend.courts.index') }}" class="nav-link active">
+                        <i class="fas fa-landmark nav-icon"></i>
+                        <p>Courts</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gavel nav-icon"></i>
+                        <p>Judges</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-building nav-icon"></i>
+                        <p>Law Firms</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-tie nav-icon"></i>
+                        <p>Lawyers</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-gavel nav-icon"></i>
+                        <p>Magistrates</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-hand-point-right nav-icon"></i>
+                        <p>Respondents</p>
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="nav-item menu-open">
-        <a href="#" class="nav-link active">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
-        <p>
-        Caselaws
-        <i class="right fas fa-angle-left"></i>
-        </p>
-        </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-hand-point-left nav-icon"></i>
-                    <p>Appellants</p>
-                </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('backend.courts.index') }}" class="nav-link active">
-                    <i class="fas fa-landmark nav-icon"></i>
-                    <p>Courts</p>
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fa-solid fa-border-all"></i>
+                    <i class=""></i>
+                    <p>
+                    Other Attributes
+                    <i class="right fas fa-angle-left"></i>
+                    </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa-solid fa-flag"></i>
+                            <p>Countries</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa-solid fa-location-crosshairs"></i>
+                            <p>County/Province/State</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa-solid fa-location-dot"></i>
+                            <p>Towns/Cities</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-gavel nav-icon"></i>
-                    <p>Judges</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-building nav-icon"></i>
-                    <p>Law Firms</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-user-tie nav-icon"></i>
-                    <p>Lawyers</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-gavel nav-icon"></i>
-                    <p>Magistrates</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-hand-point-right nav-icon"></i>
-                    <p>Respondents</p>
-                </a>
-            </li>
-        </ul>
-        </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

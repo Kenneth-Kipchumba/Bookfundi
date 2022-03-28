@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Courts Name</h3> 
+           <h1 class="text-primary">{{ $court->court_name }}</h1>
         </div>
         <div class="card-body">
            <div class="row">
@@ -30,7 +30,7 @@
                    </div>
                    <div class="row">
                        <div class="col-12">
-                           <h4>Some details about the court</h4>
+                           <h4>Some extra details about the court</h4>
                            <p>Lorem ipsum represents long-held tradition fordesigners,typographers and the like. Some people hate it and argue forits demise, but others ignore.
                            </p>
                        </div>

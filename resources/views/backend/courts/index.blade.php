@@ -17,27 +17,38 @@
                        <th>Court Name</th>
                        <th>Court Level</th>
                        <th>Location</th>
-                       <th>Country</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
                 @foreach($courts as $court)
                 <tr>
-                   <td>{{ $court->court_name }}</td>
-                   <td>{{ $court->court_level }}</td>
-                   <td>{{ $court->court_location }}</td>
-                   <td>{{ $court->court_country }}</td>
                    <td>
-                       <a href="" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.courts.show', $court->id) }}">
+                           {{ $court->court_name }}
+                       </a>
+                   </td>
+                   <td>{{ $court->court_level }}</td>
+                   <td>
+                    {{ $court->court_country }},
+                    {{ $court->court_county }},
+                    {{ $court->court_town }}
+                   </td>
+                   <td>
+                       <a href="{{ route('backend.courts.edit', $court->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
-                       <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">
+                       <?php
+                       
+
+                       $slug = Str::slug($court->court_name);
+                       ?>
+                       <!-- Delete Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
                           <i class="fas fa-trash"></i>
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content bg-danger">
                               <div class="modal-header">

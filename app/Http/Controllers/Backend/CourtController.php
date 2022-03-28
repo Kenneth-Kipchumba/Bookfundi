@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCourtRequest;
 use App\Http\Requests\UpdateCourtRequest;
 use App\Models\Court;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CourtController extends Controller
 {
@@ -40,13 +41,14 @@ class CourtController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         $validated_data = $request->validate([
             'court_name' => 'required',
             'court_level' => 'required',
-            'court_location' => 'required',
             'court_country' => 'required',
+            'court_county' => 'required',
+            'court_town' => 'required'
         ]);
+        //dd($validated_data);
 
         Court::create([
             'court_name' => $request->court_name,
@@ -62,41 +64,63 @@ class CourtController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Court  $court
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Court $court)
+    public function show($id)
     {
-        return view('backend.courts.show');
+        $data['court'] = Court::find($id);
+
+        return view('backend.courts.show', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Court  $court
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Court $court)
+    public function edit($id)
     {
-        return view('backend.courts.edit');
+        $data['court'] = Court::find($id);
+
+        return view('backend.courts.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCourtRequest  $request
-     * @param  \App\Models\Court  $court
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCourtRequest $request, Court $court)
+    public function update(Request $request, $id)
     {
-        //
+        $validated_data = $request->validate([
+            'court_name' => 'required',
+            'court_level' => 'required',
+            'court_country' => 'required',
+            'court_county' => 'required',
+            'court_town' => 'required'
+        ]);
+        //dd($validated_data);
+        $court = Court::find($id);
+
+        $court->update([
+            'court_name' => $request->court_name,
+            'court_level' => $request->court_level,
+            'court_country' => $request->court_country,
+            'court_county' => $request->court_county,
+            'court_town' => $request->court_town,
+        ]);
+
+        return redirect()->back()->with('success','Court details successfully Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Court  $court
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
