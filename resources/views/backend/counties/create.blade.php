@@ -41,9 +41,11 @@
                     <div class="mb-3">
                       <label for="county_country" class="form-label">County Country</label>
                       <select id="county_country" class="form-select" name="county_country" style="width: 100%;">
-                          <option value="Kenya">Kenya</option>
-                          <option value="Uganda">Uganda</option>
-                          <option value="Tanzania">Tanzania</option>
+                        @foreach($countries as $country)
+                          <option value="{{ $country->country_name }}">
+                          {{ $country->country_name }}
+                          </option>
+                        @endforeach
                       </select>
                     </div>
                 </div>

@@ -33,13 +33,11 @@
                             {{ $town->town_country }}
                         </option>
                         @endisset
-                        <option value="Town of Appeal">Town of Appeal</option>
-                        <option value="High Town">High Town</option>
-                        <option value="Employment and Labor Relations Town">Employment and Labor Relations Town</option>
-                        <option value="Magistrates’ Towns">Magistrates’ Towns</option>
-                        <option value="Kadhis Towns">Kadhis Towns</option>
-                        <option value="Town Martial">Town Martial</option>
-                        <option value="Environment and Land Town">Environment and Land Town</option>
+                        @foreach($countries as $country)
+                          <option value="{{ $country->country_name }}">
+                          {{ $country->country_name }}
+                          </option>
+                        @endforeach
                       </select>
                     </div>
                 </div>
@@ -54,9 +52,11 @@
                             {{ $town->town_county }}
                         </option>
                         @endisset
-                        <option value="Mombasa">Mombasa</option>
-                        <option value="Nairobi">Nairobi</option>
-                        <option value="Kisumu">Kisumu</option>
+                        @foreach($counties as $county)
+                          <option value="{{ $county->county_name }}">
+                          {{ $county->county_name }}
+                          </option>
+                        @endforeach
                       </select>
                     </div>
                 </div>

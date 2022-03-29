@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Town;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,12 @@ class TownController extends Controller
      */
     public function create()
     {
-        return view('backend.towns.create');
+        $data['counties'] = SelectFormData::county();
+        $data['provinces'] = SelectFormData::province();
+        //dd($data['counties']);
+        $data['countries'] = SelectFormData::country();
+
+        return view('backend.towns.create', $data);
     }
 
     /**
@@ -64,7 +71,15 @@ class TownController extends Controller
     {
         $data['town'] = Town::find($id);
 
-        return view('backend.towns.show', $data);
+        if ($data['town'])
+        {
+            return view('backend.towns.show', $data);
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Ooops! Town not found');
+        }
+        
     }
 
     /**
@@ -77,7 +92,19 @@ class TownController extends Controller
     {
         $data['town'] = Town::find($id);
 
-        return view('backend.towns.edit', $data);
+        if ($data['town'])
+        {
+            $data['countries'] = SelectFormData::country();
+            $data['counties'] = SelectFormData::county();
+            $data['provinces'] = SelectFormData::province();
+            //dd(($data['counties']));
+
+            return view('backend.towns.edit', $data);
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Ooops! Town not found');
+        }
     }
 
     /**

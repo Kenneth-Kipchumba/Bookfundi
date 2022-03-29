@@ -46,9 +46,11 @@
                             {{ $county->county_country }}
                         </option>
                         @endisset
-                        <option value="Kenya">Kenya</option>
-                        <option value="Uganda">Uganda</option>
-                        <option value="Tanzania">Tanzania</option>
+                        @foreach($countries as $country)
+                          <option value="{{ $country->country_name }}">
+                          {{ $country->country_name }}
+                          </option>
+                        @endforeach
                       </select>
                     </div>
                 </div>

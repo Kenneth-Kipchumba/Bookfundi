@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
 use App\Models\County;
 use Illuminate\Http\Request;
@@ -27,7 +28,9 @@ class CountyController extends Controller
      */
     public function create()
     {
-        return view('backend.counties.create');
+        $data['countries'] = SelectFormData::country();
+
+        return view('backend.counties.create', $data);
     }
 
     /**
@@ -64,7 +67,16 @@ class CountyController extends Controller
     {
         $data['county'] = County::find($id);
 
-        return view('backend.counties.show', $data);
+        if ($data['county'])
+        {
+            $data['countries'] = SelectFormData::country();
+
+            return view('backend.counties.show', $data);
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Ooops! County not found');
+        }
     }
 
     /**
@@ -77,7 +89,16 @@ class CountyController extends Controller
     {
         $data['county'] = County::find($id);
 
-        return view('backend.counties.edit', $data);
+        if ($data['county'])
+        {
+            $data['countries'] = SelectFormData::country();
+
+            return view('backend.counties.edit', $data);
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Ooops! County not found');
+        }
     }
 
     /**
@@ -114,8 +135,17 @@ class CountyController extends Controller
      */
     public function destroy(int $id)
     {
-        County::destroy($id);
+        $data['county'] = County::find($id);
 
-        return redirect()->back()->with('success','County successfully removed from the system');
+        if ($data['county'])
+        {
+            County::destroy($id);
+
+            return redirect()->back()->with('success','County successfully removed from the system');
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Ooops! County not found');
+        }
     }
 }

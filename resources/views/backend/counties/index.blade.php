@@ -16,7 +16,7 @@
                    <tr>
                        <th>County Name</th>
                        <th>County Code</th>
-                       <th>County County/State/Province</th>
+                       <th>Country</th>
                        <th>Action</th>
                    </tr>
                </thead>
