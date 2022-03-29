@@ -110,19 +110,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('backend.countries.index') }}" class="nav-link">
                             <i class="nav-icon fa-solid fa-flag"></i>
                             <p>Countries</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('backend.counties.index') }}" class="nav-link">
                             <i class="nav-icon fa-solid fa-location-crosshairs"></i>
                             <p>County/Province/State</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                        <a href="{{ route('backend.towns.index') }}" class="nav-link active">
                             <i class="nav-icon fa-solid fa-location-dot"></i>
                             <p>Towns/Cities</p>
                         </a>

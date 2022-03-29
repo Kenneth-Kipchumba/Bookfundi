@@ -50,7 +50,7 @@
                       <label for="court_country" class="form-label">Court Country</label>
                       <select id="court_country" class="form-select" name="court_country" style="width: 100%;">
                         @isset($court)
-                        <option value="{{ $court->court_level }}">
+                        <option value="{{ $court->court_country }}">
                             {{ $court->court_country }}
                         </option>
                         @endisset
@@ -67,7 +67,7 @@
                       </label>
                       <select id="court_county" class="form-select @error('court_county') is-invalid @enderror" name="court_county" style="width: 100%;">
                         @isset($court)
-                        <option value="{{ $court->court_level }}">
+                        <option value="{{ $court->court_county }}">
                             {{ $court->court_county }}
                         </option>
                         @endisset
@@ -96,7 +96,7 @@
                       <label for="court_town" class="form-label">Court City/Town</label>
                       <select id="court_town" class="form-select" name="court_town" style="width: 100%;">
                         @isset($court)
-                        <option value="{{ $court->court_level }}">
+                        <option value="{{ $court->court_town }}">
                             {{ $court->court_town }}
                         </option>
                         @endisset

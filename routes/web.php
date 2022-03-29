@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CourtController;
+use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\CountyController;
+use App\Http\Controllers\Backend\TownController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +39,7 @@ Route::prefix('backend')->name('backend.')->group(function ()
 {
     Route::resource('/users', UserController::class);
     Route::resource('/courts', CourtController::class);
+    Route::resource('/countries', CountryController::class);
+    Route::resource('/counties', CountyController::class);
+    Route::resource('/towns', TownController::class);
 });
