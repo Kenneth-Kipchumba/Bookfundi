@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\StoreRoleRequest;
-use App\Http\Requests\UpdateRoleRequest;
-use App\Models\Role;
+use App\Http\Controllers\Controller;
+use App\Models\Judge;
 
-class RoleController extends Controller
+class JudgeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        dd('Judges');
     }
 
     /**
@@ -31,10 +30,10 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreRoleRequest  $request
+     * @param  \App\Http\Requests\StoreJudgeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRoleRequest $request)
+    public function store(StoreJudgeRequest $request)
     {
         //
     }
@@ -42,10 +41,10 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Judge  $judge
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(Judge $judge)
     {
         //
     }
@@ -53,10 +52,10 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Judge  $judge
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Judge $judge)
     {
         //
     }
@@ -64,11 +63,11 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateRoleRequest  $request
-     * @param  \App\Models\Role  $role
+     * @param  \App\Http\Requests\UpdateJudgeRequest  $request
+     * @param  \App\Models\Judge  $judge
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(UpdateJudgeRequest $request, Judge $judge)
     {
         //
     }
@@ -76,10 +75,10 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Role  $role
+     * @param  \App\Models\Judge  $judge
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Judge $judge)
     {
         //
     }

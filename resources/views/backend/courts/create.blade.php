@@ -27,13 +27,14 @@
                     <div class="mb-3">
                       <label for="court_level" class="form-label">Court Level</label>
                       <select id="court_level" class="form-select" name="court_level" style="width: 100%;">
-                          <option value="Court of Appeal">Court of Appeal</option>
-                          <option value="High Court">High Court</option>
-                          <option value="Employment and Labor Relations Court">Employment and Labor Relations Court</option>
-                          <option value="Magistrates’ Courts">Magistrates’ Courts</option>
-                          <option value="Kadhis Courts">Kadhis Courts</option>
-                          <option value="Court Martial">Court Martial</option>
-                          <option value="Environment and Land Court">Environment and Land Court</option>
+                        <option value="Supreme Court">Supreme Court</option>
+                        <option value="Court of Appeal">Court of Appeal</option>
+                        <option value="High Court">High Court</option>
+                        <option value="Employment and Labor Relations Court">Employment and Labor Relations Court</option>
+                        <option value="Magistrates’ Courts">Magistrates’ Courts</option>
+                        <option value="Kadhis Courts">Kadhis Courts</option>
+                        <option value="Court Martial">Court Martial</option>
+                        <option value="Environment and Land Court">Environment and Land Court</option>
                       </select>
                     </div>
                 </div>
@@ -43,9 +44,11 @@
                     <div class="mb-3">
                       <label for="court_country" class="form-label">Court Country</label>
                       <select id="court_country" class="form-select" name="court_country" style="width: 100%;">
-                          <option value="Kenya">Kenya</option>
-                          <option value="Tanzania">Tanzania</option>
-                          <option value="Uganda">Uganda</option>
+                        @foreach($countries as $country)
+                          <option value="{{ $country->country_name }}">
+                          {{ $country->country_name }}
+                          </option>
+                        @endforeach
                       </select>
                     </div>
                 </div>
@@ -56,9 +59,11 @@
                       </label>
                       <select id="court_county" class="form-select @error('court_county') is-invalid @enderror" name="court_county" style="width: 100%;">
                           <optgroup label="Kenya">
-                            <option value="Mombasa">Mombasa</option>
-                            <option value="Nairobi">Nairobi</option>
-                            <option value="Kisumu">Kisumu</option>  
+                            @foreach($counties as $county)
+                              <option value="{{ $county->county_name }}">
+                              {{ $county->county_name }}
+                              </option>
+                            @endforeach
                           </optgroup>
                           <optgroup label="Uganda">
                             <option value="Kampala">Kampala</option>
@@ -79,9 +84,11 @@
                     <div class="mb-3">
                       <label for="court_town" class="form-label">Court City/Town</label>
                       <select id="court_town" class="form-select" name="court_town" style="width: 100%;">
-                          <option value="Mombasa">Mombasa</option>
-                          <option value="Nairobi">Nairobi</option>
-                          <option value="Kisumu">Kisumu</option>
+                          @foreach($towns as $town)
+                              <option value="{{ $town->town_name }}">
+                              {{ $town->town_name }}
+                              </option>
+                            @endforeach
                       </select>
                     </div>
                 </div>

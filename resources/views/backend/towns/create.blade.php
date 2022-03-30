@@ -45,7 +45,7 @@
                       <select id="town_county" class="form-select @error('town_county') is-invalid @enderror" name="town_county" style="width: 100%;">
                           <optgroup label="Kenya">
                             @foreach($counties as $county)
-                              <option value="{{ $country->county_name }}">
+                              <option value="{{ $county->county_name }}">
                               {{ $county->county_name }}
                               </option>
                             @endforeach

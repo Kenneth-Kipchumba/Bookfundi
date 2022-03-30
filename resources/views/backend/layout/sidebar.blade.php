@@ -62,13 +62,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-hand-point-right nav-icon"></i>
+                        <p>Respondents</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('backend.courts.index') }}" class="nav-link active">
                         <i class="fas fa-landmark nav-icon"></i>
                         <p>Courts</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.judges.index') }}" class="nav-link">
                         <i class="fas fa-gavel nav-icon"></i>
                         <p>Judges</p>
                     </a>
@@ -93,8 +99,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="far fa-hand-point-right nav-icon"></i>
-                        <p>Respondents</p>
+                        <i class="fa-solid fa-align-left nav-icon"></i>
+                        <p>Subject</p>
                     </a>
                 </li>
             </ul>

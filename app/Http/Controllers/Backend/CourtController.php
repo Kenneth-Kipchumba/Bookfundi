@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourtRequest;
 use App\Http\Requests\UpdateCourtRequest;
@@ -30,7 +31,11 @@ class CourtController extends Controller
      */
     public function create()
     {
-        return view('backend.courts.create');
+         $data['countries'] = SelectFormData::country();
+         $data['counties'] = SelectFormData::county();
+         $data['towns'] = SelectFormData::town();
+
+        return view('backend.courts.create', $data);
     }
 
     /**
