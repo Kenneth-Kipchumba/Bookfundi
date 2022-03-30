@@ -14,7 +14,16 @@ class Judge extends Model
      *
      * @var array<int, string>
      */
+    
     protected $fillable = [
         'judge_name',
+        'judge_current_court_level',
+        'judge_current_country',
+        'judge_current_county',
+        'judge_current_town',
+        'judge_previous_court_level',
+        'judge_previous_country',
+        'judge_previous_county',
+        'judge_previous_town'
     ];
 }
