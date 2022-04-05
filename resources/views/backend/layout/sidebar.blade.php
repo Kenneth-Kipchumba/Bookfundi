@@ -56,18 +56,6 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-hand-point-left nav-icon"></i>
-                        <p>Appellants</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-hand-point-right nav-icon"></i>
-                        <p>Respondents</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('backend.courts.index') }}" class="nav-link active">
                         <i class="fas fa-landmark nav-icon"></i>
                         <p>Courts</p>
@@ -101,6 +89,30 @@
                     <a href="#" class="nav-link">
                         <i class="fa-solid fa-align-left nav-icon"></i>
                         <p>Subject</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-users-rectangle nav-icon"></i>
+                        <p>Parties</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-book-bookmark nav-icon"></i>
+                        <p>Articles</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-book-open-reader nav-icon"></i>
+                        <p>Outcomes</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-book-open nav-icon"></i>
+                        <p>Decisions</p>
                     </a>
                 </li>
             </ul>
