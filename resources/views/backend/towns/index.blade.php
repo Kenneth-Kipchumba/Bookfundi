@@ -30,7 +30,7 @@
                    </td>
                    <td>{{ $town->town_country }}</td>
                    <td>
-                    {{ $town->town_county }},
+                    {{ $town->town_county }}
                    </td>
                    <td>
                        <a href="{{ route('backend.towns.edit', $town->id) }}" class="btn btn-sm btn-primary float-left">
