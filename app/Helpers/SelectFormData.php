@@ -50,7 +50,7 @@ class SelectFormData
 		return User::all();
 	}
 
-	public static function law_firm()
+	public static function firm()
 	{
 		return Firm::all();
 	}

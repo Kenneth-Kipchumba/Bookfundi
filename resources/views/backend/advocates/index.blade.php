@@ -28,7 +28,7 @@
                            {{ $advocate->advocate_name }}
                        </a>
                    </td>
-                   <td>{{ $advocate->advocate_law_firm }}</td>
+                   <td>{{ $advocate->advocate_firm }}</td>
                    <td>
                     {{ $advocate->advocate_specialization }}
                    </td>

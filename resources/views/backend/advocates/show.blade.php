@@ -14,17 +14,26 @@
                    <div class="row">
                        <div class="col">
                            <div class="info-box">
-                               500 Cases
+                            <div class="info-box-content">
+                                <span class="info-box-number">
+                                    Law Firm
+                                </span>
+                                <span class="info-box-text">
+                                    {{ $advocate->advocate_firm }}
+                                </span>
+                            </div>
                            </div>
                        </div>
                        <div class="col">
                            <div class="info-box">
-                               4 Decisions
-                           </div>
-                       </div>
-                       <div class="col">
-                           <div class="info-box">
-                               2 Titles
+                            <div class="info-box-content">
+                                <span class="info-box-number">
+                                    Specialization
+                                </span>
+                                <span class="info-box-text">
+                                    {{ $advocate->advocate_specialization }} Laywer
+                                </span>
+                            </div>
                            </div>
                        </div>
                    </div>
@@ -39,16 +48,16 @@
                <div class="col-4">
                 <ul class="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Criminal Cases
+                    Cases
                     <span class="badge badge-primary badge-pill">12</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Civil Cases
-                    <span class="badge badge-primary badge-pill">50</span>
+                    Win
+                    <span class="badge badge-success badge-pill">50</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Constitutional Cases
-                    <span class="badge badge-primary badge-pill">99</span>
+                    Lost
+                    <span class="badge badge-danger badge-pill">99</span>
                   </li>
                 </ul> 
                </div>

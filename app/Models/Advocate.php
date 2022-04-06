@@ -16,7 +16,7 @@ class Advocate extends Model
      */
     protected $fillable = [
         'advocate_name',
-        'advocate_law_firm',
+        'advocate_firm',
         'advocate_specialization'
     ];
 }

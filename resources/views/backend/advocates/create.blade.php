@@ -31,11 +31,11 @@
                    </div> 
 
                             <div class="mb-3">
-                      <label for="advocate_law_firm" class="form-label">Advocate Law Firm</label>
-                      <select id="advocate_law_firm" class="form-select" name="advocate_law_firm" style="width: 100%;">
-                        @foreach($law_firms as $law_firm)
-                          <option value="{{ $country->country_name }}">
-                          {{ $law_firm->law_firm_name }}
+                      <label for="advocate_firm" class="form-label">Advocate Law Firm</label>
+                      <select id="advocate_firm" class="form-select" name="advocate_firm" style="width: 100%;">
+                        @foreach($firms as $firm)
+                          <option value="{{ $firm->firm_name }} {{ $firm->firm_country }} {{ $firm->firm_county }} {{ $firm->firm_town }} {{ $firm->firm_address }}">
+                          {{ $firm->firm_name }} {{ $firm->firm_country }} {{ $firm->firm_county }} {{ $firm->firm_town }} {{ $firm->firm_address }}
                           </option>
                         @endforeach
                       </select>
@@ -76,7 +76,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#advocate_law_firm').select2()
+        $('#advocate_firm').select2()
     })
     $(document).ready(function () {
         $('#advocate_specialization').select2()

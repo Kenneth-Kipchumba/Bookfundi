@@ -14,17 +14,50 @@
                    <div class="row">
                        <div class="col">
                            <div class="info-box">
-                               500 Cases
+                            <div class="info-box-content">
+                                <span class="info-box-number">
+                                    Country
+                                </span>
+                                <span class="info-box-text">
+                                    {{ $firm->firm_country }}
+                                </span>
+                            </div>
                            </div>
                        </div>
                        <div class="col">
                            <div class="info-box">
-                               4 Decisions
+                            <div class="info-box-content">
+                                <span class="info-box-number">
+                                    County
+                                </span>
+                                <span class="info-box-text">
+                                    {{ $firm->firm_county }}
+                                </span>
+                            </div>
                            </div>
                        </div>
                        <div class="col">
                            <div class="info-box">
-                               2 Titles
+                            <div class="info-box-content">
+                                <span class="info-box-number">
+                                    Town
+                                </span>
+                                <span class="info-box-text">
+                                    {{ $firm->firm_town }}
+                                </span>
+                            </div>
+                           </div>
+                       </div>
+                       <div class="col">
+                           <div class="info-box">
+                            <div class="info-box-content">
+                                <span class="info-box-number">
+                                    Address
+                                </span>
+                                <span class="info-box-text">
+                                    {{ $firm->firm_address }}
+                                </span>
+                            </div>
                            </div>
                        </div>
                    </div>
@@ -39,15 +72,15 @@
                <div class="col-4">
                 <ul class="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Criminal Cases
+                    {{ $firm->firm_county }} {{ $firm->firm_country }}
                     <span class="badge badge-primary badge-pill">12</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Civil Cases
+                    {{ $firm->firm_town }}
                     <span class="badge badge-primary badge-pill">50</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Constitutional Cases
+                    {{ $firm->firm_address }}
                     <span class="badge badge-primary badge-pill">99</span>
                   </li>
                 </ul> 

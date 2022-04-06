@@ -28,8 +28,9 @@ class AdvocateController extends Controller
      */
     public function create()
     {
-        $data['law_firms'] = SelectFormData::law_firm();
+        $data['firms'] = SelectFormData::firm();
         $data['specializations'] = SelectFormData::specialization();
+        //dd($data);
 
         return view('backend.advocates.create', $data);
     }
@@ -44,14 +45,14 @@ class AdvocateController extends Controller
     {
         $validated_data = $request->validate([
             'advocate_name' => 'required',
-            'advocate_law_firm' => 'required',
+            'advocate_firm' => 'required',
             'advocate_specialization' => 'required'
         ]);
         //dd($validated_data);
 
         Advocate::create([
             'advocate_name' => $request->advocate_name,
-            'advocate_law_firm' => $request->advocate_law_firm,
+            'advocate_firm' => $request->advocate_firm,
             'advocate_specialization' => $request->advocate_specialization,
         ]);
 
@@ -92,7 +93,8 @@ class AdvocateController extends Controller
 
         if ($data['advocate'])
         {
-            $data['law_firm'] = SelectFormData::law_firm();
+            $data['firms'] = SelectFormData::firm();
+            $data['specializations'] = SelectFormData::specialization();
 
             return view('backend.advocates.edit', $data);
         }
@@ -105,7 +107,7 @@ class AdvocateController extends Controller
     /**
      * Update the specified advocate in storage.
      *
-     * @param  Illuminate\Http\Request\rReques  $request
+     * @param  Illuminate\Http\Request\Request  $request
      * @param  \App\Models\Advocate  $advocate
      * @return \Illuminate\Http\Response
      */
@@ -113,7 +115,7 @@ class AdvocateController extends Controller
     {
         $validated_data = $request->validate([
             'advocate_name' => 'required',
-            'advocate_law_firm' => 'required',
+            'advocate_firm' => 'required',
             'advocate_specialization' => 'required'
         ]);
         //dd($validated_data);
@@ -121,7 +123,7 @@ class AdvocateController extends Controller
 
         $advocate->update([
             'advocate_name' => $request->advocate_name,
-            'advocate_law_firm' => $request->advocate_law_firm,
+            'advocate_firm' => $request->advocate_firm,
             'advocate_specialization' => $request->advocate_specialization,
         ]);
 

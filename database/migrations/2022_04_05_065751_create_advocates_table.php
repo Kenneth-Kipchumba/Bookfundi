@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('advocates', function (Blueprint $table) {
             $table->id();
             $table->string('advocate_name');
-            $table->string('advocate_law_firm');
+            $table->string('advocate_firm');
             $table->string('advocate_specialization');
             $table->timestamps();
         });
