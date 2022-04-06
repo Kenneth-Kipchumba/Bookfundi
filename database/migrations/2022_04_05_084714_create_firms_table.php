@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('firms', function (Blueprint $table) {
             $table->id();
             $table->string('firm_name');
+            $table->string('firm_country');
+            $table->string('firm_county');
+            $table->string('firm_town');
+            $table->string('firm_address');
             $table->timestamps();
         });
     }

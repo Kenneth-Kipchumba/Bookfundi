@@ -15,6 +15,10 @@ class Firm extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'firm_name'
+        'firm_name',
+        'firm_country',
+        'firm_county',
+        'firm_town',
+        'firm_address'
     ];
 }
