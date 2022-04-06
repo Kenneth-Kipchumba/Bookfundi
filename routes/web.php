@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\Backend\CourtController;
+use App\Http\Controllers\Backend\AdvocateController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CountyController;
+use App\Http\Controllers\Backend\CourtController;
+use App\Http\Controllers\Backend\FirmController;
 use App\Http\Controllers\Backend\JudgeController;
-use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\SpecializationController;
 use App\Http\Controllers\Backend\TownController;
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,10 +42,13 @@ Route::get('pricing', function () {
 //Backend Routes
 Route::prefix('backend')->name('backend.')->group(function ()
 {
-    Route::resource('/users', UserController::class);
-    Route::resource('/courts', CourtController::class);
+    Route::resource('/advocates', AdvocateController::class);
     Route::resource('/countries', CountryController::class);
     Route::resource('/counties', CountyController::class);
+    Route::resource('/courts', CourtController::class);
+    Route::resource('/firms', FirmController::class);
     Route::resource('/judges', JudgeController::class);
+    Route::resource('/specializations', SpecializationController::class);
     Route::resource('/towns', TownController::class);
+    Route::resource('/users', UserController::class);
 });

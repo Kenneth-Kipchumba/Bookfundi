@@ -2,10 +2,13 @@
 
 namespace App\Helpers;
 
+use App\Models\Advocate;
 use App\Models\Country;
 use App\Models\County;
 use App\Models\Court;
+use App\Models\Firm;
 use App\Models\Role;
+use App\Models\Specialization;
 use App\Models\Town;
 use App\Models\User;
 
@@ -45,6 +48,21 @@ class SelectFormData
 	public static function user()
 	{
 		return User::all();
+	}
+
+	public static function law_firm()
+	{
+		return Firm::all();
+	}
+
+	public static function specialization()
+	{
+		return Specialization::all();
+	}
+
+	public static function advocate()
+	{
+		return Advocate::all();
 	}
 
 }
