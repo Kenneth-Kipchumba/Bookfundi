@@ -110,7 +110,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.outcomes.index') }}" class="nav-link">
                         <i class="fa-solid fa-book-open-reader nav-icon"></i>
                         <p>Outcomes</p>
                     </a>

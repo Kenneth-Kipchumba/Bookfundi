@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CourtController;
 use App\Http\Controllers\Backend\FirmController;
 use App\Http\Controllers\Backend\JudgeController;
 use App\Http\Controllers\Backend\MagistrateController;
+use App\Http\Controllers\Backend\OutcomeController;
 use App\Http\Controllers\Backend\PartyController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SpecializationController;
@@ -54,6 +55,7 @@ Route::prefix('backend')->name('backend.')->group(function ()
     Route::resource('/firms', FirmController::class);
     Route::resource('/judges', JudgeController::class);
     Route::resource('/magistrates', MagistrateController::class);
+    Route::resource('/outcomes', OutcomeController::class);
     Route::resource('/parties', PartyController::class);
     Route::resource('/specializations', SpecializationController::class);
     Route::resource('/subjects', SubjectController::class);
