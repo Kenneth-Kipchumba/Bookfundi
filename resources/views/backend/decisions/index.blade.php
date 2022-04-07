@@ -6,32 +6,32 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Outcomes Table</h3>
-           <a href="{{ route('backend.outcomes.create') }}" class="btn btn-success right">Create new outcome</a>
+           <h3>Decisions Table</h3>
+           <a href="{{ route('backend.decisions.create') }}" class="btn btn-success right">Create new decision</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Outcomes</th>
+                       <th>Decisions</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
-                @foreach($outcomes as $outcome)
+                @foreach($decisions as $decision)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.outcomes.show', $outcome->id) }}">
-                           {{ $outcome->outcome_name }}
+                       <a href="{{ route('backend.decisions.show', $decision->id) }}">
+                           {{ $decision->decision_name }}
                        </a>
                    </td>
                    <td>
-                       <a href="{{ route('backend.outcomes.edit', $outcome->id) }}" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.decisions.edit', $decision->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
-                        $slug = Str::slug($outcome->outcome_name);
+                        $slug = Str::slug($decision->decision_name);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
@@ -43,7 +43,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $outcome->outcome_name }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $decision->decision_name }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -51,7 +51,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.outcomes.destroy', $outcome->id) }}" method="POST">
+                                <form action="{{ route('backend.decisions.destroy', $decision->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -72,7 +72,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $outcomes->links() }}
+            {{ $decisions->links() }}
         </div>
 
         

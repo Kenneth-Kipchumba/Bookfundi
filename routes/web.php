@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CitationController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CountyController;
 use App\Http\Controllers\Backend\CourtController;
+use App\Http\Controllers\Backend\DecisionController;
 use App\Http\Controllers\Backend\FirmController;
 use App\Http\Controllers\Backend\JudgeController;
 use App\Http\Controllers\Backend\MagistrateController;
@@ -52,6 +53,7 @@ Route::prefix('backend')->name('backend.')->group(function ()
     Route::resource('/countries', CountryController::class);
     Route::resource('/counties', CountyController::class);
     Route::resource('/courts', CourtController::class);
+    Route::resource('/decisions', DecisionController::class);
     Route::resource('/firms', FirmController::class);
     Route::resource('/judges', JudgeController::class);
     Route::resource('/magistrates', MagistrateController::class);

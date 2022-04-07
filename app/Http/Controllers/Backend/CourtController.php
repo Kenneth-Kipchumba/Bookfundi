@@ -8,7 +8,6 @@ use App\Http\Requests\StoreCourtRequest;
 use App\Http\Requests\UpdateCourtRequest;
 use App\Models\Court;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class CourtController extends Controller
 {
