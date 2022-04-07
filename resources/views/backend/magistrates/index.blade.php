@@ -6,34 +6,42 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Specializations Table</h3>
-           <a href="{{ route('backend.specializations.create') }}" class="btn btn-success right">Create new specialization</a>
+           <h3>Magistrates Table</h3>
+           <a href="{{ route('backend.magistrates.create') }}" class="btn btn-primary right">Create new magistrate</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Specialization Name</th>
+                       <th>Magistrate Name</th>
+                       <th>Magistrate Current Court Level</th>
+                       <th>Location</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
-                @foreach($specializations as $specialization)
+                @foreach($magistrates as $magistrate)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.specializations.show', $specialization->id) }}">
-                           {{ $specialization->specialization_name }}
+                       <a href="{{ route('backend.magistrates.show', $magistrate->id) }}">
+                           {{ $magistrate->magistrate_name }}
                        </a>
                    </td>
+                   <td>{{ $magistrate->magistrate_current_court_level }}</td>
                    <td>
-                       <a href="{{ route('backend.specializations.edit', $specialization->id) }}" class="btn btn-sm btn-primary float-left">
+                    {{ $magistrate->magistrate_current_country }},
+                    {{ $magistrate->magistrate_current_county }},
+                    {{ $magistrate->magistrate_current_town }}
+                   </td>
+                   <td>
+                       <a href="{{ route('backend.magistrates.edit', $magistrate->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
                        
 
-                       $slug = Str::slug($specialization->specialization_name);
+                       $slug = Str::slug($magistrate->magistrate_name);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
@@ -45,7 +53,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $specialization->specialization_name }} from the system. Are you sure you want to proceed.
+                                    You are about to remove {{ $magistrate->magistrate_name }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -53,7 +61,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.specializations.destroy', $specialization->id) }}" method="POST">
+                                <form action="{{ route('backend.magistrates.destroy', $magistrate->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -74,7 +82,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $specializations->links() }}
+            {{ $magistrates->links() }}
         </div>
 
         

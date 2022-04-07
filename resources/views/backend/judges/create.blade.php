@@ -29,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card card-info">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h2 class="card-title">
                                 Current Details
@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="col">
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h2 class="card-title">Previous Details</h2>
                         </div>
@@ -182,7 +182,7 @@
                 </div>
             </div>
               
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
         <div class="card-footer">

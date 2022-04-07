@@ -6,34 +6,34 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Specializations Table</h3>
-           <a href="{{ route('backend.specializations.create') }}" class="btn btn-success right">Create new specialization</a>
+           <h3>Subjects Table</h3>
+           <a href="{{ route('backend.subjects.create') }}" class="btn btn-success right">Create new subject</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Specialization Name</th>
+                       <th>Subject Name</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
-                @foreach($specializations as $specialization)
+                @foreach($subjects as $subject)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.specializations.show', $specialization->id) }}">
-                           {{ $specialization->specialization_name }}
+                       <a href="{{ route('backend.subjects.show', $subject->id) }}">
+                           {{ $subject->subject_name }}
                        </a>
                    </td>
                    <td>
-                       <a href="{{ route('backend.specializations.edit', $specialization->id) }}" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.subjects.edit', $subject->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
                        
 
-                       $slug = Str::slug($specialization->specialization_name);
+                       $slug = Str::slug($subject->subject_name);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
@@ -45,7 +45,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $specialization->specialization_name }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $subject->subject_name }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -53,7 +53,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.specializations.destroy', $specialization->id) }}" method="POST">
+                                <form action="{{ route('backend.subjects.destroy', $subject->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -74,7 +74,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $specializations->links() }}
+            {{ $subjects->links() }}
         </div>
 
         

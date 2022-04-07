@@ -6,18 +6,17 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Edit Judge {{ $judge->judge_name }}</h3>
+           <h3>Create a new Magistrate</h3>
         </div>
         <div class="card-body">
-           <form action="{{ route('backend.judges.update', $judge->id) }}" method="POST">
+           <form action="{{ route('backend.magistrates.store') }}" method="POST">
             @csrf
-            @method('PATCH')
             <div class="row">
                 <div class="col">
                    <div class="mb-3">
-                      <label for="judge_name" class="form-label">Judge Name</label>
-                      <input type="text" name="judge_name" class="form-control @error('judge_name') is-invalid @enderror" id="judge_name" value="{{ $judge->judge_name }}">
-                      @error('judge_name')
+                      <label for="magistrate_name" class="form-label">Magistrate Name</label>
+                      <input type="text" name="magistrate_name" class="form-control @error('magistrate_name') is-invalid @enderror" id="magistrate_name">
+                      @error('magistrate_name')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
@@ -30,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card card-info">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h2 class="card-title">
                                 Current Details
@@ -38,8 +37,8 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                      <label for="judge_current_court_level" class="form-label">Judge Current Court Level</label>
-                      <select id="judge_current_court_level" class="form-select" name="judge_current_court_level" style="width: 100%;">
+                      <label for="magistrate_current_court_level" class="form-label">Jugde Current Court Level</label>
+                      <select id="magistrate_current_court_level" class="form-select" name="magistrate_current_court_level" style="width: 100%;">
                         <option value="Supreme Court">Supreme Court</option>
                         <option value="Court of Appeal">Court of Appeal</option>
                         <option value="High Court">High Court</option>
@@ -52,8 +51,8 @@
                     </div>
 
                     <div class="mb-3">
-                      <label for="judge_current_country" class="form-label">Judge Current Country</label>
-                      <select id="judge_current_country" class="form-select" name="judge_current_country" style="width: 100%;">
+                      <label for="magistrate_current_country" class="form-label">Magistrate Current Country</label>
+                      <select id="magistrate_current_country" class="form-select" name="magistrate_current_country" style="width: 100%;">
                         @foreach($countries as $country)
                           <option value="{{ $country->country_name }}">
                           {{ $country->country_name }}
@@ -64,10 +63,10 @@
                 
                 
                     <div class="mb-3">
-                      <label for="judge_current_county" class="form-label">
-                         Judge Current County/State/Province
+                      <label for="magistrate_current_county" class="form-label">
+                         Magistrate Current County/State/Province
                       </label>
-                      <select id="judge_current_county" class="form-select @error('judge_current_county') is-invalid @enderror" name="judge_current_county" style="width: 100%;">
+                      <select id="magistrate_current_county" class="form-select @error('magistrate_current_county') is-invalid @enderror" name="magistrate_current_county" style="width: 100%;">
                           <optgroup label="Kenya">
                             @foreach($counties as $county)
                               <option value="{{ $county->county_name }}">
@@ -90,8 +89,8 @@
                 
                 
                     <div class="mb-3">
-                      <label for="judge_current_town" class="form-label">Judge Current City/Town</label>
-                      <select id="judge_current_town" class="form-select" name="judge_current_town" style="width: 100%;">
+                      <label for="magistrate_current_town" class="form-label">Magistrate Current City/Town</label>
+                      <select id="magistrate_current_town" class="form-select" name="magistrate_current_town" style="width: 100%;">
                           @foreach($towns as $town)
                               <option value="{{ $town->town_name }}">
                               {{ $town->town_name }}
@@ -104,14 +103,14 @@
                 </div>
 
                 <div class="col">
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h2 class="card-title">Previous Details</h2>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                      <label for="judge_previous_court_level" class="form-label">Judge Previous Court Level</label>
-                      <select id="judge_previous_court_level" class="form-select" name="judge_previous_court_level" style="width: 100%;">
+                      <label for="magistrate_previous_court_level" class="form-label">Jugde Previous Court Level</label>
+                      <select id="magistrate_previous_court_level" class="form-select" name="magistrate_previous_court_level" style="width: 100%;">
                         <option value="Supreme Court">Supreme Court</option>
                         <option value="Court of Appeal">Court of Appeal</option>
                         <option value="High Court">High Court</option>
@@ -124,8 +123,8 @@
                     </div>
 
                     <div class="mb-3">
-                      <label for="judge_previous_country" class="form-label">Judge Previous Country</label>
-                      <select id="judge_previous_country" class="form-select" name="judge_previous_country" style="width: 100%;">
+                      <label for="magistrate_previous_country" class="form-label">Magistrate Previous Country</label>
+                      <select id="magistrate_previous_country" class="form-select" name="magistrate_previous_country" style="width: 100%;">
                         @foreach($countries as $country)
                           <option value="{{ $country->country_name }}">
                           {{ $country->country_name }}
@@ -136,10 +135,10 @@
                 
                 
                     <div class="mb-3">
-                      <label for="judge_previous_county" class="form-label">
-                         Judge Previous County/State/Province
+                      <label for="magistrate_previous_county" class="form-label">
+                         Magistrate Previous County/State/Province
                       </label>
-                      <select id="judge_previous_county" class="form-select @error('judge_previous_county') is-invalid @enderror" name="judge_previous_county" style="width: 100%;">
+                      <select id="magistrate_previous_county" class="form-select @error('magistrate_previous_county') is-invalid @enderror" name="magistrate_previous_county" style="width: 100%;">
                           <optgroup label="Kenya">
                             @foreach($counties as $county)
                               <option value="{{ $county->county_name }}">
@@ -162,8 +161,8 @@
                 
                 
                     <div class="mb-3">
-                      <label for="judge_previous_town" class="form-label">Judge Previous City/Town</label>
-                      <select id="judge_previous_town" class="form-select" name="judge_previous_town" style="width: 100%;">
+                      <label for="magistrate_previous_town" class="form-label">Magistrate Previous City/Town</label>
+                      <select id="magistrate_previous_town" class="form-select" name="magistrate_previous_town" style="width: 100%;">
                           @foreach($towns as $town)
                               <option value="{{ $town->town_name }}">
                               {{ $town->town_name }}
@@ -183,7 +182,7 @@
                 </div>
             </div>
               
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
         <div class="card-footer">
@@ -195,28 +194,28 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#judge_current_court_level').select2()
+        $('#magistrate_current_court_level').select2()
     })
     $(document).ready(function () {
-        $('#judge_current_country').select2()
+        $('#magistrate_current_country').select2()
     })
     $(document).ready(function () {
-        $('#judge_current_county').select2()
+        $('#magistrate_current_county').select2()
     })
     $(document).ready(function () {
-        $('#judge_current_town').select2()
+        $('#magistrate_current_town').select2()
     })
     $(document).ready(function () {
-        $('#judge_previous_court_level').select2()
+        $('#magistrate_previous_court_level').select2()
     })
     $(document).ready(function () {
-        $('#judge_previous_country').select2()
+        $('#magistrate_previous_country').select2()
     })
     $(document).ready(function () {
-        $('#judge_previous_county').select2()
+        $('#magistrate_previous_county').select2()
     })
     $(document).ready(function () {
-        $('#judge_previous_town').select2()
+        $('#magistrate_previous_town').select2()
     })
 </script>
 @endsection

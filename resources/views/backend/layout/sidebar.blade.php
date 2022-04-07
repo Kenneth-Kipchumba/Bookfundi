@@ -80,13 +80,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.magistrates.index') }}" class="nav-link">
                         <i class="fas fa-gavel nav-icon"></i>
                         <p>Magistrates</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.subjects.index') }}" class="nav-link">
                         <i class="fa-solid fa-align-left nav-icon"></i>
                         <p>Subject</p>
                     </a>
