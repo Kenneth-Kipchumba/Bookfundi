@@ -94,7 +94,7 @@ class SpecializationController extends Controller
      * Update the specified specializations in storage.
      *
      * @param  \App\Http\Requests\UpdateSpecializationRequest  $request
-     * @param  \App\Models\Specialization  $specialization
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, int $id)

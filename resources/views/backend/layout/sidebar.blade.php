@@ -98,15 +98,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.parties.index') }}" class="nav-link">
                         <i class="fa-solid fa-users-rectangle nav-icon"></i>
                         <p>Parties</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('backend.citations.index') }}" class="nav-link">
                         <i class="fa-solid fa-book-bookmark nav-icon"></i>
-                        <p>Articles</p>
+                        <p>Citation</p>
                     </a>
                 </li>
                 <li class="nav-item">
