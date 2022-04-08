@@ -46,11 +46,28 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fa-solid fa-lock"></i>
+                    <p>
+                    Caselaws
+                    <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-users nav-icon"></i>
+                            <p>Case Index</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
             <i class="nav-icon fa-solid fa-book"></i>
             <p>
-            Caselaws
+            Attributes
             <i class="right fas fa-angle-left"></i>
             </p>
             </a>

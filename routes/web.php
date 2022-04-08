@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdvocateController;
+use App\Http\Controllers\Backend\CaselawController;
 use App\Http\Controllers\Backend\CitationController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CountyController;
@@ -49,6 +50,7 @@ Route::get('pricing', function () {
 Route::prefix('backend')->name('backend.')->group(function ()
 {
     Route::resource('/advocates', AdvocateController::class);
+    Route::resource('/caselaws', CaselawController::class);
     Route::resource('/citations', CitationController::class);
     Route::resource('/countries', CountryController::class);
     Route::resource('/counties', CountyController::class);
