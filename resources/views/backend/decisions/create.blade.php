@@ -9,7 +9,7 @@
            <h3>Create a new Outcome</h3>
         </div>
         <div class="card-body">
-           <form action="{{ route('backend.outcomes.store') }}" method="POST">
+           <form action="{{ route('backend.decisions.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col">
