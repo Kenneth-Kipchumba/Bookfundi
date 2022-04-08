@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('decisions', function (Blueprint $table) {
             $table->id();
             $table->string('decision_name');
+            $table->string('decision_type')->nullable();
             $table->timestamps();
         });
     }

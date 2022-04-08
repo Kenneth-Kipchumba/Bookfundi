@@ -15,6 +15,7 @@ class Decision extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'decision_name'
+        'decision_name',
+        'decision_type'
     ];
 }

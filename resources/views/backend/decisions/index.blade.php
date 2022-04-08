@@ -23,7 +23,10 @@
                 <tr>
                    <td>
                        <a href="{{ route('backend.decisions.show', $decision->id) }}">
-                           {{ $decision->decision_name }}
+                        <dl>
+                            <dt>{{ $decision->decision_name }}</dt>
+                            <dd>{{ $decision->decision_type }}</dd>
+                        </dl>
                        </a>
                    </td>
                    <td>

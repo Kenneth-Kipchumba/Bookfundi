@@ -40,12 +40,14 @@ class DecisionController extends Controller
     public function store(Request $request)
     {
         $validated_data = $request->validate([
-            'decision_name' => 'required'
+            'decision_name' => 'required',
+            'decision_type' => ''
         ]);
         //dd($validated_data);
 
         Decision::create([
-            'decision_name' => $request->decision_name
+            'decision_name' => $request->decision_name,
+            'decision_type' => $request->decision_type
         ]);
 
         return redirect()->back()->with('success','Decision successfully added to the system');
@@ -101,7 +103,8 @@ class DecisionController extends Controller
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'decision_name' => 'required'
+            'decision_name' => 'required',
+            'decision_type' => ''
         ]);
         //dd($validated_data);
         $decision = Decision::find($id);
@@ -109,7 +112,8 @@ class DecisionController extends Controller
         if ($decision)
         {
             $decision->update([
-            'decision_name' => $request->decision_name
+                'decision_name' => $request->decision_name,
+                'decision_type' => $request->decision_type
             ]);
 
             return redirect()->back()->with('success','Decision details successfully Updated');
