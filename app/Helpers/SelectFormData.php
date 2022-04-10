@@ -6,7 +6,12 @@ use App\Models\Advocate;
 use App\Models\Country;
 use App\Models\County;
 use App\Models\Court;
+use App\Models\Decision;
 use App\Models\Firm;
+use App\Models\Judge;
+use App\Models\Magistrate;
+use App\Models\Outcome;
+use App\Models\Party;
 use App\Models\Role;
 use App\Models\Specialization;
 use App\Models\Town;
@@ -63,6 +68,31 @@ class SelectFormData
 	public static function advocate()
 	{
 		return Advocate::all();
+	}
+
+	public static function decision()
+	{
+		return Decision::all();
+	}
+
+	public static function outcome()
+	{
+		return Outcome::all();
+	}
+
+	public static function party()
+	{
+		return Party::all();
+	}
+
+	public static function judge()
+	{
+		return Judge::all();
+	}
+
+	public static function magistrate()
+	{
+		return Magistrate::all();
 	}
 
 }

@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h1 class="text-primary">{{ $judge->judge_name }}</h1>
+           <h1 class="text-primary">{{ $caselaw->caselaw_name }}</h1>
         </div>
         <div class="card-body">
            <div class="row">
@@ -31,7 +31,7 @@
                    <div class="row">
                        <div class="col-12">
                            <h4>More Info</h4>
-                           <p>Previously a {{ $judge->judge_previous_court_level }} judge and currently a {{ $judge->judge_current_court_level }} Judge.
+                           <p>Previously a {{ $caselaw->caselaw_previous_court_level }} caselaw and currently a {{ $caselaw->caselaw_current_court_level }} Judge.
                            </p>
                        </div>
                    </div>

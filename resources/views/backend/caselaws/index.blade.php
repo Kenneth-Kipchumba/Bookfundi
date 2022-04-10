@@ -6,42 +6,40 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Judges Table</h3>
-           <a href="{{ route('backend.judges.create') }}" class="btn btn-primary right">Create new judge</a>
+           <h3>Caselaws Table</h3>
+           <a href="{{ route('backend.caselaws.create') }}" class="btn btn-primary right">Create new caselaw</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Judge Name</th>
-                       <th>Judge Current Court Level</th>
-                       <th>Location</th>
+                       <th>Case Number</th>
+                       <th>Case Title</th>
+                       <th>Case Decision</th>
+                       <th>Year</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
-                @foreach($judges as $judge)
+                @foreach($caselaws as $caselaw)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.judges.show', $judge->id) }}">
-                           {{ $judge->judge_name }}
+                       <a href="{{ route('backend.caselaws.show', $caselaw->id) }}">
+                           {{ $caselaw->case_number }}
                        </a>
                    </td>
-                   <td>{{ $judge->judge_current_court_level }}</td>
+                   <td>{{ $caselaw->case_title }}</td>
+                   <td>{{ $caselaw->decision }}</td>
+                   <td>{{ $caselaw->year }}</td>
                    <td>
-                    {{ $judge->judge_current_country }},
-                    {{ $judge->judge_current_county }},
-                    {{ $judge->judge_current_town }}
-                   </td>
-                   <td>
-                       <a href="{{ route('backend.judges.edit', $judge->id) }}" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.caselaws.edit', $caselaw->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
                        
 
-                       $slug = Str::slug($judge->judge_name);
+                       $slug = Str::slug($caselaw->caselaw_name);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
@@ -53,7 +51,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                    You are about to remove {{ $judge->judge_name }} from the system. Are you sure you want to proceed.
+                                    You are about to remove {{ $caselaw->caselaw_name }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -61,7 +59,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.judges.destroy', $judge->id) }}" method="POST">
+                                <form action="{{ route('backend.caselaws.destroy', $caselaw->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -82,7 +80,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $judges->links() }}
+            {{ $caselaws->links() }}
         </div>
 
         

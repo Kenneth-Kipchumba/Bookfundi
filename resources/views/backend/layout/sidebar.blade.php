@@ -48,7 +48,7 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link active">
-                    <i class="nav-icon fa-solid fa-lock"></i>
+                    <i class="nav-icon fa-solid fa-list"></i>
                     <p>
                     Caselaws
                     <i class="right fas fa-angle-left"></i>
@@ -56,8 +56,8 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-users nav-icon"></i>
+                        <a href="{{ route('backend.caselaws.index') }}" class="nav-link">
+                            <i class="fas fa-list nav-icon"></i>
                             <p>Case Index</p>
                         </a>
                     </li>

@@ -31,6 +31,12 @@ class CaselawController extends Controller
         $data['countries'] = SelectFormData::country();
         $data['counties'] = SelectFormData::county();
         $data['towns'] = SelectFormData::town();
+        $data['outcomes'] = SelectFormData::outcome();
+        $data['decisions'] = SelectFormData::decision();
+        $data['parties'] = SelectFormData::party();
+        $data['advocates'] = SelectFormData::advocate();
+        $data['judges'] = SelectFormData::judge();
+        $data['magistrates'] = SelectFormData::magistrate();
 
         return view('backend.caselaws.create', $data);
     }
@@ -50,7 +56,7 @@ class CaselawController extends Controller
             'case_respondent' => '',
             'case_defendant' => '',
             'case_appellant' => '',
-            'case_judges' => 'required',
+            'case_caselaws' => 'required',
             'plaintiffs_advocate' => '',
             'respondents_advocate' => '',
             'defendants_advocate' => '',
@@ -63,15 +69,15 @@ class CaselawController extends Controller
         //dd($validated_data);
 
         Judge::create([
-            'judge_name' => $request->judge_name,
-            'judge_current_court_level' => $request->judge_current_court_level,
-            'judge_current_country' => $request->judge_current_country,
-            'judge_current_county' => $request->judge_current_county,
-            'judge_current_town' => $request->judge_current_town,
-            'judge_previous_court_level' => $request->judge_previous_court_level,
-            'judge_previous_country' => $request->judge_previous_country,
-            'judge_previous_county' => $request->judge_previous_county,
-            'judge_previous_town' => $request->judge_previous_town
+            'caselaw_name' => $request->caselaw_name,
+            'caselaw_current_court_level' => $request->caselaw_current_court_level,
+            'caselaw_current_country' => $request->caselaw_current_country,
+            'caselaw_current_county' => $request->caselaw_current_county,
+            'caselaw_current_town' => $request->caselaw_current_town,
+            'caselaw_previous_court_level' => $request->caselaw_previous_court_level,
+            'caselaw_previous_country' => $request->caselaw_previous_country,
+            'caselaw_previous_county' => $request->caselaw_previous_county,
+            'caselaw_previous_town' => $request->caselaw_previous_town
         ]);
 
         return redirect()->back()->with('success','Judge successfully added to the system');
@@ -85,9 +91,9 @@ class CaselawController extends Controller
      */
     public function show(int $id)
     {
-        $data['judge'] = Judge::find($id);
+        $data['caselaw'] = Judge::find($id);
 
-        if ($data['judge'])
+        if ($data['caselaw'])
         {
             $data['countries'] = SelectFormData::country();
 
@@ -107,9 +113,9 @@ class CaselawController extends Controller
      */
     public function edit(int $id)
     {
-        $data['judge'] = Judge::find($id);
+        $data['caselaw'] = Judge::find($id);
 
-        if ($data['judge'])
+        if ($data['caselaw'])
         {
             $data['countries'] = SelectFormData::country();
             $data['counties'] = SelectFormData::county();
@@ -133,29 +139,29 @@ class CaselawController extends Controller
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'judge_name' => 'required',
-            'judge_current_court_level' => 'required',
-            'judge_current_country' => 'required',
-            'judge_current_county' => 'required',
-            'judge_current_town' => 'required',
-            'judge_previous_court_level' => 'required',
-            'judge_previous_country' => 'required',
-            'judge_previous_county' => 'required',
-            'judge_previous_town' => 'required'
+            'caselaw_name' => 'required',
+            'caselaw_current_court_level' => 'required',
+            'caselaw_current_country' => 'required',
+            'caselaw_current_county' => 'required',
+            'caselaw_current_town' => 'required',
+            'caselaw_previous_court_level' => 'required',
+            'caselaw_previous_country' => 'required',
+            'caselaw_previous_county' => 'required',
+            'caselaw_previous_town' => 'required'
         ]);
         //dd($validated_data);
-        $judge = Judge::find($id);
+        $caselaw = Judge::find($id);
 
-        $judge->update([
-            'judge_name' => $request->judge_name,
-            'judge_current_court_level' => $request->judge_current_court_level,
-            'judge_current_country' => $request->judge_current_country,
-            'judge_current_county' => $request->judge_current_county,
-            'judge_current_town' => $request->judge_current_town,
-            'judge_previous_court_level' => $request->judge_previous_court_level,
-            'judge_previous_country' => $request->judge_previous_country,
-            'judge_previous_county' => $request->judge_previous_county,
-            'judge_previous_town' => $request->judge_previous_town
+        $caselaw->update([
+            'caselaw_name' => $request->caselaw_name,
+            'caselaw_current_court_level' => $request->caselaw_current_court_level,
+            'caselaw_current_country' => $request->caselaw_current_country,
+            'caselaw_current_county' => $request->caselaw_current_county,
+            'caselaw_current_town' => $request->caselaw_current_town,
+            'caselaw_previous_court_level' => $request->caselaw_previous_court_level,
+            'caselaw_previous_country' => $request->caselaw_previous_country,
+            'caselaw_previous_county' => $request->caselaw_previous_county,
+            'caselaw_previous_town' => $request->caselaw_previous_town
         ]);
 
         return redirect()->back()->with('success','Judge details successfully Updated');
@@ -169,9 +175,9 @@ class CaselawController extends Controller
      */
     public function destroy(int $id)
     {
-        $data['judge'] = Judge::find($id);
+        $data['caselaw'] = Judge::find($id);
 
-        if ($data['judge'])
+        if ($data['caselaw'])
         {
             Judge::destroy($id);
 
