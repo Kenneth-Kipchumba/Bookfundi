@@ -216,16 +216,15 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <!--<div class="mb-3">
-                                      <label for="case_county" class="form-label">Case County</label>
-                                      <select id="case_county" class="form-select" name="case_county" style="width: 100%;">
-                                        @foreach($counties as $county)
-                                          <option value="{{ $county->county_name }}">
-                                          {{ $county->county_name }}
-                                          </option>
-                                        @endforeach
-                                      </select>
-                                    </div>-->
+                                    <div class="mb-3">
+                                      <label for="case_county" class="form-label">Year</label>
+                                      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                                      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                      </div>
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
