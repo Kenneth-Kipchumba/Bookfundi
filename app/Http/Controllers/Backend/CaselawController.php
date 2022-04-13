@@ -4,25 +4,25 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
-use App\Models\Judge;
+use App\Models\Caselaw;
 use Illuminate\Http\Request;
 
 class CaselawController extends Controller
 {
     /**
-     * Display a listing of Judges
+     * Display a listing of Caselaws
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data['caselaws'] = Judge::paginate(10);
+        $data['caselaws'] = Caselaw::paginate(10);
 
         return view('backend.caselaws.index', $data);
     }
 
     /**
-     * Show the form for creating a new Judge.
+     * Show the form for creating a new Caselaw.
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,19 +36,22 @@ class CaselawController extends Controller
         $data['parties'] = SelectFormData::party();
         $data['advocates'] = SelectFormData::advocate();
         $data['judges'] = SelectFormData::judge();
+        $data['courts'] = SelectFormData::court();
         $data['magistrates'] = SelectFormData::magistrate();
 
         return view('backend.caselaws.create', $data);
     }
 
     /**
-     * Store a newly created Judge in storage.
+     * Store a newly created Caselaw in storage.
      *
-     * @param  \App\Http\Requests\StoreJudgeRequest  $request
+     * @param  \App\Http\Requests\StoreCaselawRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        //dd($request->case_body);
+        //print_r($request->case_body);die();
         $validated_data = $request->validate([
             'case_number' => 'required',
             'case_title' => 'required',
@@ -56,42 +59,56 @@ class CaselawController extends Controller
             'case_respondent' => '',
             'case_defendant' => '',
             'case_appellant' => '',
-            'case_caselaws' => 'required',
+            'case_judges' => '',
             'plaintiffs_advocate' => '',
             'respondents_advocate' => '',
             'defendants_advocate' => '',
             'appellants_advocate' => '',
-            'decision' => 'required',
-            'outcome' => 'required',
-            'year' => 'required',
-            'location' => 'required'
+            'case_decision' => 'required',
+            'case_outcome' => 'required',
+            'case_date' => 'required',
+            'case_country' => 'required',
+            'case_county' => 'required',
+            'case_town' => 'required',
+            'case_court' => 'required',
+            'case_body' => 'required',
         ]);
-        //dd($validated_data);
+        dd($validated_data);
 
-        Judge::create([
-            'caselaw_name' => $request->caselaw_name,
-            'caselaw_current_court_level' => $request->caselaw_current_court_level,
-            'caselaw_current_country' => $request->caselaw_current_country,
-            'caselaw_current_county' => $request->caselaw_current_county,
-            'caselaw_current_town' => $request->caselaw_current_town,
-            'caselaw_previous_court_level' => $request->caselaw_previous_court_level,
-            'caselaw_previous_country' => $request->caselaw_previous_country,
-            'caselaw_previous_county' => $request->caselaw_previous_county,
-            'caselaw_previous_town' => $request->caselaw_previous_town
+        Caselaw::create([
+            'case_number' => $request->case_number,
+            'case_title' => $request->case_title,
+            'case_plaintiff' => $request->case_plaintiff,
+            'case_respondent' => $request->case_respondent,
+            'case_defendant' => $request->case_defendant,
+            'case_appellant' => $request->case_appellant,
+            'case_judges' => $request->case_judges,
+            'plaintiffs_advocate' => $request->plaintiffs_advocate,
+            'respondents_advocate' => $request->respondents_advocate,
+            'defendants_advocate' => $request->defendants_advocate,
+            'appellants_advocate' => $request->appellants_advocate,
+            'case_decision' => $request->case_decision,
+            'case_outcome' => $request->case_outcome,
+            'case_date' => $request->case_date,
+            'case_country' => $request->case_country,
+            'case_county' => $request->case_county,
+            'case_town' => $request->case_town,
+            'case_court' => $request->case_court,
+            'case_body' => $request->case_body,
         ]);
 
-        return redirect()->back()->with('success','Judge successfully added to the system');
+        return redirect()->back()->with('success','Caselaw successfully added to the system');
     }
 
     /**
-     * Display the specified Judge.
+     * Display the specified Caselaw.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
-        $data['caselaw'] = Judge::find($id);
+        $data['caselaw'] = Caselaw::find($id);
 
         if ($data['caselaw'])
         {
@@ -101,19 +118,19 @@ class CaselawController extends Controller
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Judge not found');
+            return redirect()->back()->with('error', 'Ooops! Caselaw not found');
         }
     }
 
     /**
-     * Show the form for editing the specified Judge.
+     * Show the form for editing the specified Caselaw.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(int $id)
     {
-        $data['caselaw'] = Judge::find($id);
+        $data['caselaw'] = Caselaw::find($id);
 
         if ($data['caselaw'])
         {
@@ -125,14 +142,14 @@ class CaselawController extends Controller
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Judge not found');
+            return redirect()->back()->with('error', 'Ooops! Caselaw not found');
         }
     }
 
     /**
-     * Update the specified Judge in storage.
+     * Update the specified Caselaw in storage.
      *
-     * @param  \App\Http\Requests\UpdateJudgeRequest  $request
+     * @param  \App\Http\Requests\UpdateCaselawRequest  $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -150,7 +167,7 @@ class CaselawController extends Controller
             'caselaw_previous_town' => 'required'
         ]);
         //dd($validated_data);
-        $caselaw = Judge::find($id);
+        $caselaw = Caselaw::find($id);
 
         $caselaw->update([
             'caselaw_name' => $request->caselaw_name,
@@ -164,28 +181,28 @@ class CaselawController extends Controller
             'caselaw_previous_town' => $request->caselaw_previous_town
         ]);
 
-        return redirect()->back()->with('success','Judge details successfully Updated');
+        return redirect()->back()->with('success','Caselaw details successfully Updated');
     }
 
     /**
-     * Remove the specified Judge from storage.
+     * Remove the specified Caselaw from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(int $id)
     {
-        $data['caselaw'] = Judge::find($id);
+        $data['caselaw'] = Caselaw::find($id);
 
         if ($data['caselaw'])
         {
-            Judge::destroy($id);
+            Caselaw::destroy($id);
 
-            return redirect()->back()->with('success','Judge successfully removed from the system');
+            return redirect()->back()->with('success','Caselaw successfully removed from the system');
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Judge not found');
+            return redirect()->back()->with('error', 'Ooops! Caselaw not found');
         }
     }
 }

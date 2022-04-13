@@ -26,9 +26,13 @@ class Caselaw extends Model
         'respondents_advocate',
         'defendants_advocate',
         'appellants_advocate',
-        'decision',
-        'outcome',
-        'year',
-        'location'
+        'case_decision',
+        'case_outcome',
+        'case_date',
+        'case_country',
+        'case_county',
+        'case_town',
+        'case_court',
+        'case_body'
     ];
 }

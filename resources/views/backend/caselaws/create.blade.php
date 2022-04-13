@@ -16,7 +16,7 @@
                     <div class="card card-success">
                         <div class="card-header">
                             <h2 class="card-title">
-                                Case Details
+                                Case Attributes
                             </h2>
                         </div>
                         <div class="card-body">
@@ -38,6 +38,18 @@
                                 </p>
                               @enderror
                             </div>
+                            <!--Court-->
+                            <div class="mb-3">
+                                <label for="case_court" class="form-label">Court</label>
+                                <select id="case_court" class="form-select" name="case_court" style="width: 100%;">
+                                @foreach($courts as $court)
+                                    <option value="{{ $court->court_name }}">
+                                        {{ $court->court_name }}
+                                    </option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <!--Judges-->
                             <div class="mb-3">
                                 <label for="case_judges" class="form-label">Case Judges</label>
                                 <select id="case_judges" class="form-select" name="case_judges[]" style="width: 100%;" multiple="">
@@ -217,13 +229,15 @@
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                      <label for="case_county" class="form-label">Year</label>
-                                      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
-                                      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                      <div class="form-group">
+                                        <label>Date masks:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                            </div>
+                                            <input type="text" name="case_date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy">
+                                        </div>
                                       </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -238,9 +252,13 @@
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="case_body"></label>
-                                <textarea class="form-control @error('case_body') is-invalid @enderror" id="case_body" rows="20">
-                                    
+                                <label for="case_body">Case Body</label>
+                                 @error('case_body')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                  @enderror
+                                <textarea name="case_body" class="form-control @error('case_body') is-invalid @enderror" id="case_body" rows="40" spellcheck="true">    
                                 </textarea>
                             </div>
                         </div>
@@ -298,6 +316,9 @@
     })
     $(document).ready(function () {
         $('#appellants_advocate').select2()
+    })
+    $(document).ready(function () {
+        $('#case_court').select2()
     })
     $(document).ready(function () {
         $('#case_judges').select2({
