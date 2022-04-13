@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('case_respondent')->nullable();
             $table->string('case_defendant')->nullable();
             $table->string('case_appellant')->nullable();
-            $table->string('case_judges');
+            $table->tinyText('case_judges');
             $table->string('plaintiffs_advocate')->nullable();
             $table->string('respondents_advocate')->nullable();
             $table->string('defendants_advocate')->nullable();

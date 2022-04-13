@@ -73,7 +73,7 @@ class CaselawController extends Controller
             'case_court' => 'required',
             'case_body' => 'required',
         ]);
-        dd($validated_data);
+        //dd($validated_data);
 
         Caselaw::create([
             'case_number' => $request->case_number,
@@ -89,7 +89,7 @@ class CaselawController extends Controller
             'appellants_advocate' => $request->appellants_advocate,
             'case_decision' => $request->case_decision,
             'case_outcome' => $request->case_outcome,
-            'case_date' => $request->case_date,
+            'case_date' => $request->date('case_date'),
             'case_country' => $request->case_country,
             'case_county' => $request->case_county,
             'case_town' => $request->case_town,

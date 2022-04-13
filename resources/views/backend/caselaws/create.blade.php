@@ -52,7 +52,7 @@
                             <!--Judges-->
                             <div class="mb-3">
                                 <label for="case_judges" class="form-label">Case Judges</label>
-                                <select id="case_judges" class="form-select" name="case_judges[]" style="width: 100%;" multiple="">
+                                <select id="case_judges" class="form-select" name="case_judges" style="width: 100%;" multiple="">
                                 @foreach($judges as $judge)
                                     <option value="{{ $judge->judge_name }}">
                                         {{ $judge->judge_name }}
