@@ -29,8 +29,17 @@
                            </div>
                        </div>
                        <div class="col">
-                           <div class="info-box">
-                               4 Judges
+                           <div class="card">
+                               <div class="card-header">
+                                  <h2 class="card-title">4 Judges</h2> 
+                               </div>
+                               <div class="card-body">
+                                <ul>
+                                    @foreach()
+                                      <li>{{ $caselaw->case_judges }}</li>
+                                    @endforeach
+                                </ul>
+                               </div>
                            </div>
                        </div>
                        <div class="col">

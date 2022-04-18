@@ -30,8 +30,8 @@
                        </a>
                    </td>
                    <td>{{ $caselaw->case_title }}</td>
-                   <td>{{ $caselaw->decision }}</td>
-                   <td>{{ $caselaw->year }}</td>
+                   <td>{{ $caselaw->case_decision }}</td>
+                   <td>{{ $caselaw->case_date }}</td>
                    <td>
                        <a href="{{ route('backend.caselaws.edit', $caselaw->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
@@ -42,11 +42,11 @@
                          
                        ?>
                        <!-- Delete Button trigger modal -->
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= 'r-' . $slug; ?>">
                           <i class="fas fa-trash"></i>
                         </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="<?= 'r-' . $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
