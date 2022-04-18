@@ -51,7 +51,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                    You are about to remove {{ $advocate->advocate_name }} from the system. Are you sure you want to proceed.
+                                    You are about to remove <span class="bg-light text-primary">{{ $advocate->advocate_name }}</span> from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>

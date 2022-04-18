@@ -6,7 +6,10 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Edit Caselaw {{ $caselaw->caselaw_name }}</h3>
+           <h3>
+              <strong class="text-primary">Edit</strong>
+              <span style="text-decoration: underline;">{{ $caselaw->case_title ?? '' }}</span>
+           </h3>
         </div>
         <div class="card-body">
            <form action="{{ route('backend.caselaws.update', $caselaw->id) }}" method="POST">
@@ -14,176 +17,286 @@
             @method('PATCH')
             <div class="row">
                 <div class="col">
-                   <div class="mb-3">
-                      <label for="caselaw_name" class="form-label">Caselaw Name</label>
-                      <input type="text" name="caselaw_name" class="form-control @error('caselaw_name') is-invalid @enderror" id="caselaw_name" value="{{ $caselaw->caselaw_name }}">
-                      @error('caselaw_name')
-                        <p class="text-danger">
-                            {{ $message }}
-                        </p>
-                      @enderror
-                   </div> 
-                </div>
-                <div class="col">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card card-info">
+                    <div class="card card-success">
                         <div class="card-header">
                             <h2 class="card-title">
-                                Current Details
+                                Case Attributes
                             </h2>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                      <label for="caselaw_current_court_level" class="form-label">Caselaw Current Court Level</label>
-                      <select id="caselaw_current_court_level" class="form-select" name="caselaw_current_court_level" style="width: 100%;">
-                        <option value="Supreme Court">Supreme Court</option>
-                        <option value="Court of Appeal">Court of Appeal</option>
-                        <option value="High Court">High Court</option>
-                        <option value="Employment and Labor Relations Court">Employment and Labor Relations Court</option>
-                        <option value="Magistrates’ Courts">Magistrates’ Courts</option>
-                        <option value="Kadhis Courts">Kadhis Courts</option>
-                        <option value="Court Martial">Court Martial</option>
-                        <option value="Environment and Land Court">Environment and Land Court</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="caselaw_current_country" class="form-label">Caselaw Current Country</label>
-                      <select id="caselaw_current_country" class="form-select" name="caselaw_current_country" style="width: 100%;">
-                        @foreach($countries as $country)
-                          <option value="{{ $country->country_name }}">
-                          {{ $country->country_name }}
-                          </option>
-                        @endforeach
-                      </select>
-                    </div>
-                
-                
-                    <div class="mb-3">
-                      <label for="caselaw_current_county" class="form-label">
-                         Caselaw Current County/State/Province
-                      </label>
-                      <select id="caselaw_current_county" class="form-select @error('caselaw_current_county') is-invalid @enderror" name="caselaw_current_county" style="width: 100%;">
-                          <optgroup label="Kenya">
-                            @foreach($counties as $county)
-                              <option value="{{ $county->county_name }}">
-                              {{ $county->county_name }}
-                              </option>
-                            @endforeach
-                          </optgroup>
-                          <optgroup label="Uganda">
-                            <option value="Kampala">Kampala</option>
-                            <option value="Jinja">Jinja</option>
-                            <option value="Entebbe">Entebbe</option>  
-                          </optgroup>
-                          <optgroup label="Tanzania">
-                            <option value="Daresalaam">Daresalaam</option>
-                            <option value="Dodoma">Dodoma</option>
-                            <option value="Kigoma">Kigoma</option>  
-                          </optgroup>
-                      </select>
-                    </div>
-                
-                
-                    <div class="mb-3">
-                      <label for="caselaw_current_town" class="form-label">Caselaw Current City/Town</label>
-                      <select id="caselaw_current_town" class="form-select" name="caselaw_current_town" style="width: 100%;">
-                          @foreach($towns as $town)
-                              <option value="{{ $town->town_name }}">
-                              {{ $town->town_name }}
-                              </option>
-                            @endforeach
-                      </select>
-                    </div>
+                              <label for="case_number" class="form-label">Case Number</label>
+                              <input type="text" name="case_number" class="form-control @error('case_number') is-invalid @enderror" id="case_number" value="{{ $caselaw->case_number }}">
+                              @error('case_number')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                              @enderror
+                            </div>
+                            <div class="mb-3">
+                              <label for="case_title" class="form-label">Case Title</label>
+                              <input type="text" name="case_title" class="form-control @error('case_title') is-invalid @enderror" id="case_title" value={{ $caselaw->case_title }}">
+                              @error('case_title')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                              @enderror
+                            </div>
+                            <!--Court-->
+                            <div class="mb-3">
+                                <label for="case_court" class="form-label">Court</label>
+                                <select id="case_court" class="form-select" name="case_court" style="width: 100%;">
+                                    <option value="{{ $caselaw->case_court }}">
+                                        {{ $caselaw->case_court}}
+                                    </option>
+                                @foreach($courts as $court)
+                                    <option value="{{ $court->court_name }}">
+                                        {{ $court->court_name }}
+                                    </option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <!--Judges-->
+                            <div class="mb-3">
+                                <label for="case_judges" class="form-label">Case Judges</label>
+                                <select id="case_judges" class="form-select" name="case_judges[]" style="width: 100%;" multiple="">
+                                    <option value="{{ $caselaw->case_judges }}">
+                                        {{ $caselaw->case_judges }}
+                                        <?= $caselaw->case_judges ?>
+                                    </option>
+                                @foreach($judges as $judge)
+                                    <option value="{{ $judge->judge_name }}">
+                                        {{ $judge->judge_name }}
+                                    </option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <!-- Plaintiff -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_plaintiff" class="form-label">Plaintiff</label>
+                                      <select id="case_plaintiff" class="form-select" name="case_plaintiff" style="width: 100%;">
+                                        <option value="{{ $caselaw->case_plaintiff }}">
+                                            {{ $caselaw->case_plaintiff }}
+                                        </option>
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="plaintiffs_advocate" class="form-label">Plaintiff's Advocate</label>
+                                      <select id="plaintiffs_advocate" class="form-select" name="plaintiffs_advocate" style="width: 100%;">
+                                        <option value="{{ $caselaw->case_judges }}">
+                                            {{ $caselaw->plaintiffs_advocate }}
+                                        </option>
+                                        @foreach($advocates as $advocate)
+                                            <option value="{{ $advocate->advocate_name }}">
+                                                {{ $advocate->advocate_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Respondent -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_respondent" class="form-label">Respondent</label>
+                                      <select id="case_respondent" class="form-select" name="case_respondent" style="width: 100%;">
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="respondents_advocate" class="form-label">Respondent's Advocate</label>
+                                      <select id="respondents_advocate" class="form-select" name="respondents_advocate" style="width: 100%;">
+                                        <option value="{{ $caselaw->case_judges }}">
+                                            {{ $caselaw->respondents_advocate }}
+                                        </option>
+                                        @foreach($advocates as $advocate)
+                                            <option value="{{ $advocate->advocate_name }}">
+                                                {{ $advocate->advocate_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Defendant -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_defendant" class="form-label">Defendant</label>
+                                      <select id="case_defendant" class="form-select" name="case_defendant" style="width: 100%;">
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="defendants_advocate" class="form-label">Defendant's Advocate</label>
+                                      <select id="defendants_advocate" class="form-select" name="defendants_advocate" style="width: 100%;">
+                                        <option value="{{ $caselaw->case_judges }}">
+                                            {{ $caselaw->defendants_advocate }}
+                                        </option>
+                                        @foreach($advocates as $advocate)
+                                            <option value="{{ $advocate->advocate_name }}">
+                                                {{ $advocate->advocate_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Appellant -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_appellant" class="form-label">Appellant</label>
+                                      <select id="case_appellant" class="form-select" name="case_appellant" style="width: 100%;">
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="appellants_advocate" class="form-label">Appellant's Advocate</label>
+                                      <select id="appellants_advocate" class="form-select" name="appellants_advocate" style="width: 100%;">
+                                        <option value="{{ $caselaw->case_judges }}">
+                                            {{ $caselaw->appellants_advocate }}
+                                        </option>
+                                        @foreach($advocates as $advocate)
+                                            <option value="{{ $advocate->advocate_name }}">
+                                                {{ $advocate->advocate_name }}
+                                            </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="case_decision" class="form-label">Decision</label>
+                              <select id="case_decision" class="form-select" name="case_decision" style="width: 100%;">
+                                @foreach($decisions as $decision)
+                                    <option value="{{ $decision->decision_name }}">
+                                        {{ $decision->decision_name }}
+                                        @if($decision->decision_type)
+                                         {{ ' by ' . $decision->decision_type }}
+                                        @endif
+                                    </option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label for="case_outcome" class="form-label">Case Outcome</label>
+                              <select id="case_outcome" class="form-select" name="case_outcome" style="width: 100%;">
+                                @foreach($outcomes as $outcome)
+                                    <option value="{{ $outcome->outcome_name }}">
+                                        {{ $outcome->outcome_name }}
+                                    </option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_country" class="form-label">Case Country</label>
+                                      <select id="case_country" class="form-select" name="case_country" style="width: 100%;">
+                                        @foreach($countries as $country)
+                                          <option value="{{ $country->country_name }}">
+                                          {{ $country->country_name }}
+                                          </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_county" class="form-label">Case County</label>
+                                      <select id="case_county" class="form-select" name="case_county" style="width: 100%;">
+                                        @foreach($counties as $county)
+                                          <option value="{{ $county->county_name }}">
+                                          {{ $county->county_name }}
+                                          </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <label for="case_town" class="form-label">Case Town</label>
+                                      <select id="case_town" class="form-select" name="case_town" style="width: 100%;">
+                                        @foreach($towns as $town)
+                                      <option value="{{ $country->country_name }}">
+                                          {{ $town->town_name }}
+                                      </option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                      <div class="form-group">
+                                        <label>Date masks:</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                            </div>
+                                            <input type="text" name="case_date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy" value="{{ $caselaw->case_date }}">
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card card-primary">
+                    <div class="card card-success">
                         <div class="card-header">
-                            <h2 class="card-title">Previous Details</h2>
+                            <h2 class="card-title">Caselaw</h2>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                      <label for="caselaw_previous_court_level" class="form-label">Caselaw Previous Court Level</label>
-                      <select id="caselaw_previous_court_level" class="form-select" name="caselaw_previous_court_level" style="width: 100%;">
-                        <option value="Supreme Court">Supreme Court</option>
-                        <option value="Court of Appeal">Court of Appeal</option>
-                        <option value="High Court">High Court</option>
-                        <option value="Employment and Labor Relations Court">Employment and Labor Relations Court</option>
-                        <option value="Magistrates’ Courts">Magistrates’ Courts</option>
-                        <option value="Kadhis Courts">Kadhis Courts</option>
-                        <option value="Court Martial">Court Martial</option>
-                        <option value="Environment and Land Court">Environment and Land Court</option>
-                      </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="caselaw_previous_country" class="form-label">Caselaw Previous Country</label>
-                      <select id="caselaw_previous_country" class="form-select" name="caselaw_previous_country" style="width: 100%;">
-                        @foreach($countries as $country)
-                          <option value="{{ $country->country_name }}">
-                          {{ $country->country_name }}
-                          </option>
-                        @endforeach
-                      </select>
-                    </div>
-                
-                
-                    <div class="mb-3">
-                      <label for="caselaw_previous_county" class="form-label">
-                         Caselaw Previous County/State/Province
-                      </label>
-                      <select id="caselaw_previous_county" class="form-select @error('caselaw_previous_county') is-invalid @enderror" name="caselaw_previous_county" style="width: 100%;">
-                          <optgroup label="Kenya">
-                            @foreach($counties as $county)
-                              <option value="{{ $county->county_name }}">
-                              {{ $county->county_name }}
-                              </option>
-                            @endforeach
-                          </optgroup>
-                          <optgroup label="Uganda">
-                            <option value="Kampala">Kampala</option>
-                            <option value="Jinja">Jinja</option>
-                            <option value="Entebbe">Entebbe</option>  
-                          </optgroup>
-                          <optgroup label="Tanzania">
-                            <option value="Daresalaam">Daresalaam</option>
-                            <option value="Dodoma">Dodoma</option>
-                            <option value="Kigoma">Kigoma</option>  
-                          </optgroup>
-                      </select>
-                    </div>
-                
-                
-                    <div class="mb-3">
-                      <label for="caselaw_previous_town" class="form-label">Caselaw Previous City/Town</label>
-                      <select id="caselaw_previous_town" class="form-select" name="caselaw_previous_town" style="width: 100%;">
-                          @foreach($towns as $town)
-                              <option value="{{ $town->town_name }}">
-                              {{ $town->town_name }}
-                              </option>
-                            @endforeach
-                      </select>
-                    </div>
+                                <label for="case_body">Case Body</label>
+                                 @error('case_body')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                  @enderror
+                                <textarea name="case_body" class="form-control @error('case_body') is-invalid @enderror" id="case_body" rows="40" spellcheck="true">    {{ $caselaw->case_body }}
+                                </textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="row">
-                
-                <div class="col">
-
-                </div>
-            </div>
               
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-success">Update</button>
             </form>
         </div>
         <div class="card-footer">
@@ -195,28 +308,52 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#caselaw_current_court_level').select2()
+        $('#case_country').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_current_country').select2()
+        $('#case_county').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_current_county').select2()
+        $('#case_town').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_current_town').select2()
+        $('#case_decision').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_previous_court_level').select2()
+        $('#case_outcome').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_previous_country').select2()
+        $('#case_plaintiff').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_previous_county').select2()
+        $('#plaintiffs_advocate').select2()
     })
     $(document).ready(function () {
-        $('#caselaw_previous_town').select2()
+        $('#case_respondent').select2()
+    })
+    $(document).ready(function () {
+        $('#respondents_advocate').select2()
+    })
+    $(document).ready(function () {
+        $('#case_defendant').select2()
+    })
+    $(document).ready(function () {
+        $('#defendants_advocate').select2()
+    })
+    $(document).ready(function () {
+        $('#case_appellant').select2()
+    })
+    $(document).ready(function () {
+        $('#appellants_advocate').select2()
+    })
+    $(document).ready(function () {
+        $('#case_court').select2()
+    })
+    $(document).ready(function () {
+        $('#case_judges').select2({
+            allowClear: true,
+            theme: "classic"
+        })
     })
 </script>
 @endsection

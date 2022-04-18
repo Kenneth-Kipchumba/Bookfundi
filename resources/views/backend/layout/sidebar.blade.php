@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item menu-open">
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fa-solid fa-list"></i>
                     <p>
@@ -63,7 +63,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
             <a href="#" class="nav-link active">
             <i class="nav-icon fa-solid fa-book"></i>
             <p>
@@ -145,7 +145,7 @@
                     <i class="nav-icon fa-solid fa-border-all"></i>
                     <i class=""></i>
                     <p>
-                    Other Attributes
+                    Locations
                     <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -159,7 +159,7 @@
                     <li class="nav-item">
                         <a href="{{ route('backend.counties.index') }}" class="nav-link">
                             <i class="nav-icon fa-solid fa-location-crosshairs"></i>
-                            <p>County/Province/State</p>
+                            <p>Counties/Provinces/States</p>
                         </a>
                     </li>
                     <li class="nav-item">

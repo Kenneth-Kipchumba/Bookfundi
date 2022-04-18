@@ -50,8 +50,6 @@ class CaselawController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->case_body);
-        //print_r($request->case_body);die();
         $validated_data = $request->validate([
             'case_number' => 'required',
             'case_title' => 'required',
@@ -131,11 +129,19 @@ class CaselawController extends Controller
     public function edit(int $id)
     {
         $data['caselaw'] = Caselaw::find($id);
+        //dd($data['caselaw']);
 
         if ($data['caselaw'])
         {
+            $data['courts']   = SelectFormData::court();
+            $data['judges']   = SelectFormData::judge();
+            $data['advocates']   = SelectFormData::advocate();
+            $data['parties']  = SelectFormData::party();
+            $data['decisions'] = SelectFormData::decision();
+            $data['outcomes'] = SelectFormData::outcome();
+
             $data['countries'] = SelectFormData::country();
-            $data['counties'] = SelectFormData::county();
+            $data['counties']  = SelectFormData::county();
             $data['towns'] = SelectFormData::town();
 
             return view('backend.caselaws.edit', $data);
@@ -156,32 +162,51 @@ class CaselawController extends Controller
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'caselaw_name' => 'required',
-            'caselaw_current_court_level' => 'required',
-            'caselaw_current_country' => 'required',
-            'caselaw_current_county' => 'required',
-            'caselaw_current_town' => 'required',
-            'caselaw_previous_court_level' => 'required',
-            'caselaw_previous_country' => 'required',
-            'caselaw_previous_county' => 'required',
-            'caselaw_previous_town' => 'required'
+            'case_number' => 'required',
+            'case_title' => 'required',
+            'case_plaintiff' => '',
+            'case_respondent' => '',
+            'case_defendant' => '',
+            'case_appellant' => '',
+            'case_judges' => '',
+            'plaintiffs_advocate' => '',
+            'respondents_advocate' => '',
+            'defendants_advocate' => '',
+            'appellants_advocate' => '',
+            'case_decision' => 'required',
+            'case_outcome' => 'required',
+            'case_date' => 'required',
+            'case_country' => 'required',
+            'case_county' => 'required',
+            'case_town' => 'required',
+            'case_court' => 'required',
+            'case_body' => 'required',
         ]);
         //dd($validated_data);
-        $caselaw = Caselaw::find($id);
 
-        $caselaw->update([
-            'caselaw_name' => $request->caselaw_name,
-            'caselaw_current_court_level' => $request->caselaw_current_court_level,
-            'caselaw_current_country' => $request->caselaw_current_country,
-            'caselaw_current_county' => $request->caselaw_current_county,
-            'caselaw_current_town' => $request->caselaw_current_town,
-            'caselaw_previous_court_level' => $request->caselaw_previous_court_level,
-            'caselaw_previous_country' => $request->caselaw_previous_country,
-            'caselaw_previous_county' => $request->caselaw_previous_county,
-            'caselaw_previous_town' => $request->caselaw_previous_town
+        Caselaw::update([
+            'case_number' => $request->case_number,
+            'case_title' => $request->case_title,
+            'case_plaintiff' => $request->case_plaintiff,
+            'case_respondent' => $request->case_respondent,
+            'case_defendant' => $request->case_defendant,
+            'case_appellant' => $request->case_appellant,
+            'case_judges' => $request->case_judges,
+            'plaintiffs_advocate' => $request->plaintiffs_advocate,
+            'respondents_advocate' => $request->respondents_advocate,
+            'defendants_advocate' => $request->defendants_advocate,
+            'appellants_advocate' => $request->appellants_advocate,
+            'case_decision' => $request->case_decision,
+            'case_outcome' => $request->case_outcome,
+            'case_date' => $request->date('case_date'),
+            'case_country' => $request->case_country,
+            'case_county' => $request->case_county,
+            'case_town' => $request->case_town,
+            'case_court' => $request->case_court,
+            'case_body' => $request->case_body,
         ]);
 
-        return redirect()->back()->with('success','Caselaw details successfully Updated');
+        return redirect()->back()->with('success','Caselaw successfully added to the system');
     }
 
     /**
