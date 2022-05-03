@@ -25,7 +25,6 @@
                        <a href="{{ route('backend.decisions.show', $decision->id) }}">
                         <dl>
                             <dt>{{ $decision->decision_name }}</dt>
-                            <dd>{{ $decision->decision_type }}</dd>
                         </dl>
                        </a>
                    </td>

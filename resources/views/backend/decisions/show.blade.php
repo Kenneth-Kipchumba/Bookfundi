@@ -8,7 +8,7 @@
         <div class="card-header">
            <div class="row">
                <div class="col">
-                    <h1 class="text-primary">{{ $decision->decision_name }} by {{ $decision->decision_type }}</h1>
+                    <h1 class="text-primary">{{ $decision->decision_name }}</h1>
                </div>
                <div class="col">
                 <div class="float-right">
