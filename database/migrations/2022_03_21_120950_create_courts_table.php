@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('court_country');
             $table->string('court_county');
             $table->string('court_town');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }

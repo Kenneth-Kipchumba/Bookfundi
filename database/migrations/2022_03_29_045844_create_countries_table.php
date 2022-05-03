@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('country_name');
             $table->string('country_code');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }

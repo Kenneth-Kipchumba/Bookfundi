@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('firm_county');
             $table->string('firm_town');
             $table->string('firm_address');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }

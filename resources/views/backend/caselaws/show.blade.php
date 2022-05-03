@@ -35,9 +35,9 @@
                                </div>
                                <div class="card-body">
                                 <ul>
-                                    @foreach()
-                                      <li>{{ $caselaw->case_judges }}</li>
-                                    @endforeach
+                                    <li>
+                                        {{ $caselaw->case_judges }}
+                                    </li>
                                 </ul>
                                </div>
                            </div>
@@ -46,14 +46,6 @@
                            <div class="info-box">
                                2 Advocates
                            </div>
-                       </div>
-                   </div>
-                   <div class="row">
-                       <div class="col-12">
-                           <h4>More Info</h4>
-                           <p>
-                               {{ $caselaw->caselaw_name }}
-                           </p>
                        </div>
                    </div>
                </div>
@@ -79,7 +71,7 @@
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Current Court Level
-                    <span class="badge badge-primary badge-pill">{{ $caselaw->caselaw_current_court_level }}</span>
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_court }}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Previous Court Level
@@ -87,11 +79,24 @@
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Decision
-                    <span class="badge badge-primary badge-pill">{{ $caselaw->caselaw_previous_court_level }}</span>
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_decision }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Outcome
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_outcome }}</span>
                   </li>
                 </ul> 
                </div>
            </div>
+
+             <div class="row">
+                <div class="col-12">
+                    <h4> {{ $caselaw->case_title }}</h4>
+                    <p>
+                        {{ $caselaw->case_body }}
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="card-footer">
             

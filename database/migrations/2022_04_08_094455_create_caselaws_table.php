@@ -28,12 +28,16 @@ return new class extends Migration
             $table->tinyText('appellants_advocate')->nullable();
             $table->string('case_decision');
             $table->string('case_outcome');
+            $table->string('citation');
             $table->timestamp('case_date');
             $table->string('case_country');
             $table->string('case_county');
             $table->string('case_town');
             $table->string('case_court');
             $table->mediumText('case_body');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }

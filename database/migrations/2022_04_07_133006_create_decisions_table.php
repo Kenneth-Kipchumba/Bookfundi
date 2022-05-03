@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('decision_name');
             $table->string('decision_type')->nullable();
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }

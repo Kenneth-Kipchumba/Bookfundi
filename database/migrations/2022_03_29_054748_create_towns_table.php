@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('town_name');
             $table->string('town_country');
             $table->string('town_county');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }

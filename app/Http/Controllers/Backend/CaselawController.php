@@ -184,7 +184,9 @@ class CaselawController extends Controller
         ]);
         //dd($validated_data);
 
-        Caselaw::update([
+        $caselaw = Caselaw::find($id);
+
+        $caselaw->update([
             'case_number' => $request->case_number,
             'case_title' => $request->case_title,
             'case_plaintiff' => $request->case_plaintiff,
@@ -206,7 +208,7 @@ class CaselawController extends Controller
             'case_body' => $request->case_body,
         ]);
 
-        return redirect()->back()->with('success','Caselaw successfully added to the system');
+        return redirect()->back()->with('success','Caselaw successfully Updated in the system');
     }
 
     /**

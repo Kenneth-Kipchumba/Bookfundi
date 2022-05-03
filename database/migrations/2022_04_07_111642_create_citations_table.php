@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('citations', function (Blueprint $table) {
             $table->id();
             $table->string('citation_name');
+            $table->string('created_by');
+            $table->string('updated_by');
+            $table->string('deleted_by');
             $table->timestamps();
         });
     }
