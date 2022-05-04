@@ -16,6 +16,9 @@
             @csrf
             @method('PATCH')
             <div class="row">
+                <div>
+                    <input type="hidden" name="updated_by" value="{{ auth()->user()->first_name ?? '' }}">
+                </div>
                 <div class="col">
                     <div class="card card-success">
                         <div class="card-header">
@@ -259,12 +262,12 @@
                                 <div class="col">
                                     <div class="mb-3">
                                       <div class="form-group">
-                                        <label>Date masks:</label>
+                                        <label>Case Date:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                             </div>
-                                            <input type="text" name="case_date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy" value="{{ $caselaw->case_date }}">
+                                            <input type="text" name="case_date" class="form-control @error('case_date') is-invalid @enderror" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy" value="{{ $caselaw->case_date }}">
                                         </div>
                                       </div>
                                     </div>

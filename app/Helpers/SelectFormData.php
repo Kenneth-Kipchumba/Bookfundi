@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\Advocate;
+use App\Models\Citation;
 use App\Models\Country;
 use App\Models\County;
 use App\Models\Court;
@@ -78,6 +79,11 @@ class SelectFormData
 	public static function outcome()
 	{
 		return Outcome::all();
+	}
+
+	public static function citation()
+	{
+		return Citation::all();
 	}
 
 	public static function party()

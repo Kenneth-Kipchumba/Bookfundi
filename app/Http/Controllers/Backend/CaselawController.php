@@ -33,6 +33,7 @@ class CaselawController extends Controller
         $data['towns'] = SelectFormData::town();
         $data['outcomes'] = SelectFormData::outcome();
         $data['decisions'] = SelectFormData::decision();
+        $data['citations'] = SelectFormData::citation();
         $data['parties'] = SelectFormData::party();
         $data['advocates'] = SelectFormData::advocate();
         $data['judges'] = SelectFormData::judge();
@@ -64,6 +65,7 @@ class CaselawController extends Controller
             'appellants_advocate' => '',
             'case_decision' => 'required',
             'case_outcome' => 'required',
+            'citation' => 'required',
             'case_date' => 'required',
             'case_country' => 'required',
             'case_county' => 'required',
@@ -87,12 +89,14 @@ class CaselawController extends Controller
             'appellants_advocate' => $request->appellants_advocate,
             'case_decision' => $request->case_decision,
             'case_outcome' => $request->case_outcome,
+            'citation' => $request->citation,
             'case_date' => $request->date('case_date'),
             'case_country' => $request->case_country,
             'case_county' => $request->case_county,
             'case_town' => $request->case_town,
             'case_court' => $request->case_court,
             'case_body' => $request->case_body,
+            'created_by' => $request->first_name . $request->last_name
         ]);
 
         return redirect()->back()->with('success','Caselaw successfully added to the system');
@@ -139,6 +143,7 @@ class CaselawController extends Controller
             $data['parties']  = SelectFormData::party();
             $data['decisions'] = SelectFormData::decision();
             $data['outcomes'] = SelectFormData::outcome();
+            $data['citations'] = SelectFormData::citation();
 
             $data['countries'] = SelectFormData::country();
             $data['counties']  = SelectFormData::county();
@@ -175,12 +180,14 @@ class CaselawController extends Controller
             'appellants_advocate' => '',
             'case_decision' => 'required',
             'case_outcome' => 'required',
+            'citation' => 'required',
             'case_date' => 'required',
             'case_country' => 'required',
             'case_county' => 'required',
             'case_town' => 'required',
             'case_court' => 'required',
             'case_body' => 'required',
+            'updated_by' => ''
         ]);
         //dd($validated_data);
 
@@ -200,15 +207,17 @@ class CaselawController extends Controller
             'appellants_advocate' => $request->appellants_advocate,
             'case_decision' => $request->case_decision,
             'case_outcome' => $request->case_outcome,
+            'citation' => $request->citation,
             'case_date' => $request->date('case_date'),
             'case_country' => $request->case_country,
             'case_county' => $request->case_county,
             'case_town' => $request->case_town,
             'case_court' => $request->case_court,
             'case_body' => $request->case_body,
+            'updated_by' => $request->first_name . $request->last_name
         ]);
 
-        return redirect()->back()->with('success','Caselaw successfully Updated in the system');
+        return redirect()->back()->with('info','Caselaw successfully Updated in the system');
     }
 
     /**
@@ -225,7 +234,7 @@ class CaselawController extends Controller
         {
             Caselaw::destroy($id);
 
-            return redirect()->back()->with('success','Caselaw successfully removed from the system');
+            return redirect()->back()->with('danger','Caselaw successfully removed from the system');
         }
         else
         {

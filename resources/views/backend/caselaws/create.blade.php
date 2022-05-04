@@ -20,6 +20,9 @@
                             </h2>
                         </div>
                         <div class="card-body">
+                            <div>
+                                <input type="hidden" name="created_by" value="{{ auth()->user()->first_name ?? '' }}">
+                            </div>
                             <div class="mb-3">
                               <label for="case_number" class="form-label">Case Number</label>
                               <input type="text" name="case_number" class="form-control @error('case_number') is-invalid @enderror" id="case_number">
@@ -188,6 +191,16 @@
                                 @endforeach
                               </select>
                             </div>
+                            <div class="mb-3">
+                              <label for="citation" class="form-label">Citation</label>
+                              <select id="citation" class="form-select" name="citation" style="width: 100%;">
+                                @foreach($citations as $citation)
+                                    <option value="{{ $citation->citation_name }}">
+                                        {{ $citation->citation_name }}
+                                    </option>
+                                @endforeach
+                              </select>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
@@ -230,12 +243,17 @@
                                 <div class="col">
                                     <div class="mb-3">
                                       <div class="form-group">
-                                        <label>Date masks:</label>
+                                        <label>Case Date:</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                             </div>
-                                            <input type="text" name="case_date" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy">
+                                            <input type="text" name="case_date" class="form-control @error('case_date') is-invalid @enderror" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy">
+                                            @error('case_number')
+                                              <p class="text-danger">
+                                                {{ $message }}
+                                              </p>
+                                            @enderror
                                         </div>
                                       </div>
                                     </div>
@@ -292,6 +310,9 @@
     })
     $(document).ready(function () {
         $('#case_outcome').select2()
+    })
+    $(document).ready(function () {
+        $('#citation').select2()
     })
     $(document).ready(function () {
         $('#case_plaintiff').select2()

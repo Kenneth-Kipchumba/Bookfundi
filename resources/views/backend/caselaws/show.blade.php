@@ -21,35 +21,45 @@
         </div>
         <div class="card-body">
            <div class="row">
-               <div class="col-8">
-                   <div class="row">
-                       <div class="col">
-                           <div class="info-box">
-                               50 Respondents
-                           </div>
-                       </div>
-                       <div class="col">
-                           <div class="card">
-                               <div class="card-header">
-                                  <h2 class="card-title">4 Judges</h2> 
-                               </div>
-                               <div class="card-body">
-                                <ul>
-                                    <li>
-                                        {{ $caselaw->case_judges }}
-                                    </li>
-                                </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col">
-                           <div class="info-box">
-                               2 Advocates
-                           </div>
-                       </div>
-                   </div>
+               <div class="col-6">
+                   <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Case Judges
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_judges }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Case Date
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>{{ $caselaw->case_date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Entry made by
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->created_by }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Entry updated by
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->updated_by }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Previous Court Level
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->caselaw_previous_court_level }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Decision
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_decision }}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Outcome
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_outcome }}</span>
+                  </li>
+                </ul> 
                </div>
-               <div class="col-4">
+               <div class="col-6">
                 <ul class="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Case Number

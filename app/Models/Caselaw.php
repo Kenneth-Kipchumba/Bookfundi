@@ -28,11 +28,15 @@ class Caselaw extends Model
         'appellants_advocate',
         'case_decision',
         'case_outcome',
+        'citation',
         'case_date',
         'case_country',
         'case_county',
         'case_town',
         'case_court',
-        'case_body'
+        'case_body',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 }
