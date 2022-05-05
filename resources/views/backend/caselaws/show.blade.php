@@ -46,8 +46,8 @@
                     <span class="badge badge-primary badge-pill">{{ $caselaw->updated_by }}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Previous Court Level
-                    <span class="badge badge-primary badge-pill">{{ $caselaw->caselaw_previous_court_level }}</span>
+                    Court
+                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_court }}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Decision
@@ -78,14 +78,6 @@
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Supporting Parties
                     <span class="badge badge-primary badge-pill">{{ $caselaw->case_respondent }}</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Current Court Level
-                    <span class="badge badge-primary badge-pill">{{ $caselaw->case_court }}</span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Previous Court Level
-                    <span class="badge badge-primary badge-pill">{{ $caselaw->caselaw_previous_court_level }}</span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Decision

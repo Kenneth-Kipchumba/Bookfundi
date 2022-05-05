@@ -96,7 +96,7 @@ class CaselawController extends Controller
             'case_town' => $request->case_town,
             'case_court' => $request->case_court,
             'case_body' => $request->case_body,
-            'created_by' => $request->first_name . $request->last_name
+            'created_by' => $request->created_by
         ]);
 
         return redirect()->back()->with('success','Caselaw successfully added to the system');
@@ -166,14 +166,14 @@ class CaselawController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $validated_data = $request->validate([
+        dd($request->validate([
             'case_number' => 'required',
             'case_title' => 'required',
             'case_plaintiff' => '',
             'case_respondent' => '',
             'case_defendant' => '',
             'case_appellant' => '',
-            'case_judges' => '',
+            /*'case_judges' => '',*/
             'plaintiffs_advocate' => '',
             'respondents_advocate' => '',
             'defendants_advocate' => '',
@@ -187,37 +187,43 @@ class CaselawController extends Controller
             'case_town' => 'required',
             'case_court' => 'required',
             'case_body' => 'required',
-            'updated_by' => ''
-        ]);
-        //dd($validated_data);
+        ]));
+        //dd($request);
 
         $caselaw = Caselaw::find($id);
 
-        $caselaw->update([
-            'case_number' => $request->case_number,
-            'case_title' => $request->case_title,
-            'case_plaintiff' => $request->case_plaintiff,
-            'case_respondent' => $request->case_respondent,
-            'case_defendant' => $request->case_defendant,
-            'case_appellant' => $request->case_appellant,
-            'case_judges' => $request->case_judges,
-            'plaintiffs_advocate' => $request->plaintiffs_advocate,
-            'respondents_advocate' => $request->respondents_advocate,
-            'defendants_advocate' => $request->defendants_advocate,
-            'appellants_advocate' => $request->appellants_advocate,
-            'case_decision' => $request->case_decision,
-            'case_outcome' => $request->case_outcome,
-            'citation' => $request->citation,
-            'case_date' => $request->date('case_date'),
-            'case_country' => $request->case_country,
-            'case_county' => $request->case_county,
-            'case_town' => $request->case_town,
-            'case_court' => $request->case_court,
-            'case_body' => $request->case_body,
-            'updated_by' => $request->first_name . $request->last_name
-        ]);
+        if ($caselaw)
+        {
+            $caselaw->update([
+                'case_number' => $request->case_number,
+                'case_title' => $request->case_title,
+                'case_plaintiff' => $request->case_plaintiff,
+                'case_respondent' => $request->case_respondent,
+                'case_defendant' => $request->case_defendant,
+                'case_appellant' => $request->case_appellant,
+                'case_judges' => json_encode($request->case_judges),
+                'plaintiffs_advocate' => $request->plaintiffs_advocate,
+                'respondents_advocate' => $request->respondents_advocate,
+                'defendants_advocate' => $request->defendants_advocate,
+                'appellants_advocate' => $request->appellants_advocate,
+                'case_decision' => $request->case_decision,
+                'case_outcome' => $request->case_outcome,
+                'citation' => $request->citation,
+                'case_date' => $request->date('case_date'),
+                'case_country' => $request->case_country,
+                'case_county' => $request->case_county,
+                'case_town' => $request->case_town,
+                'case_court' => $request->case_court,
+                'case_body' => $request->case_body,
+                'updated_by' => $request->updated_by
+            ]);
 
-        return redirect()->back()->with('info','Caselaw successfully Updated in the system');
+            return redirect()->back()->with('info','Caselaw successfully Updated in the system');
+        }
+        else
+        {
+            return redirect()->back()->with('warning','Oops! Something was amiss and the Caselaw details have been not successfully Updated');
+        }
     }
 
     /**
