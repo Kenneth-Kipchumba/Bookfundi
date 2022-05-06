@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Locations;
 
 use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;

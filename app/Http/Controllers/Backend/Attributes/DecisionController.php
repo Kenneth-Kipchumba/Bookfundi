@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Attributes;
 
-use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Outcome;
+use App\Models\Decision;
 
-class OutcomeController extends Controller
+class DecisionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,10 @@ class OutcomeController extends Controller
      */
     public function index()
     {
-        $data['outcomes'] = Outcome::paginate(10);
+        $data['decisions'] = Decision::paginate(10);
+        //dd($data);
 
-        return view('backend.outcomes.index', $data);
+        return view('backend.decisions.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class OutcomeController extends Controller
      */
     public function create()
     {
-        return view('backend.outcomes.create');
+        return view('backend.decisions.create');
     }
 
     /**
@@ -40,15 +40,15 @@ class OutcomeController extends Controller
     public function store(Request $request)
     {
         $validated_data = $request->validate([
-            'outcome_name' => 'required'
+            'decision_name' => 'required'
         ]);
         //dd($validated_data);
 
-        Outcome::create([
-            'outcome_name' => $request->outcome_name
+        Decision::create([
+            'decision_name' => $request->decision_name,
         ]);
 
-        return redirect()->back()->with('success','Outcome successfully added to the system');
+        return redirect()->back()->with('success','Decision successfully added to the system');
     }
 
     /**
@@ -59,15 +59,15 @@ class OutcomeController extends Controller
      */
     public function show(int $id)
     {
-        $data['outcome'] = Outcome::find($id);
+        $data['decision'] = Decision::find($id);
 
-        if ($data['outcome'])
+        if ($data['decision'])
         {
-            return view('backend.outcomes.show', $data);
+            return view('backend.decisions.show', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Outcome not found');
+            return redirect()->back()->with('error', 'Ooops! Decision not found');
         }
     }
 
@@ -79,15 +79,15 @@ class OutcomeController extends Controller
      */
     public function edit(int $id)
     {
-        $data['outcome'] = Outcome::find($id);
+        $data['decision'] = Decision::find($id);
 
-        if ($data['outcome'])
+        if ($data['decision'])
         {
-            return view('backend.outcomes.edit', $data);
+            return view('backend.decisions.edit', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Outcome not found');
+            return redirect()->back()->with('error', 'Ooops! Decision not found');
         }
     }
 
@@ -101,22 +101,22 @@ class OutcomeController extends Controller
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'outcome_name' => 'required'
+            'decision_name' => 'required'
         ]);
         //dd($validated_data);
-        $outcome = Outcome::find($id);
+        $decision = Decision::find($id);
 
-        if ($outcome)
+        if ($decision)
         {
-            $outcome->update([
-            'outcome_name' => $request->outcome_name
+            $decision->update([
+                'decision_name' => $request->decision_name
             ]);
 
-            return redirect()->back()->with('success','Outcome details successfully Updated');
+            return redirect()->back()->with('success','Decision details successfully Updated');
         }
         else
         {
-            return redirect()->back()->with('warning','Oops! Something was amiss and the Outcome details was not successfully Updated');
+            return redirect()->back()->with('warning','Oops! Something was amiss and the Decision details was not successfully Updated');
         }
     }
 
@@ -128,17 +128,17 @@ class OutcomeController extends Controller
      */
     public function destroy(int $id)
     {
-        $data['outcome'] = Outcome::find($id);
+        $data['decision'] = Decision::find($id);
 
-        if ($data['outcome'])
+        if ($data['decision'])
         {
-            Outcome::destroy($id);
+            Decision::destroy($id);
 
-            return redirect()->back()->with('success','Outcome successfully removed from the system');
+            return redirect()->back()->with('success','Decision successfully removed from the system');
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Outcome not found');
+            return redirect()->back()->with('error', 'Ooops! Decision not found');
         }
 
     }

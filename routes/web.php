@@ -1,21 +1,21 @@
 <?php
 
-use App\Http\Controllers\Backend\AdvocateController;
-use App\Http\Controllers\Backend\CaselawController;
-use App\Http\Controllers\Backend\CitationController;
-use App\Http\Controllers\Backend\CountryController;
-use App\Http\Controllers\Backend\CountyController;
-use App\Http\Controllers\Backend\CourtController;
-use App\Http\Controllers\Backend\DecisionController;
-use App\Http\Controllers\Backend\FirmController;
-use App\Http\Controllers\Backend\JudgeController;
-use App\Http\Controllers\Backend\MagistrateController;
-use App\Http\Controllers\Backend\OutcomeController;
-use App\Http\Controllers\Backend\PartyController;
+use App\Http\Controllers\Backend\Attributes\AdvocateController;
+use App\Http\Controllers\Backend\Attributes\CaselawController;
+use App\Http\Controllers\Backend\Attributes\CitationController;
+use App\Http\Controllers\Backend\Attributes\CourtController;
+use App\Http\Controllers\Backend\Attributes\DecisionController;
+use App\Http\Controllers\Backend\Attributes\FirmController;
+use App\Http\Controllers\Backend\Attributes\JudgeController;
+use App\Http\Controllers\Backend\Attributes\MagistrateController;
+use App\Http\Controllers\Backend\Attributes\OutcomeController;
+use App\Http\Controllers\Backend\Attributes\PartyController;
+use App\Http\Controllers\Backend\Attributes\SpecializationController;
+use App\Http\Controllers\Backend\Attributes\SubjectController;
+use App\Http\Controllers\Backend\Locations\CountryController;
+use App\Http\Controllers\Backend\Locations\CountyController;
+use App\Http\Controllers\Backend\Locations\TownController;
 use App\Http\Controllers\Backend\RoleController;
-use App\Http\Controllers\Backend\SpecializationController;
-use App\Http\Controllers\Backend\SubjectController;
-use App\Http\Controllers\Backend\TownController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Attributes;
 
 use App\Models\Advocate;
 use App\Helpers\SelectFormData;

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Attributes;
 
-use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use Illuminate\Http\Request;
-use App\Models\Party;
 
-class PartyController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class PartyController extends Controller
      */
     public function index()
     {
-        $data['parties'] = Party::paginate(10);
+        $data['subjects'] = Subject::paginate(10);
 
-        return view('backend.parties.index', $data);
+        return view('backend.subjects.index', $data);
     }
 
     /**
@@ -28,27 +27,27 @@ class PartyController extends Controller
      */
     public function create()
     {
-        return view('backend.parties.create');
+        return view('backend.subjects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validated_data = $request->validate([
-            'party_name' => 'required'
+            'subject_name' => 'required'
         ]);
         //dd($validated_data);
 
-        Party::create([
-            'party_name' => $request->party_name
+        Subject::create([
+            'subject_name' => $request->subject_name
         ]);
 
-        return redirect()->back()->with('success','Party successfully added to the system');
+        return redirect()->back()->with('success','Subject successfully added to the system');
     }
 
     /**
@@ -59,15 +58,15 @@ class PartyController extends Controller
      */
     public function show(int $id)
     {
-        $data['party'] = Party::find($id);
+        $data['subject'] = Subject::find($id);
 
-        if ($data['party'])
+        if ($data['subject'])
         {
-            return view('backend.parties.show', $data);
+            return view('backend.subjects.show', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Party not found');
+            return redirect()->back()->with('error', 'Ooops! Subject not found');
         }
     }
 
@@ -79,15 +78,15 @@ class PartyController extends Controller
      */
     public function edit(int $id)
     {
-        $data['party'] = Party::find($id);
+        $data['subject'] = Subject::find($id);
 
-        if ($data['party'])
+        if ($data['subject'])
         {
-            return view('backend.parties.edit', $data);
+            return view('backend.subjects.edit', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Party not found');
+            return redirect()->back()->with('error', 'Ooops! Subject not found');
         }
     }
 
@@ -95,28 +94,28 @@ class PartyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Subject  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'party_name' => 'required'
+            'subject_name' => 'required'
         ]);
         //dd($validated_data);
-        $party = Party::find($id);
+        $subject = Subject::find($id);
 
-        if ($party)
+        if ($subject)
         {
-            $party->update([
-            'party_name' => $request->party_name
+            $subject->update([
+            'subject_name' => $request->subject_name
             ]);
 
-            return redirect()->back()->with('success','Party details successfully Updated');
+            return redirect()->back()->with('success','Subject details successfully Updated');
         }
         else
         {
-            return redirect()->back()->with('warning','Oops! Something was amiss and the Party details was not successfully Updated');
+            return redirect()->back()->with('warning','Oops! Something was amiss and the Subject details was not successfully Updated');
         }
     }
 
@@ -128,18 +127,17 @@ class PartyController extends Controller
      */
     public function destroy(int $id)
     {
-        $data['party'] = Party::find($id);
+        $data['subject'] = Subject::find($id);
 
-        if ($data['party'])
+        if ($data['subject'])
         {
-            Party::destroy($id);
+            Subject::destroy($id);
 
-            return redirect()->back()->with('success','Party successfully removed from the system');
+            return redirect()->back()->with('success','Subject successfully removed from the system');
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Party not found');
+            return redirect()->back()->with('error', 'Ooops! Subject not found');
         }
-
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Locations;
 
 use App\Http\Controllers\Controller;
 use App\Models\Country;

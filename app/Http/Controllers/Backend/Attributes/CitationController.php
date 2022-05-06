@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Attributes;
 
 use App\Models\Citation;
 use App\Http\Controllers\Controller;

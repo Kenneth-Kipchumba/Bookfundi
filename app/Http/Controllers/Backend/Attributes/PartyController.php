@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Attributes;
 
+use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Decision;
+use App\Models\Party;
 
-class DecisionController extends Controller
+class PartyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +16,9 @@ class DecisionController extends Controller
      */
     public function index()
     {
-        $data['decisions'] = Decision::paginate(10);
-        //dd($data);
+        $data['parties'] = Party::paginate(10);
 
-        return view('backend.decisions.index', $data);
+        return view('backend.parties.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class DecisionController extends Controller
      */
     public function create()
     {
-        return view('backend.decisions.create');
+        return view('backend.parties.create');
     }
 
     /**
@@ -40,15 +40,15 @@ class DecisionController extends Controller
     public function store(Request $request)
     {
         $validated_data = $request->validate([
-            'decision_name' => 'required'
+            'party_name' => 'required'
         ]);
         //dd($validated_data);
 
-        Decision::create([
-            'decision_name' => $request->decision_name,
+        Party::create([
+            'party_name' => $request->party_name
         ]);
 
-        return redirect()->back()->with('success','Decision successfully added to the system');
+        return redirect()->back()->with('success','Party successfully added to the system');
     }
 
     /**
@@ -59,15 +59,15 @@ class DecisionController extends Controller
      */
     public function show(int $id)
     {
-        $data['decision'] = Decision::find($id);
+        $data['party'] = Party::find($id);
 
-        if ($data['decision'])
+        if ($data['party'])
         {
-            return view('backend.decisions.show', $data);
+            return view('backend.parties.show', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Decision not found');
+            return redirect()->back()->with('error', 'Ooops! Party not found');
         }
     }
 
@@ -79,15 +79,15 @@ class DecisionController extends Controller
      */
     public function edit(int $id)
     {
-        $data['decision'] = Decision::find($id);
+        $data['party'] = Party::find($id);
 
-        if ($data['decision'])
+        if ($data['party'])
         {
-            return view('backend.decisions.edit', $data);
+            return view('backend.parties.edit', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Decision not found');
+            return redirect()->back()->with('error', 'Ooops! Party not found');
         }
     }
 
@@ -95,28 +95,28 @@ class DecisionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Illuminate\Http\Request  $request
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'decision_name' => 'required'
+            'party_name' => 'required'
         ]);
         //dd($validated_data);
-        $decision = Decision::find($id);
+        $party = Party::find($id);
 
-        if ($decision)
+        if ($party)
         {
-            $decision->update([
-                'decision_name' => $request->decision_name
+            $party->update([
+            'party_name' => $request->party_name
             ]);
 
-            return redirect()->back()->with('success','Decision details successfully Updated');
+            return redirect()->back()->with('success','Party details successfully Updated');
         }
         else
         {
-            return redirect()->back()->with('warning','Oops! Something was amiss and the Decision details was not successfully Updated');
+            return redirect()->back()->with('warning','Oops! Something was amiss and the Party details was not successfully Updated');
         }
     }
 
@@ -128,17 +128,17 @@ class DecisionController extends Controller
      */
     public function destroy(int $id)
     {
-        $data['decision'] = Decision::find($id);
+        $data['party'] = Party::find($id);
 
-        if ($data['decision'])
+        if ($data['party'])
         {
-            Decision::destroy($id);
+            Party::destroy($id);
 
-            return redirect()->back()->with('success','Decision successfully removed from the system');
+            return redirect()->back()->with('success','Party successfully removed from the system');
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Decision not found');
+            return redirect()->back()->with('error', 'Ooops! Party not found');
         }
 
     }

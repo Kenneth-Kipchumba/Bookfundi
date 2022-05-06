@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Backend\Attributes;
 
+use App\Helpers\SelectFormData;
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
 use Illuminate\Http\Request;
+use App\Models\Outcome;
 
-class SubjectController extends Controller
+class OutcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $data['subjects'] = Subject::paginate(10);
+        $data['outcomes'] = Outcome::paginate(10);
 
-        return view('backend.subjects.index', $data);
+        return view('backend.outcomes.index', $data);
     }
 
     /**
@@ -27,27 +28,27 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('backend.subjects.create');
+        return view('backend.outcomes.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validated_data = $request->validate([
-            'subject_name' => 'required'
+            'outcome_name' => 'required'
         ]);
         //dd($validated_data);
 
-        Subject::create([
-            'subject_name' => $request->subject_name
+        Outcome::create([
+            'outcome_name' => $request->outcome_name
         ]);
 
-        return redirect()->back()->with('success','Subject successfully added to the system');
+        return redirect()->back()->with('success','Outcome successfully added to the system');
     }
 
     /**
@@ -58,15 +59,15 @@ class SubjectController extends Controller
      */
     public function show(int $id)
     {
-        $data['subject'] = Subject::find($id);
+        $data['outcome'] = Outcome::find($id);
 
-        if ($data['subject'])
+        if ($data['outcome'])
         {
-            return view('backend.subjects.show', $data);
+            return view('backend.outcomes.show', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Subject not found');
+            return redirect()->back()->with('error', 'Ooops! Outcome not found');
         }
     }
 
@@ -78,15 +79,15 @@ class SubjectController extends Controller
      */
     public function edit(int $id)
     {
-        $data['subject'] = Subject::find($id);
+        $data['outcome'] = Outcome::find($id);
 
-        if ($data['subject'])
+        if ($data['outcome'])
         {
-            return view('backend.subjects.edit', $data);
+            return view('backend.outcomes.edit', $data);
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Subject not found');
+            return redirect()->back()->with('error', 'Ooops! Outcome not found');
         }
     }
 
@@ -94,28 +95,28 @@ class SubjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, int $id)
     {
         $validated_data = $request->validate([
-            'subject_name' => 'required'
+            'outcome_name' => 'required'
         ]);
         //dd($validated_data);
-        $subject = Subject::find($id);
+        $outcome = Outcome::find($id);
 
-        if ($subject)
+        if ($outcome)
         {
-            $subject->update([
-            'subject_name' => $request->subject_name
+            $outcome->update([
+            'outcome_name' => $request->outcome_name
             ]);
 
-            return redirect()->back()->with('success','Subject details successfully Updated');
+            return redirect()->back()->with('success','Outcome details successfully Updated');
         }
         else
         {
-            return redirect()->back()->with('warning','Oops! Something was amiss and the Subject details was not successfully Updated');
+            return redirect()->back()->with('warning','Oops! Something was amiss and the Outcome details was not successfully Updated');
         }
     }
 
@@ -127,17 +128,18 @@ class SubjectController extends Controller
      */
     public function destroy(int $id)
     {
-        $data['subject'] = Subject::find($id);
+        $data['outcome'] = Outcome::find($id);
 
-        if ($data['subject'])
+        if ($data['outcome'])
         {
-            Subject::destroy($id);
+            Outcome::destroy($id);
 
-            return redirect()->back()->with('success','Subject successfully removed from the system');
+            return redirect()->back()->with('success','Outcome successfully removed from the system');
         }
         else
         {
-            return redirect()->back()->with('error', 'Ooops! Subject not found');
+            return redirect()->back()->with('error', 'Ooops! Outcome not found');
         }
+
     }
 }

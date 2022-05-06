@@ -50,7 +50,7 @@
                 <a href="#" class="nav-link active">
                     <i class="nav-icon fa-solid fa-scale-balanced"></i>
                     <p>
-                    Legal
+                    Laws
                     <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -65,6 +65,12 @@
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fa-solid fa-scale-balanced"></i>
                             <p>Laws of Kenya</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa-solid fa-scale-balanced"></i>
+                            <p>Penal Code</p>
                         </a>
                     </li>
                 </ul>
