@@ -41,16 +41,14 @@ class ConstitutionController extends Controller
         $validated_data = $request->validate([
             'chapters' => 'required',
             'parts' => 'required',
-            'articles' => 'required',
-            'schedules' => 'required',
+            'articles' => 'required'
         ]);
         //dd($validated_data);
 
         Constitution::create([
             'chapters' => $request->chapters,
             'parts' => $request->parts,
-            'articles' => $request->articles,
-            'schedules' => $request->schedules,
+            'articles' => $request->articles
         ]);
 
         return redirect()->back()->with('success','Constitution successfully added to the system');

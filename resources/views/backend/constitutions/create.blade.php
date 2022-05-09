@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Create a new Country</h3>
+           <h3>Create a new Article</h3>
         </div>
         <div class="card-body">
            <form action="{{ route('backend.constitutions.store') }}" method="POST">
