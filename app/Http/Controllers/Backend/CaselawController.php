@@ -164,7 +164,7 @@ class CaselawController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, Caselaw $caselaw)
     {
         dd($request->validate([
             'case_number' => 'required',
@@ -190,7 +190,7 @@ class CaselawController extends Controller
         ]));
         //dd($request);
 
-        $caselaw = Caselaw::find($id);
+        //$caselaw = Caselaw::find($id);
 
         if ($caselaw)
         {

@@ -10,15 +10,13 @@
               <strong class="text-primary">Edit</strong>
               <span style="text-decoration: underline;">{{ $caselaw->case_title ?? '' }}</span>
            </h3>
+
         </div>
         <div class="card-body">
            <form action="{{ route('backend.caselaws.update', $caselaw->id) }}" method="POST">
             @csrf
-            @method('PUT')
+            @method('PATCH')
             <div class="row">
-                <div>
-                    <input type="hidden" name="updated_by" value="{{ auth()->user()->first_name ?? '' }}">
-                </div>
                 <div class="col">
                     <div class="card card-success">
                         <div class="card-header">
@@ -27,9 +25,12 @@
                             </h2>
                         </div>
                         <div class="card-body">
+                            <div>
+                                <input type="hidden" name="updated_by" value="{{ auth()->user()->first_name ?? '' }}">
+                            </div>
                             <div class="mb-3">
                               <label for="case_number" class="form-label">Case Number</label>
-                              <input type="text" name="case_number" class="form-control @error('case_number') is-invalid @enderror" id="case_number" value="{{ $caselaw->case_number }}">
+                              <input type="text" name="case_number" class="form-control @error('case_number') is-invalid @enderror" id="case_number" value="{{ auth()->user()->first_name ?? '' }}">
                               @error('case_number')
                                 <p class="text-danger">
                                     {{ $message }}
@@ -38,7 +39,7 @@
                             </div>
                             <div class="mb-3">
                               <label for="case_title" class="form-label">Case Title</label>
-                              <input type="text" name="case_title" class="form-control @error('case_title') is-invalid @enderror" id="case_title" value="{{ $caselaw->case_title }}">
+                              <input type="text" name="case_title" class="form-control @error('case_title') is-invalid @enderror" id="case_title">
                               @error('case_title')
                                 <p class="text-danger">
                                     {{ $message }}
@@ -49,9 +50,6 @@
                             <div class="mb-3">
                                 <label for="case_court" class="form-label">Court</label>
                                 <select id="case_court" class="form-select" name="case_court" style="width: 100%;">
-                                    <option value="{{ $caselaw->case_court }}">
-                                        {{ $caselaw->case_court}}
-                                    </option>
                                 @foreach($courts as $court)
                                     <option value="{{ $court->court_name }}">
                                         {{ $court->court_name }}
@@ -62,10 +60,7 @@
                             <!--Judges-->
                             <div class="mb-3">
                                 <label for="case_judges" class="form-label">Case Judges</label>
-                                <select id="case_judges" class="form-select" name="case_judges" style="width: 100%;" multiple="multiple">
-                                    <option value="{{ $caselaw->case_judges }}">
-                                        {{ $caselaw->case_judges }}
-                                    </option>
+                                <select id="case_judges" class="form-select" name="case_judges" style="width: 100%;" multiple="">
                                 @foreach($judges as $judge)
                                     <option value="{{ $judge->judge_name }}">
                                         {{ $judge->judge_name }}
@@ -79,9 +74,6 @@
                                     <div class="mb-3">
                                       <label for="case_plaintiff" class="form-label">Plaintiff</label>
                                       <select id="case_plaintiff" class="form-select" name="case_plaintiff" style="width: 100%;">
-                                        <option value="{{ $caselaw->case_plaintiff }}">
-                                            {{ $caselaw->case_plaintiff }}
-                                        </option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -94,12 +86,9 @@
                                     <div class="mb-3">
                                       <label for="plaintiffs_advocate" class="form-label">Plaintiff's Advocate</label>
                                       <select id="plaintiffs_advocate" class="form-select" name="plaintiffs_advocate" style="width: 100%;">
-                                        <option value="{{ $caselaw->plaintiffs_advocate }}">
-                                            {{ $caselaw->plaintiffs_advocate }}
-                                        </option>
-                                        @foreach($advocates as $advocate)
-                                            <option value="{{ $advocate->advocate_name }}">
-                                                {{ $advocate->advocate_name }}
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
                                             </option>
                                         @endforeach
                                       </select>
@@ -112,9 +101,6 @@
                                     <div class="mb-3">
                                       <label for="case_respondent" class="form-label">Respondent</label>
                                       <select id="case_respondent" class="form-select" name="case_respondent" style="width: 100%;">
-                                        <option value="{{ $caselaw->case_respondent }}">
-                                            {{ $caselaw->case_respondent }}
-                                        </option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -127,12 +113,9 @@
                                     <div class="mb-3">
                                       <label for="respondents_advocate" class="form-label">Respondent's Advocate</label>
                                       <select id="respondents_advocate" class="form-select" name="respondents_advocate" style="width: 100%;">
-                                        <option value="{{ $caselaw->respondents_advocate }}">
-                                            {{ $caselaw->respondents_advocate }}
-                                        </option>
-                                        @foreach($advocates as $advocate)
-                                            <option value="{{ $advocate->advocate_name }}">
-                                                {{ $advocate->advocate_name }}
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
                                             </option>
                                         @endforeach
                                       </select>
@@ -145,9 +128,6 @@
                                     <div class="mb-3">
                                       <label for="case_defendant" class="form-label">Defendant</label>
                                       <select id="case_defendant" class="form-select" name="case_defendant" style="width: 100%;">
-                                        <option value="{{ $caselaw->case_defendant }}">
-                                            {{ $caselaw->case_defendant }}
-                                        </option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -160,12 +140,9 @@
                                     <div class="mb-3">
                                       <label for="defendants_advocate" class="form-label">Defendant's Advocate</label>
                                       <select id="defendants_advocate" class="form-select" name="defendants_advocate" style="width: 100%;">
-                                        <option value="{{ $caselaw->defendants_advocate }}">
-                                            {{ $caselaw->defendants_advocate }}
-                                        </option>
-                                        @foreach($advocates as $advocate)
-                                            <option value="{{ $advocate->advocate_name }}">
-                                                {{ $advocate->advocate_name }}
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
                                             </option>
                                         @endforeach
                                       </select>
@@ -190,12 +167,9 @@
                                     <div class="mb-3">
                                       <label for="appellants_advocate" class="form-label">Appellant's Advocate</label>
                                       <select id="appellants_advocate" class="form-select" name="appellants_advocate" style="width: 100%;">
-                                        <option value="{{ $caselaw->case_judges }}">
-                                            {{ $caselaw->appellants_advocate }}
-                                        </option>
-                                        @foreach($advocates as $advocate)
-                                            <option value="{{ $advocate->advocate_name }}">
-                                                {{ $advocate->advocate_name }}
+                                        @foreach($parties as $party)
+                                            <option value="{{ $party->party_name }}">
+                                                {{ $party->party_name }}
                                             </option>
                                         @endforeach
                                       </select>
@@ -208,9 +182,6 @@
                                 @foreach($decisions as $decision)
                                     <option value="{{ $decision->decision_name }}">
                                         {{ $decision->decision_name }}
-                                        @if($decision->decision_type)
-                                         {{ ' by ' . $decision->decision_type }}
-                                        @endif
                                     </option>
                                 @endforeach
                               </select>
@@ -221,6 +192,16 @@
                                 @foreach($outcomes as $outcome)
                                     <option value="{{ $outcome->outcome_name }}">
                                         {{ $outcome->outcome_name }}
+                                    </option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="mb-3">
+                              <label for="citation" class="form-label">Citation</label>
+                              <select id="citation" class="form-select" name="citation" style="width: 100%;">
+                                @foreach($citations as $citation)
+                                    <option value="{{ $citation->citation_name }}">
+                                        {{ $citation->citation_name }}
                                     </option>
                                 @endforeach
                               </select>
@@ -272,7 +253,12 @@
                                             <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                             </div>
-                                            <input type="text" name="case_date" class="form-control @error('case_date') is-invalid @enderror" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy" value="{{ $caselaw->case_date }}">
+                                            <input type="text" name="case_date" class="form-control @error('case_date') is-invalid @enderror" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy">
+                                            @error('case_number')
+                                              <p class="text-danger">
+                                                {{ $message }}
+                                              </p>
+                                            @enderror
                                         </div>
                                       </div>
                                     </div>
@@ -295,7 +281,7 @@
                                         {{ $message }}
                                     </p>
                                   @enderror
-                                <textarea name="case_body" class="form-control @error('case_body') is-invalid @enderror" id="case_body" rows="40" spellcheck="true">    {{ $caselaw->case_body }}
+                                <textarea name="case_body" class="form-control @error('case_body') is-invalid @enderror" id="case_body" rows="40" spellcheck="true">    
                                 </textarea>
                             </div>
                         </div>
@@ -304,7 +290,7 @@
 
             </div>
               
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
         <div class="card-footer">
@@ -329,6 +315,9 @@
     })
     $(document).ready(function () {
         $('#case_outcome').select2()
+    })
+    $(document).ready(function () {
+        $('#citation').select2()
     })
     $(document).ready(function () {
         $('#case_plaintiff').select2()
@@ -359,7 +348,6 @@
     })
     $(document).ready(function () {
         $('#case_judges').select2({
-            placeholder: "Select Judges",
             allowClear: true,
             theme: "classic"
         })

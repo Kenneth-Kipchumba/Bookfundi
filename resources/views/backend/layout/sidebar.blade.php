@@ -56,7 +56,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('backend.constitutions.index') }}" class="nav-link">
                             <i class="nav-icon fa-solid fa-scale-balanced"></i>
                             <p>The Constitution of Kenya</p>
                         </a>

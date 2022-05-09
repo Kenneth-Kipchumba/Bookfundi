@@ -69,15 +69,16 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-4">
                         <?php $previous = url()->previous(); ?>
-                        <a href="<?= $previous ?>" class="btn btn-success">
+                        <a href="<?= $previous ?>" class="btn btn-outline-success">
                             &laquo; Back
                         </a>
                     </div>
-                    <div class="col">
+                    <div class="col-8">
+                        <!-- Session Messages -->
                         @if(session('success'))
                         <div class="alert alert-success d-flex align-items-center" role="alert">
                           <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
@@ -86,11 +87,47 @@
                           </div>
                          </div>
                         @endif
+                        <!-- Info -->
+                        @if(session('info'))
+                        <div class="alert alert-info d-flex align-items-center" role="alert">
+                          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#check-circle-fill"/></svg>
+                          <div>
+                            {{ session('info') }}
+                          </div>
+                         </div>
+                        @endif
+                        <!-- Warning -->
+                        @if(session('warning'))
+                        <div class="alert alert-warning d-flex align-items-center" role="alert">
+                          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#check-circle-fill"/></svg>
+                          <div>
+                            {{ session('warning') }}
+                          </div>
+                         </div>
+                        @endif
                     </div>
+                    <!-- Error -->
+                    @if(session('error'))
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#check-circle-fill"/></svg>
+                        <div>
+                            {{ session('error') }}
+                        </div>
+                        </div>
+                    @endif
+                    <!-- Danger -->
+                    @if(session('danger'))
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#check-circle-fill"/></svg>
+                        <div>
+                            {{ session('danger') }}
+                        </div>
+                        </div>
+                    @endif
                 </div>
             
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Entries</li>
