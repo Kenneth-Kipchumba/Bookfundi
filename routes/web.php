@@ -12,7 +12,7 @@ use App\Http\Controllers\Backend\Attributes\PartyController;
 use App\Http\Controllers\Backend\Attributes\SpecializationController;
 use App\Http\Controllers\Backend\Attributes\SubjectController;
 use App\Http\Controllers\Backend\CaselawController;
-use App\Http\Controllers\Backend\Laws\ConstitutionController;
+use App\Http\Controllers\Backend\Laws\ArticleController;
 use App\Http\Controllers\Backend\Locations\CountryController;
 use App\Http\Controllers\Backend\Locations\CountyController;
 use App\Http\Controllers\Backend\Locations\TownController;
@@ -53,7 +53,7 @@ Route::prefix('backend')->name('backend.')->group(function ()
     Route::resource('/advocates', AdvocateController::class);
     Route::resource('/caselaws', CaselawController::class);
     Route::resource('/citations', CitationController::class);
-    Route::resource('/constitutions', ConstitutionController::class);
+    Route::resource('/articles', ArticleController::class);
     Route::resource('/countries', CountryController::class);
     Route::resource('/counties', CountyController::class);
     Route::resource('/courts', CourtController::class);

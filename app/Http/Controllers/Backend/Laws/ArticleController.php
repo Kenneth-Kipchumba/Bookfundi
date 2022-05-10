@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend\Laws;
 
 use App\Http\Controllers\Controller;
-use App\Models\Constitution;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
-class ConstitutionController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ConstitutionController extends Controller
      */
     public function index()
     {
-        $data['constitutions'] = Constitution::paginate(10);
+        $data['articles'] = Article::paginate(10);
 
-        return view('backend.constitutions.index', $data);
+        return view('backend.constitution.articles.index', $data);
     }
 
     /**
@@ -27,7 +27,7 @@ class ConstitutionController extends Controller
      */
     public function create()
     {
-        return view('backend.constitutions.create');
+        return view('backend.constitution.articles.create');
     }
 
     /**
@@ -38,50 +38,60 @@ class ConstitutionController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $validated_data = $request->validate([
             'chapters' => 'required',
             'parts' => 'required',
             'articles' => 'required'
         ]);
-        //dd($validated_data);
-
-        Constitution::create([
+        
+        if ($validated_data)
+        {
+            Article::create([
             'chapters' => $request->chapters,
             'parts' => $request->parts,
             'articles' => $request->articles
-        ]);
+            ]);
 
-        return redirect()->back()->with('success','Constitution successfully added to the system');
+            return redirect()->back()->with('success','Article successfully added to the constitution');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Article successfully added to the constitution');
+        }
+        
+
+        
     }
 
     /**
-     * Display Constitution.
+     * Display Article.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
-        $data['constitution'] = Constitution::find($id);
+        $data['constitution'] = Article::find($id);
 
-        return view('backend.constitutions.show', $data);
+        return view('backend.articles.show', $data);
     }
 
     /**
-     * Show the form for editing Constitution.
+     * Show the form for editing Article.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(int $id)
     {
-        $data['constitution'] = Constitution::find($id);
+        $data['article'] = Article::find($id);
 
-        return view('backend.constitutions.edit', $data);
+        return view('backend.articles.edit', $data);
     }
 
     /**
-     * Update Constitution in storage.
+     * Update Article in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
@@ -93,31 +103,29 @@ class ConstitutionController extends Controller
             'chapters' => 'required',
             'parts' => 'required',
             'articles' => 'required',
-            'schedules' => 'required',
         ]);
         //dd($validated_data);
-        $constitution = Constitution::find($id);
+        $article = Article::find($id);
 
-        $constitution->update([
+        $article->update([
             'chapters' => $request->chapters,
             'parts' => $request->parts,
             'articles' => $request->articles,
-            'schedules' => $request->schedules,
         ]);
 
-        return redirect()->back()->with('success','Constitution details successfully Updated');
+        return redirect()->back()->with('success','Article details successfully Updated');
     }
 
     /**
-     * Remove Constitution from storage.
+     * Remove Article from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy ($id)
     {
-        Constitution::destroy($id);
+        Article::destroy($id);
 
-        return redirect()->back()->with('success','Constitution successfully removed from the system');
+        return redirect()->back()->with('success','Article successfully removed from the constitution');
     }
 }

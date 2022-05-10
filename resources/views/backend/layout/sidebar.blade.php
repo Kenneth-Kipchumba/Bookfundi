@@ -48,30 +48,45 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link active">
-                    <i class="nav-icon fa-solid fa-scale-balanced"></i>
+                    <i class="nav-icon fa-solid fa-lock"></i>
                     <p>
                     Laws
                     <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('backend.constitutions.index') }}" class="nav-link">
-                            <i class="nav-icon fa-solid fa-scale-balanced"></i>
-                            <p>The Constitution of Kenya</p>
-                        </a>
+                <ul class="nav nav-treeview show" data-widget="treeview" id="laws" data-accordion="true">
+                    <li class="nav-item parent">
+                        <a href="#">Constitution</a>
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="{{ route('backend.articles.index') }}">Articles</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Schedules</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fa-solid fa-scale-balanced"></i>
-                            <p>Laws of Kenya</p>
-                        </a>
+                    <li class="nav-item parent">
+                        <a href="#">Laws of Kenya</a>
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="#">Item 1</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Item 2</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fa-solid fa-scale-balanced"></i>
-                            <p>Penal Code</p>
-                        </a>
+                    <li class="nav-item parent">
+                        <a href="#">Penal Codes</a>
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="#">Item 1</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Item 2</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
@@ -204,3 +219,14 @@
     <!-- /.sidebar-menu -->
     </div>
 </aside>
+
+<script type="text/javascript">
+    $('#treeview .parent').click(function (e) {
+        e.stopPropagation();
+        $(this).find(">ul").toggle("slow");
+        if ($(this).hasClass("close"))
+            $(this).removeClass("close");
+        else
+            $(this).addClass("close");
+    });
+</script>

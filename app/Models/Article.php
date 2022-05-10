@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Constitution extends Model
+class Article extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,5 @@ class Constitution extends Model
         'chapters',
         'parts',
         'articles',
-        'schedules'
     ];
 }

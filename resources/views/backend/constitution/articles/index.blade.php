@@ -6,8 +6,8 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Constitution's Table</h3>
-           <a href="{{ route('backend.constitutions.create') }}" class="btn btn-primary right">Create new constitution</a>
+           <h3>Articles's Table</h3>
+           <a href="{{ route('backend.articles.create') }}" class="btn btn-primary right">Create new article</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
@@ -21,22 +21,23 @@
                    </tr>
                </thead>
                <tbody>
-                @foreach($constitutions as $constitution)
+                @foreach($articles as $article)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.constitutions.show', $constitution->id) }}">
-                           {{ $constitution->constitution_name }}
+                       <a href="{{ route('backend.articles.show', $article->id) }}">
+                           {{ $article->chapter }}
                        </a>
                    </td>
-                   <td>{{ $constitution->constitution_code }}</td>
+                   <td>{{ $article->part }}</td>
+                   <td>{{ $article->article }}</td>
                    <td>
-                       <a href="{{ route('backend.constitutions.edit', $constitution->id) }}" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
                        
 
-                       $slug = Str::slug($constitution->constitution_name);
+                       $slug = Str::slug($article->chapter);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
@@ -48,7 +49,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $constitution->constitution_name }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $article->article_name }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -56,7 +57,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.constitutions.destroy', $constitution->id) }}" method="POST">
+                                <form action="{{ route('backend.articles.destroy', $article->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -77,7 +78,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $constitutions->links() }}
+            {{ $articles->links() }}
         </div>
 
         

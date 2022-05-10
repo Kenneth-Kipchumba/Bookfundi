@@ -9,14 +9,14 @@
            <h3>Create a new Article</h3>
         </div>
         <div class="card-body">
-           <form action="{{ route('backend.constitutions.store') }}" method="POST">
+           <form action="{{ route('backend.articles.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col">
                    <div class="mb-3">
-                      <label for="chapter" class="form-label">Chapter</label>
-                      <input type="text" name="chapter" class="form-control @error('chapter') is-invalid @enderror" id="chapter">
-                      @error('chapter')
+                      <label for="chapters" class="form-label">Chapter</label>
+                      <input type="text" name="chapters" class="form-control @error('chapters') is-invalid @enderror" id="chapters">
+                      @error('chapters')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
@@ -25,9 +25,9 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                      <label for="part" class="form-label">Part</label>
-                      <input type="text" name="part" class="form-control @error('part') is-invalid @enderror" id="part">
-                      @error('part')
+                      <label for="parts" class="form-label">Part</label>
+                      <input type="text" name="parts" class="form-control @error('parts') is-invalid @enderror" id="parts">
+                      @error('parts')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
@@ -37,13 +37,13 @@
             </div>
             <div>
                 <div class="mb-3">
-                    <label for="article">Article</label>
+                    <label for="articles">Article</label>
                     @error('article')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
                       @enderror
-                    <textarea id="article" name="article" class="form-control @error('article') is-invalid @enderror" rows="10">
+                    <textarea id="articles" name="articles" class="form-control @error('articles') is-invalid @enderror" rows="10">
                         
                     </textarea>
                 </div>
@@ -64,7 +64,7 @@
         $('#court_level').select2()
     })
     $(document).ready(function () {
-        $('#court_constitution').select2()
+        $('#court_article').select2()
     })
     $(document).ready(function () {
         $('#court_county').select2()
