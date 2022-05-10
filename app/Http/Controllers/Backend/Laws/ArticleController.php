@@ -17,7 +17,7 @@ class ArticleController extends Controller
     {
         $data['articles'] = Article::paginate(10);
 
-        return view('backend.constitution.articles.index', $data);
+        return view('backend.laws.constitution.articles.index', $data);
     }
 
     /**
@@ -27,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('backend.constitution.articles.create');
+        return view('backend.laws.constitution.articles.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class ArticleController extends Controller
     {
         $data['constitution'] = Article::find($id);
 
-        return view('backend.articles.show', $data);
+        return view('backend.laws.constitution.articles.show', $data);
     }
 
     /**
@@ -87,7 +87,7 @@ class ArticleController extends Controller
     {
         $data['article'] = Article::find($id);
 
-        return view('backend.articles.edit', $data);
+        return view('backend.laws.constitution.articles.edit', $data);
     }
 
     /**

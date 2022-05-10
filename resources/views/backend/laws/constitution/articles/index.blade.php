@@ -25,11 +25,11 @@
                 <tr>
                    <td>
                        <a href="{{ route('backend.articles.show', $article->id) }}">
-                           {{ $article->chapter }}
+                           {{ $article->chapters }}
                        </a>
                    </td>
-                   <td>{{ $article->part }}</td>
-                   <td>{{ $article->article }}</td>
+                   <td>{{ $article->parts }}</td>
+                   <td>{{ $article->articles }}</td>
                    <td>
                        <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
@@ -37,7 +37,7 @@
                        <?php
                        
 
-                       $slug = Str::slug($article->chapter);
+                       $slug = Str::slug('s-' . $article->created_at);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">

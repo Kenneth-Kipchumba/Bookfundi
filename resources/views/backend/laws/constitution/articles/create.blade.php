@@ -38,7 +38,7 @@
             <div>
                 <div class="mb-3">
                     <label for="articles">Article</label>
-                    @error('article')
+                    @error('articles')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
@@ -49,7 +49,7 @@
                 </div>
             </div>
               
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Create</button>
            </form>
         </div>
         <div class="card-footer">

@@ -8,11 +8,11 @@
         <div class="card-header">
            <div class="row">
                <div class="col">
-                <h1 class="text-primary">{{ $constitution->constitution_name }}</h1>
+                <h1 class="text-primary">{{ $article->chapters . $article->parts }}</h1>
                </div>
                <div class="col">
                 <div class="float-right">
-                    <a href="{{ route('backend.constitutions.edit', $constitution->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $constitution->constitution_name }}">
+                    <a href="{{ route('backend.laws.constitution.articles.edit', $article->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $article->article_name }}">
                     <i class="fas fa-pen"></i>
                 </a>
                 </div>
@@ -41,7 +41,7 @@
                    </div>
                    <div class="row">
                        <div class="col-12">
-                           <h4>Some extra details about the constitution</h4>
+                           <h4>Some extra details about the article</h4>
                            <p>Lorem ipsum represents long-held tradition fordesigners,typographers and the like. Some people hate it and argue forits demise, but others ignore.
                            </p>
                        </div>
