@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Laws;
+namespace App\Http\Controllers\Backend\Laws\Constitution;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
@@ -57,10 +57,8 @@ class ArticleController extends Controller
         }
         else
         {
-            return redirect()->back()->with('error','Article successfully added to the constitution');
+            return redirect()->back()->with('warning','Article was not added to the constitution');
         }
-        
-
         
     }
 
@@ -72,7 +70,7 @@ class ArticleController extends Controller
      */
     public function show(int $id)
     {
-        $data['constitution'] = Article::find($id);
+        $data['article'] = Article::find($id);
 
         return view('backend.laws.constitution.articles.show', $data);
     }
@@ -113,7 +111,7 @@ class ArticleController extends Controller
             'articles' => $request->articles,
         ]);
 
-        return redirect()->back()->with('success','Article details successfully Updated');
+        return redirect()->back()->with('info','Article details successfully Updated');
     }
 
     /**
@@ -126,6 +124,6 @@ class ArticleController extends Controller
     {
         Article::destroy($id);
 
-        return redirect()->back()->with('success','Article successfully removed from the constitution');
+        return redirect()->back()->with('danger','Article successfully removed from the constitution');
     }
 }

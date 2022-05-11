@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'number',
+        'name',
+        'body',
+        'legal_notice',
+        'legal_notice_date'
+    ];
 }

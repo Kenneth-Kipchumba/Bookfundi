@@ -29,7 +29,12 @@
                        </a>
                    </td>
                    <td>{{ $article->parts }}</td>
-                   <td>{{ $article->articles }}</td>
+                   <td>
+                    <?php 
+                      $body =  Str::words($article->articles, 20, '...');
+                    ?>
+                    {!! $body !!}
+                    </td>
                    <td>
                        <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
@@ -49,7 +54,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $article->article_name }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $article->chapters }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>

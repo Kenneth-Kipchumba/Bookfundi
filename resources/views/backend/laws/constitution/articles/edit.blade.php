@@ -6,7 +6,9 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Edit {{ $article->chapters . ' ' . $article->parts }}</h3>
+           <h3>
+            Edit {{ $article->chapters . ' ' . $article->parts }}
+           </h3>
         </div>
         <div class="card-body">
            <form action="{{ route('backend.articles.update', $article->id) }}" method="POST">
@@ -58,5 +60,13 @@
     </div>
   </div>
 </div>
+
+<script>
+ClassicEditor
+.create( document.querySelector( '#articles' ) )
+.catch( error => {
+console.error( error );
+} );
+</script>
 
 @endsection

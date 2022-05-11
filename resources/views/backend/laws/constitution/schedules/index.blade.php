@@ -6,32 +6,37 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-           <h3>Articles's Table</h3>
-           <a href="{{ route('backend.articles.create') }}" class="btn btn-primary right">Create new article</a>
+           <h3>Schedule's Table</h3>
+           <a href="{{ route('backend.schedules.create') }}" class="btn btn-primary right">Create new Schedule</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Chapter</th>
-                       <th>Part</th>
-                       <th>Article</th>
+                       <th>Number</th>
+                       <th>Name</th>
+                       <th>Body</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
-                @foreach($articles as $article)
+                @foreach($schedules as $article)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.articles.show', $article->id) }}">
-                           {{ $article->chapters }}
+                       <a href="{{ route('backend.schedules.show', $article->id) }}">
+                           {{ $article->number }}
                        </a>
                    </td>
-                   <td>{{ $article->parts }}</td>
-                   <td>{{ $article->articles }}</td>
+                   <td>{{ $article->name }}</td>
                    <td>
-                       <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
+                    <?php 
+                      $body =  Str::words($article->body, 20, '...');
+                    ?>
+                    {!! $body !!}
+                    </td>
+                   <td>
+                       <a href="{{ route('backend.schedules.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
@@ -49,7 +54,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $article->article_name }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $article->name }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -57,7 +62,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.articles.destroy', $article->id) }}" method="POST">
+                                <form action="{{ route('backend.schedules.destroy', $article->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -78,7 +83,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $articles->links() }}
+            {{ $schedules->links() }}
         </div>
 
         

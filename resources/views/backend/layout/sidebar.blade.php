@@ -62,7 +62,7 @@
                                 <a class="nav-link" href="{{ route('backend.articles.index') }}">Articles</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#">Schedules</a>
+                                <a class="nav-link" href="{{ route('backend.schedules.index') }}">Schedules</a>
                             </li>
                         </ul>
                     </li>

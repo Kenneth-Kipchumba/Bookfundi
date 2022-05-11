@@ -43,7 +43,7 @@
                             {{ $message }}
                         </p>
                       @enderror
-                    <textarea id="articles" name="articles" class="form-control @error('articles') is-invalid @enderror" rows="10">
+                    <textarea id="articles" name="articles" class="form-control @error('articles') is-invalid @enderror" rows="90">
                         
                     </textarea>
                 </div>
@@ -59,18 +59,12 @@
   </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#court_level').select2()
-    })
-    $(document).ready(function () {
-        $('#court_article').select2()
-    })
-    $(document).ready(function () {
-        $('#court_county').select2()
-    })
-    $(document).ready(function () {
-        $('#court_town').select2()
-    })
+<script>
+ClassicEditor
+.create( document.querySelector( '#articles' ) )
+.catch( error => {
+console.error( error );
+} );
 </script>
+
 @endsection

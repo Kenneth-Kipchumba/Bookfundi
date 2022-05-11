@@ -20,6 +20,9 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 
+    <!-- CKEditor 5 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+
     <link rel="stylesheet" href="{{ asset('css/app.css'); }}">
     <!-- Tree View -->
     <link rel="stylesheet" href="{{ asset('css/treeview.css'); }}">
@@ -98,6 +101,15 @@
                           </div>
                          </div>
                         @endif
+                        <!-- Primary -->
+                        @if(session('primary'))
+                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#check-circle-fill"/></svg>
+                          <div>
+                            {{ session('primary') }}
+                          </div>
+                         </div>
+                        @endif
                         <!-- Warning -->
                         @if(session('warning'))
                         <div class="alert alert-warning d-flex align-items-center" role="alert">
@@ -167,5 +179,6 @@ Built with &#128151
 
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
