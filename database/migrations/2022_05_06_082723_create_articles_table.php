@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('chapters');
             $table->string('parts');
-            $table->mediumText('sub_article_1');
-            $table->mediumText('sub_article_2');
-            $table->mediumText('sub_article_3');
+            $table->mediumText('article');
+            $table->mediumText('sub_article');
+            $table->mediumText('sub_sub_article');
             $table->timestamps();
         });
     }
