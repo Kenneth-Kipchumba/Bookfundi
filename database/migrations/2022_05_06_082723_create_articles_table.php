@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('chapters');
             $table->string('parts');
-            $table->mediumText('articles');
+            $table->mediumText('sub_article_1');
+            $table->mediumText('sub_article_2');
+            $table->mediumText('sub_article_3');
             $table->timestamps();
         });
     }

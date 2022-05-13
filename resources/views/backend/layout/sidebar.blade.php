@@ -61,8 +61,15 @@
                             <li>
                                 <a class="nav-link" href="{{ route('backend.articles.index') }}">Articles</a>
                             </li>
-                            <li>
-                                <a class="nav-link" href="{{ route('backend.schedules.index') }}">Schedules</a>
+                            <li class="nav-item parent">
+                                <a href="#">Schedules</a>
+                                <ul>
+                                    <li>
+                                        <a class="nav-link" href="#">
+                                            Legal Notices
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -70,18 +77,7 @@
                         <a href="#">Laws of Kenya</a>
                         <ul>
                             <li>
-                                <a class="nav-link" href="#">Item 1</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">Item 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item parent">
-                        <a href="#">Penal Codes</a>
-                        <ul>
-                            <li>
-                                <a class="nav-link" href="#">Item 1</a>
+                                <a class="nav-link" href="#">Penal Codes</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="#">Item 2</a>

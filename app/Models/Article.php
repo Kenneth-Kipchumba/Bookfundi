@@ -17,6 +17,8 @@ class Article extends Model
     protected $fillable = [
         'chapters',
         'parts',
-        'articles',
+        'sub_article_1',
+        'sub_article_2',
+        'sub_article_3'
     ];
 }

@@ -41,7 +41,7 @@ class ArticleController extends Controller
         //dd($request);
         $validated_data = $request->validate([
             'chapters' => 'required',
-            'parts' => 'required',
+            'parts' => '',
             'articles' => 'required'
         ]);
         
