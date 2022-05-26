@@ -29,10 +29,10 @@
                            {!! $article->article !!}
                            <hr>
                            <h4>Sub Article</h4>
-                           {!! $article->article !!}
+                           {!! $article->sub_article !!}
                            <hr>
                            <h4>Sub Sub Article</h4>
-                           {!! $article->article !!}
+                           {!! $article->sub_sub_article !!}
                        </div>
                    </div>
         </div>
