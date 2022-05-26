@@ -40,17 +40,21 @@ class ArticleController extends Controller
     {
         //dd($request);
         $validated_data = $request->validate([
-            'chapters' => 'required',
+            'title' => 'required',
+            'chapter' => 'required',
             'parts' => '',
-            'articles' => 'required'
+            'article' => 'required'
         ]);
         
         if ($validated_data)
         {
             Article::create([
-            'chapters' => $request->chapters,
+            'title' => $request->title,
+            'chapter' => $request->chapter,
             'parts' => $request->parts,
-            'articles' => $request->articles
+            'article' => $request->article,
+            'sub_article' => $request->sub_article,
+            'sub_sub_article' => $request->sub_sub_article
             ]);
 
             return redirect()->back()->with('success','Article successfully added to the constitution');
@@ -98,17 +102,21 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $validated_data = $request->validate([
-            'chapters' => 'required',
-            'parts' => 'required',
-            'articles' => 'required',
+            'title' => 'required',
+            'chapter' => 'required',
+            'parts' => '',
+            'article' => 'required'
         ]);
         //dd($validated_data);
         $article = Article::find($id);
 
         $article->update([
-            'chapters' => $request->chapters,
+            'title' => $request->title,
+            'chapter' => $request->chapter,
             'parts' => $request->parts,
-            'articles' => $request->articles,
+            'article' => $request->article,
+            'sub_article' => $request->sub_article,
+            'sub_sub_article' => $request->sub_sub_article
         ]);
 
         return redirect()->back()->with('info','Article details successfully Updated');

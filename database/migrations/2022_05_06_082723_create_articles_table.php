@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('chapters');
+            $table->string('chapter');
             $table->string('parts');
             $table->mediumText('article');
-            $table->mediumText('sub_article');
-            $table->mediumText('sub_sub_article');
+            $table->mediumText('sub_article')->nullable();
+            $table->mediumText('sub_sub_article')->nullable();
             $table->timestamps();
         });
     }

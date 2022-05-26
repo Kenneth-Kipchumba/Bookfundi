@@ -8,7 +8,7 @@
         <div class="card-header">
            <div class="row">
                <div class="col">
-                <h1 class="text-primary">{{ $article->chapters }}</h1>
+                <h1 class="text-primary">{{ $article->chapter }}</h1>
                </div>
                <div class="col">
                 <div class="float-right">
@@ -23,10 +23,16 @@
            <div class="row">
                        <div class="col-12">
                            <h4>
-                               {{ $article->chapters . ' - ' . $article->parts }}
+                               {{ $article->chapter . ' - ' . $article->parts }}
                            </h4>
                            <hr>
-                           {!! $article->articles !!}
+                           {!! $article->article !!}
+                           <hr>
+                           <h4>Sub Article</h4>
+                           {!! $article->article !!}
+                           <hr>
+                           <h4>Sub Sub Article</h4>
+                           {!! $article->article !!}
                        </div>
                    </div>
         </div>

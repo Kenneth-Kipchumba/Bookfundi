@@ -15,7 +15,8 @@ class Article extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'chapters',
+        'title',
+        'chapter',
         'parts',
         'article',
         'sub_article',

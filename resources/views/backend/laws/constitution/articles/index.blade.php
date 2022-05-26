@@ -25,13 +25,13 @@
                 <tr>
                    <td>
                        <a href="{{ route('backend.articles.show', $article->id) }}">
-                           {{ $article->chapters }}
+                           {{ $article->chapter }}
                        </a>
                    </td>
                    <td>{{ $article->parts }}</td>
                    <td>
                     <?php 
-                      $body =  Str::words($article->articles, 20, '...');
+                      $body =  Str::words($article->article, 20, '...');
                     ?>
                     {!! $body !!}
                     </td>
