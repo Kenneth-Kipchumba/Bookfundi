@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend\Laws\Constitution;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Models\SubArticle;
 
-class ArticleController extends Controller
+class SubArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $data['articles'] = Article::paginate(10);
+        $data['sub_articles'] = SubArticle::paginate(10);
 
-        return view('backend.laws.constitution.articles.index', $data);
+        return view('backend.laws.constitution.sub_articles.index', $data);
     }
 
     /**
@@ -27,7 +27,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('backend.laws.constitution.articles.create');
+        return view('backend.laws.constitution.sub_articles.create');
     }
 
     /**
@@ -41,57 +41,53 @@ class ArticleController extends Controller
         //dd($request);
         $validated_data = $request->validate([
             'title' => 'required',
-            'chapter' => 'required',
-            'parts' => '',
-            'article' => 'required'
+            'description' => 'required'
         ]);
         
         if ($validated_data)
         {
-            Article::create([
+            SubArticle::create([
             'title' => $request->title,
-            'chapter' => $request->chapter,
-            'parts' => $request->parts,
-            'article' => $request->article
+            'description' => $request->description
             ]);
 
-            return redirect()->back()->with('success','Article successfully added to the constitution');
+            return redirect()->back()->with('success','Sub Article successfully added to the constitution');
         }
         else
         {
-            return redirect()->back()->with('warning','Article was not added to the constitution');
+            return redirect()->back()->with('warning','Sub Article was not added to the constitution');
         }
         
     }
 
     /**
-     * Display Article.
+     * Display Sub Article.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
-        $data['article'] = Article::find($id);
+        $data['sub_article'] = SubArticle::find($id);
 
-        return view('backend.laws.constitution.articles.show', $data);
+        return view('backend.laws.constitution.sub_articles.show', $data);
     }
 
     /**
-     * Show the form for editing Article.
+     * Show the form for editing Sub Article.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(int $id)
     {
-        $data['article'] = Article::find($id);
+        $data['sub_article'] = SubArticle::find($id);
 
-        return view('backend.laws.constitution.articles.edit', $data);
+        return view('backend.laws.constitution.sub_articles.edit', $data);
     }
 
     /**
-     * Update Article in storage.
+     * Update Sub Article in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
@@ -101,33 +97,29 @@ class ArticleController extends Controller
     {
         $validated_data = $request->validate([
             'title' => 'required',
-            'chapter' => 'required',
-            'parts' => '',
-            'article' => 'required'
+            'description' => 'required'
         ]);
         //dd($validated_data);
-        $article = Article::find($id);
+        $sub_article = SubArticle::find($id);
 
-        $article->update([
+        $sub_article->update([
             'title' => $request->title,
-            'chapter' => $request->chapter,
-            'parts' => $request->parts,
-            'article' => $request->article
+            'description' => $request->description
         ]);
 
-        return redirect()->back()->with('info','Article details successfully Updated');
+        return redirect()->back()->with('info','Sub Article details successfully Updated');
     }
 
     /**
-     * Remove Article from storage.
+     * Remove Sub Article from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy ($id)
     {
-        Article::destroy($id);
+        SubArticle::destroy($id);
 
-        return redirect()->back()->with('danger','Article successfully removed from the constitution');
+        return redirect()->back()->with('danger','Sub Article successfully removed from the constitution');
     }
 }

@@ -19,6 +19,8 @@ use App\Http\Controllers\Backend\Locations\CountyController;
 use App\Http\Controllers\Backend\Locations\TownController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\Laws\Constitution\SubArticleController;
+use App\Http\Controllers\Backend\Laws\Constitution\SubSubArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +57,8 @@ Route::prefix('backend')->name('backend.')->group(function ()
     Route::resource('/caselaws', CaselawController::class);
     Route::resource('/citations', CitationController::class);
     Route::resource('/articles', ArticleController::class);
+    Route::resource('/sub_articles', SubArticleController::class);
+    Route::resource('/sub_sub_articles', SubSubArticleController::class);
     Route::resource('/schedules', ScheduleController::class);
     Route::resource('/countries', CountryController::class);
     Route::resource('/counties', CountyController::class);

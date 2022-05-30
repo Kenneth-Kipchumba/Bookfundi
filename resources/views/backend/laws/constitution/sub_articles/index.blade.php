@@ -7,42 +7,40 @@
     <div class="card">
         <div class="card-header">
            <h3>Articles's Table</h3>
-           <a href="{{ route('backend.articles.create') }}" class="btn btn-primary right">Create new article</a>
+           <a href="{{ route('backend.sub_articles.create') }}" class="btn btn-primary right">Create new article</a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Chapter</th>
-                       <th>Part</th>
-                       <th>Article</th>
+                       <th>Title</th>
+                       <th>Description</th>
                        <th>Action</th>
                    </tr>
                </thead>
                <tbody>
-                @foreach($articles as $article)
+                @foreach($sub_articles as $sub_article)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.articles.show', $article->id) }}">
-                           {{ $article->chapter }}
+                       <a href="{{ route('backend.sub_articles.show', $article->id) }}">
+                           {{ $sub_article->title }}
                        </a>
                    </td>
-                   <td>{{ $article->parts }}</td>
                    <td>
                     <?php 
-                      $body =  Str::words($article->article, 15, '...');
+                      $body =  Str::words($sub_article->description, 20, '...');
                     ?>
                     {!! $body !!}
                     </td>
                    <td>
-                       <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.sub_articles.edit', $sub_article->id) }}" class="btn btn-sm btn-primary float-left">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
                        
 
-                       $slug = Str::slug('s-' . $article->created_at);
+                       $slug = Str::slug('s-' . $sub_article->created_at);
                        ?>
                        <!-- Delete Button trigger modal -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
@@ -54,7 +52,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $article->chapters }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $sub_article->title }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -62,7 +60,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.articles.destroy', $article->id) }}" method="POST">
+                                <form action="{{ route('backend.sub_articles.destroy', $sub_article->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-primary float-right">
@@ -83,7 +81,7 @@
            </div> 
         </div>
         <div class="card-footer">
-            {{ $articles->links() }}
+            {{ $sub_articles->links() }}
         </div>
 
         

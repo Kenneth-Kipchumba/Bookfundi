@@ -7,14 +7,19 @@
     <div class="card">
         <div class="card-header">
            <div class="row">
-               <div class="col">
-                <h1 class="text-primary">{{ $article->chapter }}</h1>
+               <div class="col-9">
+                <h1 class="text-primary">{{ $article->title }}</h1>
                </div>
-               <div class="col">
+               <div class="col-3">
                 <div class="float-right">
-                    <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $article->article_name }}">
-                    <i class="fas fa-pen"></i>
-                </a>
+                    <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $article->title }}">
+                     <i class="fas fa-pen"></i>
+                    </a>
+                </div>
+                <div class="float-left">
+                    <a href="{{ route('backend.sub_articles.create') }}" class="btn btn-sm btn-success mr-0">
+                     Create Sub Article
+                    </a>
                 </div>
                </div>
            </div>
