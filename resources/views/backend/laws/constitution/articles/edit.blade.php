@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-header">
            <h3>
-            Edit {{ $article->chapter . ' ' . $article->parts }}
+            Edit {{ $article->title . ' ' . $article->chapter }}
            </h3>
         </div>
         <div class="card-body">
@@ -39,9 +39,9 @@
                 </div>
                 <div class="col">
                    <div class="mb-3">
-                    <label for="parts" class="form-label">Part</label>
-                    <input type="text" name="parts" class="form-control @error('parts') is-invalid @enderror" id="parts" value="{{ $article->parts }}">
-                     @error('parts')
+                    <label for="part" class="form-label">Part</label>
+                    <input type="text" name="part" class="form-control @error('part') is-invalid @enderror" id="part" value="{{ $article->part }}">
+                     @error('part')
                      <p class="text-danger">
                         {{ $message }}
                      </p>
@@ -63,34 +63,6 @@
                 </div>
                 <hr>
             </div>
-            <div>
-                <div class="mb-3">
-                    <label for="sub_article">Sub Article</label>
-                    @error('sub_article')
-                        <p class="text-danger">
-                            {{ $message }}
-                        </p>
-                      @enderror
-                    <textarea id="sub_article" name="sub_article" class="form-control @error('sub_article') is-invalid @enderror" rows="10">
-                        {{ $article->sub_article }}
-                    </textarea>
-                </div>
-                <hr>
-            </div>
-            <div>
-                <div class="mb-3">
-                    <label for="sub_sub_article">Sub Sub Article</label>
-                    @error('sub_sub_article')
-                        <p class="text-danger">
-                            {{ $message }}
-                        </p>
-                      @enderror
-                    <textarea id="sub_sub_article" name="sub_sub_article" class="form-control @error('sub_sub_article') is-invalid @enderror" rows="10">
-                        {{ $article->sub_sub_article }}
-                    </textarea>
-                </div>
-                <hr>
-            </div>
               <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
@@ -104,16 +76,6 @@
 <script>
 ClassicEditor
 .create( document.querySelector( '#article' ) )
-.catch( error => {
-console.error( error );
-} );
-ClassicEditor
-.create( document.querySelector( '#sub_article' ) )
-.catch( error => {
-console.error( error );
-} );
-ClassicEditor
-.create( document.querySelector( '#sub_sub_article' ) )
 .catch( error => {
 console.error( error );
 } );

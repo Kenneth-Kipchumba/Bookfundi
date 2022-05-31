@@ -27,7 +27,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('backend.laws.constitution.articles.create');
+        $data['article'] = Article::find($id);
+
+        return view('backend.laws.constitution.articles.create', $data);
     }
 
     /**
@@ -42,7 +44,7 @@ class ArticleController extends Controller
         $validated_data = $request->validate([
             'title' => 'required',
             'chapter' => 'required',
-            'parts' => '',
+            'part' => '',
             'article' => 'required'
         ]);
         
@@ -51,7 +53,7 @@ class ArticleController extends Controller
             Article::create([
             'title' => $request->title,
             'chapter' => $request->chapter,
-            'parts' => $request->parts,
+            'part' => $request->part,
             'article' => $request->article
             ]);
 
@@ -102,7 +104,7 @@ class ArticleController extends Controller
         $validated_data = $request->validate([
             'title' => 'required',
             'chapter' => 'required',
-            'parts' => '',
+            'part' => '',
             'article' => 'required'
         ]);
         //dd($validated_data);
@@ -111,7 +113,7 @@ class ArticleController extends Controller
         $article->update([
             'title' => $request->title,
             'chapter' => $request->chapter,
-            'parts' => $request->parts,
+            'part' => $request->part,
             'article' => $request->article
         ]);
 

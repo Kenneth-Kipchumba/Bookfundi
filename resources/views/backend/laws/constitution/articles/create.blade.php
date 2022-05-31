@@ -36,9 +36,9 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                      <label for="parts" class="form-label">Part</label>
-                      <input type="text" name="parts" class="form-control @error('parts') is-invalid @enderror" id="parts">
-                      @error('parts')
+                      <label for="part" class="form-label">Part</label>
+                      <input type="text" name="part" class="form-control @error('part') is-invalid @enderror" id="part">
+                      @error('part')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
@@ -55,30 +55,6 @@
                         </p>
                       @enderror
                     <textarea id="article" name="article" class="form-control @error('article') is-invalid @enderror" rows="90">
-                        
-                    </textarea>
-                </div>
-                <hr>
-                <div class="mb-3">
-                    <label for="sub_article">Sub Article</label>
-                    @error('sub_article')
-                        <p class="text-danger">
-                            {{ $message }}
-                        </p>
-                      @enderror
-                    <textarea id="sub_article" name="sub_article" class="form-control @error('sub_article') is-invalid @enderror" rows="90">
-                        
-                    </textarea>
-                </div>
-                <hr>
-                <div class="mb-3">
-                    <label for="sub_sub_article">Sub Sub Article</label>
-                    @error('sub_sub_article')
-                        <p class="text-danger">
-                            {{ $message }}
-                        </p>
-                      @enderror
-                    <textarea id="sub_sub_article" name="sub_sub_article" class="form-control @error('sub_sub_article') is-invalid @enderror" rows="90">
                         
                     </textarea>
                 </div>

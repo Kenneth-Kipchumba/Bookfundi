@@ -27,7 +27,8 @@ class SubArticleController extends Controller
      */
     public function create()
     {
-        return view('backend.laws.constitution.sub_articles.create');
+        $data['article_id'] = $request->segment(2);
+        return view('backend.laws.constitution.sub_articles.create',);
     }
 
     /**
@@ -38,7 +39,7 @@ class SubArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        //dd();
         $validated_data = $request->validate([
             'title' => 'required',
             'description' => 'required'
@@ -48,6 +49,7 @@ class SubArticleController extends Controller
         {
             SubArticle::create([
             'title' => $request->title,
+            'article_id' => $request->segment(3),
             'description' => $request->description
             ]);
 

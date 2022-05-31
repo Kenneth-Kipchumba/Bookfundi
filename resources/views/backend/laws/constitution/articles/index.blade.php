@@ -14,8 +14,7 @@
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Chapter</th>
-                       <th>Part</th>
+                       <th>Title</th>
                        <th>Article</th>
                        <th>Action</th>
                    </tr>
@@ -25,10 +24,9 @@
                 <tr>
                    <td>
                        <a href="{{ route('backend.articles.show', $article->id) }}">
-                           {{ $article->chapter }}
+                           {{ $article->title }}
                        </a>
                    </td>
-                   <td>{{ $article->parts }}</td>
                    <td>
                     <?php 
                       $body =  Str::words($article->article, 15, '...');
@@ -54,7 +52,7 @@
                             <div class="modal-content bg-danger">
                               <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $article->chapters }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $article->title }} from the system. Are you sure you want to proceed.
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -75,6 +73,7 @@
                             </div>
                           </div>
                         </div>
+                        <!-- End Modal -->
                    </td>
                 </tr>
                 @endforeach

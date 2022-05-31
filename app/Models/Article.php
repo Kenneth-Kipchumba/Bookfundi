@@ -17,10 +17,8 @@ class Article extends Model
     protected $fillable = [
         'title',
         'chapter',
-        'parts',
+        'part',
         'article',
-        'sub_article',
-        'sub_sub_article'
     ];
 
     public function sub_articles()
