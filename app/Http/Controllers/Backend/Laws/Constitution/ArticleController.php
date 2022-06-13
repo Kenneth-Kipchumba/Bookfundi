@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Laws\Constitution;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\SubArticle;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -27,9 +28,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $data['article'] = Article::find($id);
+        //$data['article'] = Article::find($id);
 
-        return view('backend.laws.constitution.articles.create', $data);
+        return view('backend.laws.constitution.articles.create');
     }
 
     /**
@@ -75,6 +76,11 @@ class ArticleController extends Controller
     public function show(int $id)
     {
         $data['article'] = Article::find($id);
+
+        //$sub_article = new SubArticle;
+        $data['sub_article'] = SubArticle::where('article_id', $id)->get();
+
+        //print_r($data['sub_article']);die();
 
         return view('backend.laws.constitution.articles.show', $data);
     }

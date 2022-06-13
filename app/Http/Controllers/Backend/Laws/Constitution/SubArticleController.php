@@ -27,8 +27,7 @@ class SubArticleController extends Controller
      */
     public function create()
     {
-        $data['article_id'] = $request->segment(2);
-        return view('backend.laws.constitution.sub_articles.create',);
+        return view('backend.laws.constitution.sub_articles.create', $data);
     }
 
     /**
@@ -47,11 +46,14 @@ class SubArticleController extends Controller
         
         if ($validated_data)
         {
-            SubArticle::create([
+            $sub_article = [
             'title' => $request->title,
-            'article_id' => $request->segment(3),
+            'article_id' => $request->article_id,
             'description' => $request->description
-            ]);
+            ];
+            
+            //dd($sub_article);
+            SubArticle::create($sub_article);
 
             return redirect()->back()->with('success','Sub Article successfully added to the constitution');
         }

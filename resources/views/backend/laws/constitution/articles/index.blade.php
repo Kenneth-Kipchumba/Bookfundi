@@ -29,7 +29,7 @@
                    </td>
                    <td>
                     <?php 
-                      $body =  Str::words($article->article, 15, '...');
+                      $body =  Str::words($article->article, 20, '...');
                     ?>
                     {!! $body !!}
                     </td>
@@ -49,21 +49,18 @@
                         <!-- Modal -->
                         <div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
-                            <div class="modal-content bg-danger">
-                              <div class="modal-header">
+                            <div class="modal-content">
+                              <div class="modal-header bg-warning">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $article->title }} from the system. Are you sure you want to proceed.
+                                You are about to remove {{ $article->title }} from the Constitution. Are you sure you want to proceed ?
                                 </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
                               </div>
                               <div class="modal-footer">
                                 
                                 <form action="{{ route('backend.articles.destroy', $article->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
-                                  <button type="submit" class="btn btn-primary float-right">
+                                  <button type="submit" class="btn btn-danger float-right">
                                     Yes
                                   </button>
                                 </form>
