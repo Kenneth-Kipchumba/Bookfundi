@@ -17,13 +17,10 @@
                     </a>
                 </div>
                 <div class="float-left">
-                    <!--<a href="{{ route('backend.sub_articles.create') }}" class="btn btn-sm btn-success mr-0">
-                     Create Sub Article
-                    </a>-->
 
                     <!-- Trigger modal -->
                     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#create_sub_article">
-                        Create Sub Article
+                        Create New Sub Article
                     </button>
                 </div>
                </div>
@@ -49,12 +46,45 @@
                                         <h6>{{ $sub->title }}</h6> 
                                     </div>
                                     <div class="col">
-                                        <!-- Trigger modal -->
-                                        <button type="button" class="btn btn-sm btn-default float-right" data-toggle="modal" data-target="#create_sub_sub_article">
-                                            Create Sub Sub Article
-                                        </button>
+                       <?php
+                       $slug = Str::slug('s-' . $sub->created_at);
+                       ?>
+                       <!-- Delete Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header bg-warning">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                You are about to remove {{ $sub->title }} from this article. Are you sure you want to proceed ?
+                                </h5>
+                              </div>
+                              <div class="modal-footer">
+                                
+                                <form action="{{ route('backend.articles.destroy', $sub->id) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-outline-danger float-right">
+                                    Yes
+                                  </button>
+                                </form>
 
-                                        <button class="btn btn-sm btn-outline-info" title="Edit {{ $sub->title }}">Edit Sub Article</button>
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End Modal -->
+
+                        <!-- Trigger modal -->
+                        <button type="button" class="btn btn-sm btn-default float-right" data-toggle="modal" data-target="#create_sub_sub_article">
+                            Create Sub Sub Article
+                        </button>
+
+                        <button class="btn btn-sm btn-outline-info" title="Edit {{ $sub->title }}"><i class="fas fa-pen"></i></button>
                                     </div>
                                 </div>
                                 <hr>
@@ -95,13 +125,13 @@
                                                         </div>
                                                         <div>
                                                             <div class="mb-3">
-                                                                <label for="description">Description</label>
+                                                                <label for="sub_article_description">Description</label>
                                                                 @error('description')
                                                                     <p class="text-danger">
                                                                         {{ $message }}
                                                                     </p>
                                                                   @enderror
-                                                                <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
+                                                                <textarea id="sub_article_description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
                                                                     
                                                                 </textarea>
                                                             </div>
@@ -164,13 +194,13 @@
                             </div>
                             <div>
                                 <div class="mb-3">
-                                    <label for="description">Description</label>
+                                    <label for="article_description">Description</label>
                                     @error('description')
                                         <p class="text-danger">
                                             {{ $message }}
                                         </p>
                                       @enderror
-                                    <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
+                                    <textarea id="article_description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
                                         
                                     </textarea>
                                 </div>
@@ -192,7 +222,13 @@
 
 <script>
 ClassicEditor
-.create( document.querySelector( '#description' ) )
+.create( document.querySelector( '#article_description' ) )
+.catch( error => {
+console.error( error );
+} );
+
+ClassicEditor
+.create( document.querySelector( '#sub_article_description' ) )
 .catch( error => {
 console.error( error );
 } );
