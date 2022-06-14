@@ -64,7 +64,7 @@
                               </div>
                               <div class="modal-footer">
                                 
-                                <form action="{{ route('backend.articles.destroy', $sub->id) }}" method="POST">
+                                <form action="{{ route('backend.sub_articles.destroy', $sub->id) }}" method="POST">
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-outline-danger float-right">
@@ -84,7 +84,79 @@
                             Create Sub Sub Article
                         </button>
 
-                        <button class="btn btn-sm btn-outline-info" title="Edit {{ $sub->title }}"><i class="fas fa-pen"></i></button>
+                        <?php
+                            $slug = Str::slug('edit-' . $sub->created_at);
+                        ?>
+
+                        <!-- Edit Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#<?= $slug; ?>" title="Edit {{ $sub->title }}">
+                          <i class="fas fa-pen"></i>
+                        </button>
+
+<!-- Sub Article Edit Modal -->
+<div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                  <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header">
+                           <h3>Edit : <span style="text-decoration: underline;" class="text-info">{{ $sub->title ?? " "}}</span> </h3>
+                        </div>
+                        <div class="card-body">
+                           <form action="{{ route('backend.sub_articles.update', $sub->id) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <input type="hidden" name="article_id" value="{{ $article->id }}">
+                            <div>
+                               <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ $sub->title }}">
+                                    @error('title')
+                                        <p class="text-danger">
+                                            {{ $message }}
+                                        </p>
+                                    @enderror
+                                </div>  
+                            </div>
+                            <div>
+                                <div class="mb-3">
+                                    <label for="edit-{{ $slug }}">Description</label>
+                                    @error('description')
+                                        <p class="text-danger">
+                                            {{ $message }}
+                                        </p>
+                                      @enderror
+                                    <textarea id="edit-{{ $slug }}" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
+                                        {{ $sub->description }}
+                                    </textarea>
+                                </div>
+                            </div>
+                              
+                            <button type="submit" class="btn btn-primary">Update</button>
+                           </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                ClassicEditor
+                .create( document.querySelector( '#edit-{{ $slug }}' ) )
+                .catch( error => {
+                console.error( error );
+                } );
+            </script>
+        </div>
+    </div>
+</div>
+<!-- End Sub Article Edit Modal -->
                                     </div>
                                 </div>
                                 <hr>
@@ -206,7 +278,7 @@
                                 </div>
                             </div>
                               
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-success">Create</button>
                            </form>
                         </div>
                     </div>
