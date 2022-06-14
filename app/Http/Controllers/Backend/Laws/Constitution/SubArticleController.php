@@ -124,6 +124,6 @@ class SubArticleController extends Controller
     {
         SubArticle::destroy($id);
 
-        return redirect()->back()->with('danger','Sub Article successfully removed from the constitution');
+        return redirect()->back()->with('danger','Sub Article removed from this Article');
     }
 }
