@@ -15,6 +15,9 @@ class Party extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'party_name'
+        'party_name',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

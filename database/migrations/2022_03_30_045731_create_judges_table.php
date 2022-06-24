@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('judge_previous_county');
             $table->string('judge_previous_town');
             $table->string('created_by');
-            $table->string('updated_by');
-            $table->string('deleted_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

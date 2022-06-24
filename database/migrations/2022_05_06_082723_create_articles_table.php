@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('chapter');
-            $table->string('part');
-            $table->mediumText('article');
+            $table->string('chapter')->nullable();
+            $table->string('part')->nullable();
+            $table->mediumText('article')->nullable();
+            $table->string('created_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

@@ -24,6 +24,9 @@ class Magistrate extends Model
         'magistrate_previous_court_level',
         'magistrate_previous_country',
         'magistrate_previous_county',
-        'magistrate_previous_town'
+        'magistrate_previous_town',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

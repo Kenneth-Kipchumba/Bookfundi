@@ -51,7 +51,8 @@ class CountyController extends Controller
         County::create([
             'county_name' => $request->county_name,
             'county_code' => $request->county_code,
-            'county_country' => $request->county_country
+            'county_country' => $request->county_country,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','County successfully added to the system');

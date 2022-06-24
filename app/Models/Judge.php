@@ -24,6 +24,9 @@ class Judge extends Model
         'judge_previous_court_level',
         'judge_previous_country',
         'judge_previous_county',
-        'judge_previous_town'
+        'judge_previous_town',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

@@ -18,6 +18,9 @@ class SubSubArticle extends Model
         'title',
         'sub_article_id',
         'description',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function sub_article()

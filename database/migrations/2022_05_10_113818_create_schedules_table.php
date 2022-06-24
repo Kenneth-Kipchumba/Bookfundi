@@ -20,6 +20,9 @@ return new class extends Migration
             $table->longText ('body');
             $table->longText('legal_notice');
             $table->string('legal_notice_date');
+            $table->string('created_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

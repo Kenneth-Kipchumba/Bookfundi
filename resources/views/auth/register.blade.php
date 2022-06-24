@@ -32,7 +32,7 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="first_name">Firstname</label>
-                    <input type="text" name="first_name" id="first_name" class="form-control form-control-lg @error('first_name') is-invalid @enderror"/>
+                    <input type="text" name="first_name" id="first_name" class="form-control form-control-lg @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}"/>
                     @error('first_name')
                       <span class="invalid-feedback" role="alert">
                         {{ $message }}
@@ -42,7 +42,7 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="last_name">Lastname</label>
-                    <input type="text" name="last_name" id="last_name" class="form-control form-control-lg @error('last_name') is-invalid @enderror"/>
+                    <input type="text" name="last_name" id="last_name" class="form-control form-control-lg @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}"/>
                     @error('last_name')
                       <span class="invalid-feedback" role="alert">
                         {{ $message }}
@@ -52,7 +52,7 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email address</label>
-                    <input type="email" name="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror"/>
+                    <input type="email" name="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}"/>
                     @error('email')
                       <span class="invalid-feedback" role="alert">
                         {{ $message }}

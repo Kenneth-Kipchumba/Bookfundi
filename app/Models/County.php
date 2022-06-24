@@ -18,5 +18,8 @@ class County extends Model
         'county_name',
         'county_code',
         'county_country',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

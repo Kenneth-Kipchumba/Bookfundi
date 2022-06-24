@@ -19,6 +19,9 @@ class Court extends Model
         'court_level',
         'court_country',
         'court_county',
-        'court_town'
+        'court_town',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

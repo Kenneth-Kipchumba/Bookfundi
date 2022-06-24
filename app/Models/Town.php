@@ -18,5 +18,8 @@ class Town extends Model
         'town_name',
         'town_country',
         'town_county',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ]; 
 }

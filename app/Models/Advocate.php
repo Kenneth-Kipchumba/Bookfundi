@@ -17,6 +17,9 @@ class Advocate extends Model
     protected $fillable = [
         'advocate_name',
         'advocate_firm',
-        'advocate_specialization'
+        'advocate_specialization',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

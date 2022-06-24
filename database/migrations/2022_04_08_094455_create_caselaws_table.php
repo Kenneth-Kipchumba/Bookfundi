@@ -36,8 +36,8 @@ return new class extends Migration
             $table->string('case_court');
             $table->longText('case_body');
             $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
-            $table->string('deleted_by')->nullable();
+            $table->string('updated_by')->nullable()->nullable();
+            $table->string('deleted_by')->nullable()->nullable();
             $table->timestamps();
         });
     }

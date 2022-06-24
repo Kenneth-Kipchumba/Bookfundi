@@ -46,7 +46,8 @@ class CountryController extends Controller
 
         Country::create([
             'country_name' => $request->country_name,
-            'country_code' => $request->country_code
+            'country_code' => $request->country_code,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Country successfully added to the system');

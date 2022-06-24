@@ -15,6 +15,9 @@ class Specialization extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'specialization_name'
+        'specialization_name',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

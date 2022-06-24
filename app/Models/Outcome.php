@@ -15,6 +15,9 @@ class Outcome extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'outcome_name'
+        'outcome_name',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

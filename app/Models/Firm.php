@@ -19,6 +19,9 @@ class Firm extends Model
         'firm_country',
         'firm_county',
         'firm_town',
-        'firm_address'
+        'firm_address',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

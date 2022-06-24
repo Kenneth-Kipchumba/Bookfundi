@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('county_code');
             $table->string('county_country');
             $table->string('created_by');
-            $table->string('updated_by');
-            $table->string('deleted_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

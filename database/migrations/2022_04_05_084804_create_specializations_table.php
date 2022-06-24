@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('specialization_name');
             $table->string('created_by');
-            $table->string('updated_by');
-            $table->string('deleted_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

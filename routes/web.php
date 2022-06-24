@@ -51,7 +51,7 @@ Route::get('pricing', function () {
 });
 
 //Backend Routes
-Route::prefix('backend')->name('backend.')->group(function ()
+Route::prefix('backend')->middleware('auth')->name('backend.')->group(function ()
 {
     Route::resource('/advocates', AdvocateController::class);
     Route::resource('/caselaws', CaselawController::class);

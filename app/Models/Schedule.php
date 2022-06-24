@@ -19,6 +19,9 @@ class Schedule extends Model
         'name',
         'body',
         'legal_notice',
-        'legal_notice_date'
+        'legal_notice_date',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

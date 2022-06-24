@@ -16,6 +16,9 @@ class Decision extends Model
      */
     protected $fillable = [
         'decision_name',
-        'decision_type'
+        'decision_type',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

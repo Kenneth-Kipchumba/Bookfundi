@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('firm_town');
             $table->string('firm_address');
             $table->string('created_by');
-            $table->string('updated_by');
-            $table->string('deleted_by');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

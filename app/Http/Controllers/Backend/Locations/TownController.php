@@ -55,7 +55,8 @@ class TownController extends Controller
         Town::create([
             'town_name' => $request->town_name,
             'town_country' => $request->town_country,
-            'town_county' => $request->town_county
+            'town_county' => $request->town_county,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Town successfully added to the system');
