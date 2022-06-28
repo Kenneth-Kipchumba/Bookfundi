@@ -20,15 +20,26 @@
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <div class="d-flex align-items-center mb-3 pb-1">
-                    <img src="{{ asset('assets/images/logo.jpeg') }}"
-                         class="img-fluid"
-                    >
+                  <img src="{{ asset('assets/images/logo.jpeg') }}" class="img-fluid">
                 </div>
 
                 <form action="{{ route('login') }}" method="post">
                   @csrf
 
-                  <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h4>
+                  @if(session('status'))
+                    <div class="alert alert-success" role="alert">
+                      <h4>
+                        <i class="fa-solid fa-check"></i>
+                        Success
+                      </h4>
+                      <hr>
+                      <p class="mb-0">
+                        {{ session('status') }}
+                      </p>
+                    </div> 
+                  @else
+                    <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h4>
+                  @endif
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email address</label>

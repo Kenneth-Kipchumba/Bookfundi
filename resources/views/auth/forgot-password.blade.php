@@ -11,18 +11,19 @@
 
             @if(session('status'))
               <div class="alert alert-success" role="alert">
-                <i class="fa-solid fa-paper-plane"></i>
-                <h4>Congrats!</h4>
+                <h4>
+                  <i class="fa-solid fa-envelope"></i>
+                  Check Your E-Mail!
+                </h4>
                 <hr>
-                <p class="mb-0">{{ session('status') }}</p>
+                <p class="mb-0">
+                  {{ session('status') }}
+                </p>
               </div>    
             @else
-              <div class="d-flex align-items-center mb-3 pb-1">
-                <img src="{{ asset('assets/images/logo.jpeg') }}"
-                           class="img-fluid"
-                      >
-              </div>
-            @endif    
+            <div class="d-flex align-items-center mb-3 pb-1">
+              <img src="{{ asset('assets/images/logo.jpeg') }}" class="img-fluid">
+            </div>   
 
             <form action="{{ url('forgot-password') }}" method="post">
               @csrf
@@ -42,11 +43,12 @@
               <div class="pt-1 mb-4">
                 <button type="submit" class="btn btn-dark btn-lg btn-block float-end" title="Send">
                   <i class="fa-solid fa-paper-plane"></i>
+                  Send
                 </button>
               </div>
                   
             </form>
-
+            @endif 
           </div>
         </div>
       </div>
