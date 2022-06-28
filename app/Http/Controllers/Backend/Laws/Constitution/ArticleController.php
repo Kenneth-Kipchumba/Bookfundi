@@ -55,7 +55,8 @@ class ArticleController extends Controller
             'title' => $request->title,
             'chapter' => $request->chapter,
             'part' => $request->part,
-            'article' => $request->article
+            'article' => $request->article,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ]);
 
             return redirect()->back()->with('success','Article successfully added to the constitution');

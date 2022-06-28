@@ -19,6 +19,9 @@ class Article extends Model
         'chapter',
         'part',
         'article',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function sub_articles()

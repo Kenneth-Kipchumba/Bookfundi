@@ -49,7 +49,8 @@ class SubArticleController extends Controller
             $sub_article = [
             'title' => $request->title,
             'article_id' => $request->article_id,
-            'description' => $request->description
+            'description' => $request->description,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ];
             
             //dd($sub_article);

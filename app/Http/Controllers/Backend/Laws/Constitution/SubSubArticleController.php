@@ -48,7 +48,8 @@ class SubSubArticleController extends Controller
         {
             SubSubArticle::create([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ]);
 
             return redirect()->back()->with('success','Sub Sub Article successfully added to the Sub Article');
