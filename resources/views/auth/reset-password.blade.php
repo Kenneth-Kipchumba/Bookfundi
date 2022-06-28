@@ -8,22 +8,14 @@
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 1rem;">
           <div class="card-body p-4 p-lg-5 text-black">
-
-            @if(session('status'))
-              <div class="alert alert-success" role="alert">
-                <h4>Congrats!</h4>
-                <hr>
-                <p class="mb-0">
-                  <i class="fa-solid fa-paper-plane"></i>
-                  {{ session('status') }}
-                </p>
-              </div>    
-            @else
             <div class="d-flex align-items-center mb-3 pb-1">
               <img src="{{ asset('assets/images/logo.jpeg') }}" class="img-fluid">
-            </div>   
+            </div>
 
-            <form action="{{ url('reset-password') }}" method="post">
+            <h3>You are now resetting your password</h3>
+            <hr>
+
+            <form action="{{ url('reset-password') }}" method="post" class="mt-5">
               @csrf
 
               <input type="hidden" name="token" value="{{ request()->route('token') }}">
@@ -70,7 +62,6 @@
               </div>
                   
             </form>
-            @endif 
           </div>
         </div>
       </div>

@@ -29,8 +29,8 @@
                   @if(session('status'))
                     <div class="alert alert-success" role="alert">
                       <h4>
-                        <i class="fa-solid fa-check"></i>
-                        Success
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        Life is good
                       </h4>
                       <hr>
                       <p class="mb-0">
