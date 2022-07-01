@@ -60,6 +60,7 @@ class CourtController extends Controller
             'court_country' => $request->court_country,
             'court_county' => $request->court_county,
             'court_town' => $request->court_town,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Court successfully added to the system');

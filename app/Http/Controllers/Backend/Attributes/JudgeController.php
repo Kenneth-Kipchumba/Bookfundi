@@ -65,7 +65,8 @@ class JudgeController extends Controller
             'judge_previous_court_level' => $request->judge_previous_court_level,
             'judge_previous_country' => $request->judge_previous_country,
             'judge_previous_county' => $request->judge_previous_county,
-            'judge_previous_town' => $request->judge_previous_town
+            'judge_previous_town' => $request->judge_previous_town,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Judge successfully added to the system');

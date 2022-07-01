@@ -65,7 +65,8 @@ class MagistrateController extends Controller
             'magistrate_previous_court_level' => $request->magistrate_previous_court_level,
             'magistrate_previous_country' => $request->magistrate_previous_country,
             'magistrate_previous_county' => $request->magistrate_previous_county,
-            'magistrate_previous_town' => $request->magistrate_previous_town
+            'magistrate_previous_town' => $request->magistrate_previous_town,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Magistrate successfully added to the system');

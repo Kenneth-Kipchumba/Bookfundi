@@ -46,6 +46,7 @@ class DecisionController extends Controller
 
         Decision::create([
             'decision_name' => $request->decision_name,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Decision successfully added to the system');

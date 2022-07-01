@@ -15,6 +15,9 @@ class Citation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'citation_name'
+        'citation_name',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 }

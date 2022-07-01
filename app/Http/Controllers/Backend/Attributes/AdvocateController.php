@@ -54,6 +54,7 @@ class AdvocateController extends Controller
             'advocate_name' => $request->advocate_name,
             'advocate_firm' => $request->advocate_firm,
             'advocate_specialization' => $request->advocate_specialization,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Advocate successfully added to the system');

@@ -45,7 +45,8 @@ class PartyController extends Controller
         //dd($validated_data);
 
         Party::create([
-            'party_name' => $request->party_name
+            'party_name' => $request->party_name,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Party successfully added to the system');

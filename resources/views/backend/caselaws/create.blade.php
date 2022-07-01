@@ -69,6 +69,7 @@
                                     <div class="mb-3">
                                       <label for="case_plaintiff" class="form-label">Plaintiff</label>
                                       <select id="case_plaintiff" class="form-select" name="case_plaintiff" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -81,6 +82,7 @@
                                     <div class="mb-3">
                                       <label for="plaintiffs_advocate" class="form-label">Plaintiff's Advocate</label>
                                       <select id="plaintiffs_advocate" class="form-select" name="plaintiffs_advocate" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -96,6 +98,7 @@
                                     <div class="mb-3">
                                       <label for="case_respondent" class="form-label">Respondent</label>
                                       <select id="case_respondent" class="form-select" name="case_respondent" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -108,6 +111,7 @@
                                     <div class="mb-3">
                                       <label for="respondents_advocate" class="form-label">Respondent's Advocate</label>
                                       <select id="respondents_advocate" class="form-select" name="respondents_advocate" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -123,6 +127,7 @@
                                     <div class="mb-3">
                                       <label for="case_defendant" class="form-label">Defendant</label>
                                       <select id="case_defendant" class="form-select" name="case_defendant" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -135,6 +140,7 @@
                                     <div class="mb-3">
                                       <label for="defendants_advocate" class="form-label">Defendant's Advocate</label>
                                       <select id="defendants_advocate" class="form-select" name="defendants_advocate" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -150,6 +156,7 @@
                                     <div class="mb-3">
                                       <label for="case_appellant" class="form-label">Appellant</label>
                                       <select id="case_appellant" class="form-select" name="case_appellant" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -162,6 +169,7 @@
                                     <div class="mb-3">
                                       <label for="appellants_advocate" class="form-label">Appellant's Advocate</label>
                                       <select id="appellants_advocate" class="form-select" name="appellants_advocate" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($parties as $party)
                                             <option value="{{ $party->party_name }}">
                                                 {{ $party->party_name }}
@@ -174,6 +182,7 @@
                             <div class="mb-3">
                               <label for="case_decision" class="form-label">Decision</label>
                               <select id="case_decision" class="form-select" name="case_decision" style="width: 100%;">
+                                <option value="" >Select...</option>
                                 @foreach($decisions as $decision)
                                     <option value="{{ $decision->decision_name }}">
                                         {{ $decision->decision_name }}
@@ -184,6 +193,7 @@
                             <div class="mb-3">
                               <label for="case_outcome" class="form-label">Case Outcome</label>
                               <select id="case_outcome" class="form-select" name="case_outcome" style="width: 100%;">
+                                <option value="" >Select...</option>
                                 @foreach($outcomes as $outcome)
                                     <option value="{{ $outcome->outcome_name }}">
                                         {{ $outcome->outcome_name }}
@@ -194,6 +204,7 @@
                             <div class="mb-3">
                               <label for="citation" class="form-label">Citation</label>
                               <select id="citation" class="form-select" name="citation" style="width: 100%;">
+                                <option value="" >Select...</option>
                                 @foreach($citations as $citation)
                                     <option value="{{ $citation->citation_name }}">
                                         {{ $citation->citation_name }}
@@ -206,6 +217,7 @@
                                     <div class="mb-3">
                                       <label for="case_country" class="form-label">Case Country</label>
                                       <select id="case_country" class="form-select" name="case_country" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($countries as $country)
                                           <option value="{{ $country->country_name }}">
                                           {{ $country->country_name }}
@@ -218,6 +230,7 @@
                                     <div class="mb-3">
                                       <label for="case_county" class="form-label">Case County</label>
                                       <select id="case_county" class="form-select" name="case_county" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($counties as $county)
                                           <option value="{{ $county->county_name }}">
                                           {{ $county->county_name }}
@@ -232,6 +245,7 @@
                                     <div class="mb-3">
                                       <label for="case_town" class="form-label">Case Town</label>
                                       <select id="case_town" class="form-select" name="case_town" style="width: 100%;">
+                                        <option value="" >Select...</option>
                                         @foreach($towns as $town)
                                       <option value="{{ $country->country_name }}">
                                           {{ $town->town_name }}
@@ -249,7 +263,7 @@
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                             </div>
                                             <input type="text" name="case_date" class="form-control @error('case_date') is-invalid @enderror" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" inputmode="numeric" placeholder="dd/mm/yyyy">
-                                            @error('case_number')
+                                            @error('case_date')
                                               <p class="text-danger">
                                                 {{ $message }}
                                               </p>

@@ -44,7 +44,8 @@ class SpecializationController extends Controller
         //dd($validated_data);
 
         Specialization::create([
-            'specialization_name' => $request->specialization_name
+            'specialization_name' => $request->specialization_name,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Specialization successfully added to the system');

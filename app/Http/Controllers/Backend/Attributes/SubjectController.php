@@ -44,7 +44,8 @@ class SubjectController extends Controller
         //dd($validated_data);
 
         Subject::create([
-            'subject_name' => $request->subject_name
+            'subject_name' => $request->subject_name,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Subject successfully added to the system');

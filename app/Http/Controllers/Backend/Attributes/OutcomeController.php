@@ -45,7 +45,8 @@ class OutcomeController extends Controller
         //dd($validated_data);
 
         Outcome::create([
-            'outcome_name' => $request->outcome_name
+            'outcome_name' => $request->outcome_name,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Outcome successfully added to the system');

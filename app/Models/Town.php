@@ -21,5 +21,13 @@ class Town extends Model
         'created_by',
         'updated_by',
         'deleted_by'
-    ]; 
+    ];
+
+    /**
+     * Get the country that the town belongs to
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

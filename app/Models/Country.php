@@ -21,4 +21,14 @@ class Country extends Model
         'updated_by',
         'deleted_by'
     ];
+
+    public function towns()
+    {
+        return $this->hasMany(Town::class);
+    }
+
+    public function counties()
+    {
+        return $this->hasMany(County::class);
+    }
 }

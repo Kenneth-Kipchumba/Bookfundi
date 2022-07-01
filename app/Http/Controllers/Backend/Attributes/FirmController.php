@@ -61,6 +61,7 @@ class FirmController extends Controller
                 'firm_county' => $request->firm_county,
                 'firm_town' => $request->firm_town,
                 'firm_address' => $request->firm_address,
+                'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ]);
 
             return redirect()->back()->with('success','Firm successfully added to the system');

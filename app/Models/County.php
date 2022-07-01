@@ -22,4 +22,12 @@ class County extends Model
         'updated_by',
         'deleted_by'
     ];
+
+    /**
+     * Get the country that the county belongs to
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

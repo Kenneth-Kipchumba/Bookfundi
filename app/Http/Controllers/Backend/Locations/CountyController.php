@@ -22,6 +22,18 @@ class CountyController extends Controller
     }
 
     /**
+     * List counties by countries (Incomplete)
+     */
+    public function counties($country)
+    {
+        dd('You are Here');
+        $data['counties'] = County::find($country)
+                                    ->paginate(10);
+
+        return view('backend.counties.index', $data);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

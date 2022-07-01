@@ -44,7 +44,8 @@ class CitationController extends Controller
         //dd($validated_data);
 
         Citation::create([
-            'citation_name' => $request->citation_name
+            'citation_name' => $request->citation_name,
+            'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return redirect()->back()->with('success','Citation successfully added to the system');
