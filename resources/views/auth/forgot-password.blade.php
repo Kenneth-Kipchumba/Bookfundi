@@ -41,6 +41,10 @@
               </div>
 
               <div class="pt-1 mb-4">
+                <a href="{{ route('login') }}" class="btn btn-dark btn-lg btn-block float-start" title="Back to Login Page">
+                  <i class="fa-solid fa-arrow-left"></i>
+                  Back
+                </a>
                 <button type="submit" class="btn btn-dark btn-lg btn-block float-end" title="Send">
                   <i class="fa-solid fa-paper-plane"></i>
                   Send

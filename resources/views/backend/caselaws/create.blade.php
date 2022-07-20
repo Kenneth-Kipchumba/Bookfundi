@@ -45,6 +45,7 @@
                             <div class="mb-3">
                                 <label for="case_court" class="form-label">Court</label>
                                 <select id="case_court" class="form-select" name="case_court" style="width: 100%;">
+                                    <option value="" >Select...</option>
                                 @foreach($courts as $court)
                                     <option value="{{ $court->court_name }}">
                                         {{ $court->court_name }}
