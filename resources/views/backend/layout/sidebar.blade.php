@@ -59,7 +59,12 @@
                         <a href="#">Constitution</a>
                         <ul>
                             <li>
-                                <a class="nav-link" href="{{ route('backend.articles.index') }}">Articles</a>
+                                <a class="nav-link" href="{{ route('backend.articles.index') }}">Chapters</a>
+                                <ul>
+                                    <li>
+                                        <a class="nav-link" href="{{ route('backend.articles.index') }}">Articles</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item parent">
                                 <a href="#">Schedules</a>
@@ -77,10 +82,12 @@
                         <a href="#">Laws of Kenya</a>
                         <ul>
                             <li>
-                                <a class="nav-link" href="#">Penal Codes</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#">Item 2</a>
+                                <a class="nav-link" href="#">Acts</a>
+                                <ul>
+                                    <li>
+                                        <a href="">Sections</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
