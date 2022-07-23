@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\Attributes\SpecializationController;
 use App\Http\Controllers\Backend\Attributes\SubjectController;
 use App\Http\Controllers\Backend\CaselawController;
 use App\Http\Controllers\Backend\Laws\Constitution\ArticleController;
+use App\Http\Controllers\Backend\Laws\Constitution\ChapterController;
+use App\Http\Controllers\Backend\Laws\Constitution\PartController;
 use App\Http\Controllers\Backend\Laws\Constitution\ScheduleController;
 use App\Http\Controllers\Backend\Laws\Constitution\SubArticleController;
 use App\Http\Controllers\Backend\Laws\Constitution\SubSubArticleController;
@@ -21,6 +23,7 @@ use App\Http\Controllers\Backend\Locations\CountyController;
 use App\Http\Controllers\Backend\Locations\TownController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Models\Part;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +58,7 @@ Route::prefix('backend')->middleware('auth')->name('backend.')->group(function (
 {
     Route::resource('/advocates', AdvocateController::class);
     Route::resource('/caselaws', CaselawController::class);
+    Route::resource('/chapters', ChapterController::class);
     Route::resource('/citations', CitationController::class);
     Route::resource('/articles', ArticleController::class);
     Route::resource('/sub_articles', SubArticleController::class);
@@ -69,6 +73,7 @@ Route::prefix('backend')->middleware('auth')->name('backend.')->group(function (
     Route::resource('/magistrates', MagistrateController::class);
     Route::resource('/outcomes', OutcomeController::class);
     Route::resource('/parties', PartyController::class);
+    Route::resource('/parts', PartController::class);
     Route::resource('/specializations', SpecializationController::class);
     Route::resource('/subjects', SubjectController::class);
     Route::resource('/towns', TownController::class);

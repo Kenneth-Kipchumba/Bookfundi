@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Part extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,9 @@ class Article extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'chapter_id',
-        'part_id',
-        'article_name',
-        'article_body',
+        'description',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -29,8 +28,8 @@ class Article extends Model
         $this->belongsTo(Chapter::class);
     }
 
-    public function sub_articles()
+     public function articles()
     {
-        return $this->hasMany(SubArticle::class);
+        return $this->hasMany(Article::class);
     }
 }

@@ -6,6 +6,32 @@
   <div class="container-fluid">
     <div class="card">
         <div class="card-header">
+           <div class="row">
+               <div class="col-9">
+                <h2 class="text-primary">
+                    {!! $chapter->chapter_name . ' - ' . $chapter->chapter_body !!}
+                </h2>
+               </div>
+               <div class="col-3">
+                <div class="float-right">
+                    <a href="{{ route('backend.articles.edit', $chapter->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $chapter->chapter_name }}">
+                     <i class="fas fa-pen"></i>
+                    </a>
+                </div>
+                <div class="float-left">
+
+                    <!-- Trigger modal -->
+                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#create_article_article">
+                        Create New Article
+                    </button>
+                </div>
+               </div>
+           </div>
+        </div>
+        <div class="card-body">
+           <div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
            <h3>Articles's Table</h3>
            <a href="{{ route('backend.articles.create') }}" class="btn btn-primary right">Create new article</a>
         </div>
@@ -14,8 +40,8 @@
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Title</th>
-                       <th>Article</th>
+                       <th>Parts</th>
+                       <th></th>
                        <th>Action</th>
                    </tr>
                </thead>
@@ -87,5 +113,26 @@
        
     </div>
   </div>
+        </div>
+        <div class="card-footer">
+            
+        </div>
+    </div>
+  </div>
 </div>
+
+
+<script>
+ClassicEditor
+.create( document.querySelector( '#article_description' ) )
+.catch( error => {
+console.error( error );
+} );
+
+ClassicEditor
+.create( document.querySelector( '#article_article_description' ) )
+.catch( error => {
+console.error( error );
+} );
+</script>
 @endsection

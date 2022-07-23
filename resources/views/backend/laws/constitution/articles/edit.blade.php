@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-header">
            <h3>
-            Edit {{ $article->title . ' ' . $article->chapter }}
+            Edit {{ $article->article_name . ' ' . $article->chapter }}
            </h3>
         </div>
         <div class="card-body">
@@ -16,9 +16,9 @@
             @method('PATCH')
             <div>
                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ $article->title }}">
-                    @error('title')
+                    <label for="article_name" class="form-label">Article Name</label>
+                    <input type="text" name="article_name" class="form-control @error('article_name') is-invalid @enderror" id="article_name" value="{{ $article->article_name }}">
+                    @error('article_name')
                         <p class="text-danger">
                             {{ $message }}
                         </p>

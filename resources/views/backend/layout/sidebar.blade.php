@@ -59,12 +59,7 @@
                         <a href="#">Constitution</a>
                         <ul>
                             <li>
-                                <a class="nav-link" href="{{ route('backend.articles.index') }}">Chapters</a>
-                                <ul>
-                                    <li>
-                                        <a class="nav-link" href="{{ route('backend.articles.index') }}">Articles</a>
-                                    </li>
-                                </ul>
+                                <a class="nav-link" href="{{ route('backend.chapters.index') }}">Chapters</a>
                             </li>
                             <li class="nav-item parent">
                                 <a href="#">Schedules</a>

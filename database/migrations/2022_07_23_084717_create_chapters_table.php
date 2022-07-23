@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('chapter_id')->nullable();
-            $table->unsignedBigInteger('part_id')->nullable();
-            $table->string('article_name');
-            $table->mediumText('article_body')->nullable();
+            $table->string('chapter_name');
+            $table->mediumText('chapter_body')->nullable();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('chapters');
     }
 };

@@ -13,9 +13,9 @@
             @csrf
             <div>
                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title">
-                    @error('title')
+                    <label for="article_name" class="form-label">Article Name</label>
+                    <input type="text" name="article_name" class="form-control @error('article_name') is-invalid @enderror" id="article_name">
+                    @error('article_name')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
@@ -48,13 +48,13 @@
             </div>
             <div>
                 <div class="mb-3">
-                    <label for="article">Article</label>
-                    @error('article')
+                    <label for="article_body">Article</label>
+                    @error('article_body')
                         <p class="text-danger">
                             {{ $message }}
                         </p>
                       @enderror
-                    <textarea id="article" name="article" class="form-control @error('article') is-invalid @enderror" rows="90">
+                    <textarea id="article_body" name="article_body" class="form-control @error('article_body') is-invalid @enderror" rows="90">
                         
                     </textarea>
                 </div>

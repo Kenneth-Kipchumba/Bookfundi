@@ -8,11 +8,11 @@
         <div class="card-header">
            <div class="row">
                <div class="col-9">
-                <h1 class="text-primary">{{ $article->title }}</h1>
+                <h1 class="text-primary">{{ $article->article_name }}</h1>
                </div>
                <div class="col-3">
                 <div class="float-right">
-                    <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $article->title }}">
+                    <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary mr-0" title="Edit {{ $article->article_name }}">
                      <i class="fas fa-pen"></i>
                     </a>
                 </div>
