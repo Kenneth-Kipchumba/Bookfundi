@@ -17,7 +17,8 @@ class Part extends Model
     protected $fillable = [
         'name',
         'chapter_id',
-        'description',
+        'part_name',
+        'part_body',
         'created_by',
         'updated_by',
         'deleted_by'

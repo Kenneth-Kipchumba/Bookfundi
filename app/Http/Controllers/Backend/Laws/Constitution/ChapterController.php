@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Laws\Constitution;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Chapter;
+use App\Models\Part;
 use Illuminate\Http\Request;
 
 class ChapterController extends Controller
@@ -72,7 +73,7 @@ class ChapterController extends Controller
     public function show($id)
     {
         $data['chapter'] = Chapter::find($id);
-        $data['articles'] = Article::paginate(10);
+        $data['parts'] = Part::where('chapter_id', $id)->paginate(10);
         $data['article'] = Article::find($id);
 
         return view('backend.laws.constitution.chapters.show', $data);

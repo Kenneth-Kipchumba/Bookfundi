@@ -23,7 +23,7 @@
                 <tr>
                    <td>
                        <a href="{{ route('backend.parts.show', $part->id) }}">
-                           {{ $part->part_name }}
+                           {{ $part->part_name }} | {{ $part->part_body }}
                        </a>
                    </td>
                    <td>

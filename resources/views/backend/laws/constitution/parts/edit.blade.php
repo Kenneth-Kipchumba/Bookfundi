@@ -25,9 +25,9 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="part" class="form-label">Body</label>
-                    <input type="text" name="part" class="form-control @error('part') is-invalid @enderror" id="part" value="{{ $part->part }}">
-                     @error('part')
+                    <label for="part_body" class="form-label">Body</label>
+                    <input type="text" name="part_body" class="form-control @error('part_body') is-invalid @enderror" id="part_body" value="{{ $part->part_body }}">
+                     @error('part_body')
                      <p class="text-danger">
                         {{ $message }}
                      </p>

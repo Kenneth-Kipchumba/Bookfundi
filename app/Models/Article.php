@@ -29,6 +29,11 @@ class Article extends Model
         $this->belongsTo(Chapter::class);
     }
 
+    public function part()
+    {
+        $this->belongsTo(Part::class);
+    }
+
     public function sub_articles()
     {
         return $this->hasMany(SubArticle::class);

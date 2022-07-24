@@ -9,7 +9,7 @@
            <h3>Create a new Part</h3>
         </div>
         <div class="card-body">
-           <form action="{{ route('backend.chapters.store') }}" method="POST">
+           <form action="{{ route('backend.parts.store') }}" method="POST">
             @csrf
             <div>
                <div class="mb-3">

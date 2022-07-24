@@ -23,7 +23,6 @@ use App\Http\Controllers\Backend\Locations\CountyController;
 use App\Http\Controllers\Backend\Locations\TownController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
-use App\Models\Part;
 use Illuminate\Support\Facades\Route;
 
 /*
