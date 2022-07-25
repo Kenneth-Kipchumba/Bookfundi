@@ -43,19 +43,17 @@ class ArticleController extends Controller
     {
         //dd($request);
         $validated_data = $request->validate([
-            'title' => 'required',
-            'chapter' => 'required',
-            'part' => '',
-            'article' => 'required'
+            'article_name' => 'required',
+            'article_body' => 'required'
         ]);
         
         if ($validated_data)
         {
             Article::create([
-            'title' => $request->title,
-            'chapter' => $request->chapter,
-            'part' => $request->part,
-            'article' => $request->article,
+            'chapter_id' => $request->chapter_id,
+            'part_id' => $request->part_id,
+            'article_name' => $request->article_name,
+            'article_body' => $request->article_body,
             'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ]);
 
@@ -76,14 +74,21 @@ class ArticleController extends Controller
      */
     public function show(int $id)
     {
-        $data['article'] = Article::find($id);
+        if ( ! $id)
+        {
+            $data['article'] = Article::find($id);
 
-        //$sub_article = new SubArticle;
-        $data['sub_article'] = SubArticle::where('article_id', $id)->get();
+            //$sub_article = new SubArticle;
+            $data['sub_article'] = SubArticle::where('article_id', $id)->get();
 
-        //print_r($data['sub_article']);die();
+            //print_r($data['sub_article']);die();
 
-        return view('backend.laws.constitution.articles.show', $data);
+            return view('backend.laws.constitution.articles.show', $data);
+        }
+        else
+        {
+            return redirect()->route('backend.chapters')->with('warning', 'Article was not found');
+        }
     }
 
     /**
@@ -109,22 +114,21 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $validated_data = $request->validate([
-            'title' => 'required',
-            'chapter' => 'required',
-            'part' => '',
-            'article' => 'required'
+            'article_name' => 'required',
+            'article_body' => 'required'
         ]);
         //dd($validated_data);
         $article = Article::find($id);
 
         $article->update([
-            'title' => $request->title,
-            'chapter' => $request->chapter,
-            'part' => $request->part,
-            'article' => $request->article
+            'chapter_id' => $request->chapter_id,
+            'part_id' => $request->part_id,
+            'article_name' => $request->article_name,
+            'article_body' => $request->article_body,
+            'updated_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
-        return redirect()->back()->with('info','Article details successfully Updated');
+        return redirect()->back()->with('info','Article successfully Updated');
     }
 
     /**
@@ -137,6 +141,6 @@ class ArticleController extends Controller
     {
         Article::destroy($id);
 
-        return redirect()->back()->with('danger','Article successfully removed from the constitution');
+        return redirect()->back()->with('danger','Article successfully removed from this chapter');
     }
 }

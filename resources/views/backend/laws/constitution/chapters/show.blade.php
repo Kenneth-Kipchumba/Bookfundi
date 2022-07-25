@@ -28,9 +28,12 @@
            <div class="container-fluid">
            <div class="card">
             <div class="card-header">
-               <!-- Trigger Create Part modal -->
+               <!-- Trigger Create Part and Article modals -->
                 <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#create_part">
                     Create New Part
+                </button>
+                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#create_article">
+                    Create New Article
                 </button>
                 <!-- End Trigger modal -->
                 @include('backend.laws.constitution.chapters.modals')
@@ -117,16 +120,9 @@
   </div>
 </div>
 
-
 <script>
 ClassicEditor
-.create( document.querySelector( '#part_description' ) )
-.catch( error => {
-console.error( error );
-} );
-
-ClassicEditor
-.create( document.querySelector( '#part_part_description' ) )
+.create( document.querySelector( '#article_body' ) )
 .catch( error => {
 console.error( error );
 } );
