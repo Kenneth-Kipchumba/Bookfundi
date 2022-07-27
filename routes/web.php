@@ -56,13 +56,10 @@ Route::get('pricing', function () {
 Route::prefix('backend')->middleware('auth')->name('backend.')->group(function ()
 {
     Route::resource('/advocates', AdvocateController::class);
+    Route::resource('/articles', ArticleController::class);
     Route::resource('/caselaws', CaselawController::class);
     Route::resource('/chapters', ChapterController::class);
     Route::resource('/citations', CitationController::class);
-    Route::resource('/articles', ArticleController::class);
-    Route::resource('/sub_articles', SubArticleController::class);
-    Route::resource('/sub_sub_articles', SubSubArticleController::class);
-    Route::resource('/schedules', ScheduleController::class);
     Route::resource('/countries', CountryController::class);
     Route::resource('/counties', CountyController::class);
     Route::resource('/courts', CourtController::class);
@@ -73,8 +70,12 @@ Route::prefix('backend')->middleware('auth')->name('backend.')->group(function (
     Route::resource('/outcomes', OutcomeController::class);
     Route::resource('/parties', PartyController::class);
     Route::resource('/parts', PartController::class);
+    Route::resource('/schedules', ScheduleController::class);
     Route::resource('/specializations', SpecializationController::class);
+
     Route::resource('/subjects', SubjectController::class);
+    Route::resource('/sub_articles', SubArticleController::class);
+    Route::resource('/sub_sub_articles', SubSubArticleController::class);
     Route::resource('/towns', TownController::class);
     Route::resource('/users', UserController::class);
 });

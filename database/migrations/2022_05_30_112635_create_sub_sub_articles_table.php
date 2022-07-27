@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('sub_sub_articles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sub_article_id');
-            $table->string('title');
-            $table->mediumText('description');
+            $table->string('sub_sub_article_number');
+            $table->string('sub_sub_article_body')->nullable();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();

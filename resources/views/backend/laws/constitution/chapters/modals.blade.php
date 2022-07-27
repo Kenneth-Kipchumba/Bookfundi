@@ -87,11 +87,11 @@
                             @csrf
                                 <input type="hidden" name="chapter_id" value="{{ $chapter->id }}">
                                 <div class="mb-3">
-                                    <label for="article_name" class="form-label">
-                                        Name
+                                    <label for="article_number" class="form-label">
+                                        Number
                                     </label>
-                                    <input type="text" name="article_name" class="form-control @error('article_name') is-invalid @enderror" id="article_name">
-                                    @error('article_name')
+                                    <input type="text" name="article_number" class="form-control @error('article_number') is-invalid @enderror" id="article_number">
+                                    @error('article_number')
                                     <p class="text-danger">
                                         {{ $message }}
                                     </p>
@@ -101,7 +101,8 @@
                                     <label for="article_body" class="form-label">
                                         Body
                                     </label>
-                                    <input type="text" name="article_body" class="form-control @error('article_body') is-invalid @enderror" id="article_body">
+                                    <textarea name="article_body" class="form-control @error('article_body') is-invalid @enderror" id="article_body">
+                                    </textarea>
                                     @error('article_body')
                                     <p class="text-danger">
                                         {{ $message }}

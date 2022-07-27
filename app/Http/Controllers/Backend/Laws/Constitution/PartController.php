@@ -73,7 +73,7 @@ class PartController extends Controller
     public function show($id)
     {
         $data['part'] = Part::find($id);
-        $data['articles'] = Article::paginate(10);
+        $data['articles'] = Article::where('part_id', $id)->paginate(10);
         $data['article'] = Article::find($id);
 
         return view('backend.laws.constitution.parts.show', $data);

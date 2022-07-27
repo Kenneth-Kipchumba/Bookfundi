@@ -43,7 +43,7 @@ class ArticleController extends Controller
     {
         //dd($request);
         $validated_data = $request->validate([
-            'article_name' => 'required',
+            'article_number' => 'required',
             'article_body' => 'required'
         ]);
         
@@ -52,7 +52,7 @@ class ArticleController extends Controller
             Article::create([
             'chapter_id' => $request->chapter_id,
             'part_id' => $request->part_id,
-            'article_name' => $request->article_name,
+            'article_number' => $request->article_number,
             'article_body' => $request->article_body,
             'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ]);
@@ -87,7 +87,7 @@ class ArticleController extends Controller
         }
         else
         {
-            return redirect()->route('backend.chapters')->with('warning', 'Article was not found');
+            return redirect()->back()->with('warning', 'Article was not found');
         }
     }
 
@@ -114,16 +114,16 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $validated_data = $request->validate([
-            'article_name' => 'required',
+            'article_number' => 'required',
             'article_body' => 'required'
         ]);
         //dd($validated_data);
         $article = Article::find($id);
 
         $article->update([
+            'article_number' => $request->article_number,
             'chapter_id' => $request->chapter_id,
             'part_id' => $request->part_id,
-            'article_name' => $request->article_name,
             'article_body' => $request->article_body,
             'updated_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);

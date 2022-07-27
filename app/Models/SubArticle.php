@@ -15,9 +15,9 @@ class SubArticle extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
         'article_id',
-        'description',
+        'sub_article_number',
+        'sub_article_body',
         'created_by',
         'updated_by',
         'deleted_by'
