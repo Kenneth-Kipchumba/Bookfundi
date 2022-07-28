@@ -39,11 +39,11 @@
                                         <div class="container-fluid">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h3>Create Article for : 
+                                                    <h5>Create Article for : 
                                                         <span style="text-decoration: underline;" class="text-info">
-                                                           {{ $part->part_name ?? " "}}
+                                                           {{ $part->part_name . ' ' . $part->part_body ?? " "}}
                                                         </span>
-                                                    </h3>
+                                                    </h5>
                                                 </div>
                                                 <div class="card-body">
                                                 <form action="{{ route('backend.articles.store') }}" method="POST">
@@ -105,15 +105,15 @@
                 @foreach($articles as $article)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.articles.show', $article->id) }}">
                         {{ $article->article_number }}
-                       </a>
                    </td>
                    <td>
                     <?php 
                       $body =  Str::words($article->article_body, 20, '...');
                     ?>
-                    {!! $body !!}
+                    <a href="{{ route('backend.articles.show', $article->id) }}">
+                        {!! $body !!}
+                    </a>
                     </td>
                    <td>
                     <?php
@@ -166,5 +166,13 @@
     </div>
   </div>
 </div>
+
+<script>
+ClassicEditor
+.create( document.querySelector( '#article_body' ) )
+.catch( error => {
+console.error( error );
+} );
+</script>
 
 @endsection

@@ -7,7 +7,9 @@
     <div class="card">
         <div class="card-header">
            <h3>Chapters</h3>
-           <a href="{{ route('backend.chapters.create') }}" class="btn btn-primary right">Create new chapter</a>
+           <a href="{{ route('backend.chapters.create') }}" class="btn btn-success btn-sm float-right" data-toggle="tooltip" title="Create New Chapter">
+            new chapter
+           </a>
         </div>
         <div class="card-body">
            <div class="table-responsive">
@@ -23,15 +25,15 @@
                 @foreach($chapters as $chapter)
                 <tr>
                    <td>
-                       <a href="{{ route('backend.chapters.show', $chapter->id) }}">
                            {{ $chapter->chapter_name }}
-                       </a>
                    </td>
                    <td>
-                    <?php 
-                      $body =  Str::words($chapter->chapter_body, 20, '...');
-                    ?>
-                    {!! $body !!}
+                    <a href="{{ route('backend.chapters.show', $chapter->id) }}">
+                        <?php 
+                          $body =  Str::words($chapter->chapter_body, 20, '...');
+                        ?>
+                        {!! $body !!}
+                    </a>
                     </td>
                    <td>
                        <a href="{{ route('backend.chapters.edit', $chapter->id) }}" class="btn btn-sm btn-primary float-left">

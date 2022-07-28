@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('chapter_id')->nullable();
             $table->unsignedBigInteger('part_id')->nullable();
             $table->string('article_number')->nullable();
-            $table->string('article_body')->nullable();
+            $table->longText('article_body')->nullable();
             $table->string('created_by');
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();

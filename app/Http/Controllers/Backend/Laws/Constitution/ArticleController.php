@@ -74,9 +74,10 @@ class ArticleController extends Controller
      */
     public function show(int $id)
     {
-        if ( ! $id)
+        $data['article'] = Article::find($id);
+
+        if ( ! $data['article'])
         {
-            $data['article'] = Article::find($id);
 
             //$sub_article = new SubArticle;
             $data['sub_article'] = SubArticle::where('article_id', $id)->get();
@@ -87,7 +88,7 @@ class ArticleController extends Controller
         }
         else
         {
-            return redirect()->back()->with('warning', 'Article was not found');
+            return redirect()->route('backend.articles.index')->with('warning', 'Article was not found');
         }
     }
 

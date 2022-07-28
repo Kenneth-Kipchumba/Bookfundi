@@ -7,15 +7,15 @@
     <div class="card">
         <div class="card-header">
            <h3>Articles's Table</h3>
-           <a href="{{ route('backend.articles.create') }}" class="btn btn-primary right">Create new article</a>
+           <!--<a href="{{ route('backend.articles.create') }}" class="btn btn-primary right">Create new article</a>-->
         </div>
         <div class="card-body">
            <div class="table-responsive">
               <table class="table table-bordered border-primary table-hover table-sm">
                <thead>
                    <tr>
-                       <th>Title</th>
-                       <th>Article</th>
+                       <th>Number</th>
+                       <th>Articles</th>
                        <th>Action</th>
                    </tr>
                </thead>
@@ -24,17 +24,17 @@
                 <tr>
                    <td>
                        <a href="{{ route('backend.articles.show', $article->id) }}">
-                           {{ $article->article_name }}
+                           {{ $article->article_number }}
                        </a>
                    </td>
                    <td>
                     <?php 
-                      $body =  Str::words($article->article, 20, '...');
+                      $body =  Str::words($article->article_body, 20, '...');
                     ?>
                     {!! $body !!}
                     </td>
                    <td>
-                       <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
+                       <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Edit {{ $article->article_number }}">
                            <i class="fas fa-pen"></i>
                        </a>
                        <?php
@@ -52,7 +52,10 @@
                             <div class="modal-content">
                               <div class="modal-header bg-warning">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $article->article_name }} from the Constitution. Are you sure you want to proceed ?
+                                You are about to remove Aricle
+                                <span class="text-primary underline">
+                                    {{ $article->article_number }}
+                                </span> from the Constitution. Are you sure you want to proceed ?
                                 </h5>
                               </div>
                               <div class="modal-footer">

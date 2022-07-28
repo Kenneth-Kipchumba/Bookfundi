@@ -23,7 +23,9 @@
                 </div>
                 <div class="mb-3">
                       <label for="part_body" class="form-label">Body</label>
-                      <input type="text" name="part_body" class="form-control @error('part_body') is-invalid @enderror" id="part_body">
+                      <textarea name="part_body" id="part_body">
+                          
+                      </textarea>
                       @error('part_body')
                         <p class="text-danger">
                             {{ $message }}
@@ -41,5 +43,13 @@
     </div>
   </div>
 </div>
+
+<script>
+ClassicEditor
+.create( document.querySelector( '#part_body' ) )
+.catch( error => {
+console.error( error );
+} );
+</script>
 
 @endsection

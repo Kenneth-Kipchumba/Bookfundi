@@ -176,7 +176,12 @@ Built with &#128151
 </footer>
 </div>
 
-
+<!-- Tooltips initialization -->
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 
