@@ -87,7 +87,10 @@
                                     <div class="modal-content">
                                       <div class="modal-header bg-warning">
                                         <h5 class="modal-title" id="exampleModalLabel">
-                                        You are about to remove {{ $article->article_name }} from this Chapter. Are you sure you want to proceed ?
+                                        You are about to remove 
+                                        <span class="bg-primary">
+                                        Article number {{ $article->article_number }}   
+                                        </span> from this Chapter. Are you sure you want to proceed ?
                                         </h5>
                                       </div>
                                       <div class="modal-footer">

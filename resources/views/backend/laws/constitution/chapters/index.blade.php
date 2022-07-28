@@ -54,7 +54,10 @@
                             <div class="modal-content">
                               <div class="modal-header bg-warning">
                                 <h5 class="modal-title" id="exampleModalLabel">
-                                You are about to remove {{ $chapter->chapter_name }} from the Constitution. Are you sure you want to proceed ?
+                                You are about to remove 
+                                <span class="bg-primary">
+                                    {{ $chapter->chapter_name }}    
+                                </span> from the Constitution. Are you sure you want to proceed ?
                                 </h5>
                               </div>
                               <div class="modal-footer">
