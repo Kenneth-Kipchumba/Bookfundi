@@ -14,9 +14,6 @@
                 <p>
                     {!! $chapter->chapter_body !!}
                 </p>
-                <form method="GET">
-                    <input type="hidden" name="chapter_id" value="{{ $chapter->id }}">
-                </form>
                </div>
                <div class="col-2">
                 <div class="float-right">
@@ -98,21 +95,92 @@
                                 </div>
                               </div>
                             </div>
+                            <!-- End Article View Modal -->
                             </td>
                            <td>
-                               <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
-                                   <i class="fas fa-pen"></i>
-                               </a>
-                               <?php
-                               $slug = Str::slug('s-' . $article->created_at);
-                               ?>
-                               <!-- Delete Button trigger modal -->
-                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $slug; ?>">
-                                  <i class="fas fa-trash"></i>
-                                </button>
-                                <!-- Modal -->
-                                <div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
+                            <?php
+                               $delete_id = Str::slug('d-' . $article->created_at);
+                               $edit_id = Str::slug('e-' . $article->created_at);
+                            ?>
+                               
+                            <!-- Edit Article modal trigger -->
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#<?= $edit_id; ?>">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                            <!-- Edit Article Modal trigger-->
+                            <div class="modal fade" id="{{ $edit_id }}">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        Editing article
+                                    <span class="text-info">
+                                        {{ $article->article_number }} </span> of <span class="text-info">{!! $chapter->chapter_name !!}</span>
+                                    </span>
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  </div>
+
+                                  <!-- Modal body -->
+                                  <div class="modal-body">
+                                    <form action="{{ route('backend.articles.update', $article->id) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div>
+                                        <input type="hidden" name="chapter_id" value="{{ $chapter->id }}">
+                                       <div class="mb-3">
+                                            <label for="article_number" class="form-label">Article Number</label>
+                                            <input type="text" name="article_number" class="form-control @error('article_number') is-invalid @enderror" id="article_number" value="{{ $article->article_number }}">
+                                            @error('article_number')
+                                                <p class="text-danger">
+                                                    {{ $message }}
+                                                </p>
+                                            @enderror
+                                        </div>  
+                                    </div>
+                                    <div>
+                                        <div class="mb-3">
+                                            <label for="article_body-{{$edit_id}}">Article</label>
+                                            @error('article_body')
+                                                <p class="text-danger">
+                                                    {{ $message }}
+                                                </p>
+                                              @enderror
+                                            <textarea id="article_body-{{$edit_id}}" name="article_body" class="form-control @error('article_body') is-invalid @enderror" rows="10">
+                                                {{ $article->article_body }}
+                                            </textarea>
+<script>
+    ClassicEditor
+    .create( document.querySelector( '#article_body-{{$edit_id}}' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+</script>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                      <button type="submit" class="btn btn-primary">Update</button>
+                                    </form>
+                                  </div>
+
+                                  <!-- Modal footer -->
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                            <!-- End Edit Article Modal -->
+                            <!-- Delete Article Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#<?= $delete_id; ?>">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <!-- Delete Article Modal -->
+                            <div class="modal fade" id="<?= $delete_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header bg-warning">
                                         <h5 class="modal-title" id="exampleModalLabel">
@@ -135,9 +203,9 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                                       </div>
                                     </div>
-                                  </div>
                                 </div>
-                                <!-- End Modal -->
+                            </div>
+                            <!-- End Modal -->
                            </td>
                         </tr>
                         @endforeach
@@ -228,13 +296,5 @@
     </div>
   </div>
 </div>
-
-<script>
-ClassicEditor
-.create( document.querySelector( '#article_body' ) )
-.catch( error => {
-console.error( error );
-} );
-</script>
 
 @endsection

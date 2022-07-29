@@ -25,7 +25,6 @@
                     @enderror
                 </div>  
             </div>
-
             <div>
                 <div class="mb-3">
                     <label for="chapter_body">Body</label>
