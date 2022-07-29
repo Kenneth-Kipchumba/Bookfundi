@@ -109,11 +109,42 @@
                    </td>
                    <td>
                     <?php 
-                      $body =  Str::words($article->article_body, 20, '...');
-                    ?>
-                    <a href="{{ route('backend.articles.show', $article->id) }}">
-                        {!! $body !!}
-                    </a>
+                              $body =  Str::words($article->article_body, 20, '...');
+
+                              $article_num = Str::slug('a-' . $article->article_number);
+                            ?>
+                            <a href="#{{ $article_num }}" data-toggle="modal">
+                                {!! $body !!}
+                            </a>
+                            <!-- Article View Modal -->
+                            <div class="modal fade" id="{{ $article_num }}">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        {!! $part->part_name !!}
+                                       <span class="text-info">
+                                           Article {{ $article->article_number }}
+                                       </span>
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  </div>
+
+                                  <!-- Modal body -->
+                                  <div class="modal-body">
+                                    {!! $article->article_body !!}
+                                  </div>
+
+                                  <!-- Modal footer -->
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
                     </td>
                    <td>
                     <?php

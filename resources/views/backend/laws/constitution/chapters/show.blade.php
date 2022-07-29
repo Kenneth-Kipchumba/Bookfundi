@@ -58,11 +58,17 @@
                         @foreach($articles as $article)
                         <tr>
                            <td>
-                            <?php
-                               $article_num = Str::slug('a-' . $article->article_number);
-                            ?>
-                            
                             {{ $article->article_number }}
+                           </td>
+                           <td>
+                            <?php 
+                              $body =  Str::words($article->article_body, 20, '...');
+
+                              $article_num = Str::slug('a-' . $article->article_number);
+                            ?>
+                            <a href="#{{ $article_num }}" data-toggle="modal">
+                                {!! $body !!}
+                            </a>
                             <!-- Article View Modal -->
                             <div class="modal fade" id="{{ $article_num }}">
                               <div class="modal-dialog">
@@ -92,14 +98,6 @@
                                 </div>
                               </div>
                             </div>
-                           </td>
-                           <td>
-                            <?php 
-                              $body =  Str::words($article->article_body, 20, '...');
-                            ?>
-                            <a href="#{{ $article_num }}" data-toggle="modal">
-                                {!! $body !!}
-                            </a>
                             </td>
                            <td>
                                <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
