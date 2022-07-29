@@ -58,23 +58,54 @@
                         @foreach($articles as $article)
                         <tr>
                            <td>
-                               <a href="{{ route('backend.articles.show', $article->id) }}">
-                                   {{ $article->article_number }}
-                               </a>
+                            <?php
+                               $article_num = Str::slug('a-' . $article->article_number);
+                            ?>
+                            
+                            {{ $article->article_number }}
+                            <!-- Article View Modal -->
+                            <div class="modal fade" id="{{ $article_num }}">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                  <!-- Modal Header -->
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">
+                                        {!! $chapter->chapter_name !!}
+                                       <span class="text-info">
+                                           Article {{ $article->article_number }}
+                                       </span>
+                                    </h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  </div>
+
+                                  <!-- Modal body -->
+                                  <div class="modal-body">
+                                    {!! $article->article_body !!}
+                                  </div>
+
+                                  <!-- Modal footer -->
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
                            </td>
                            <td>
                             <?php 
                               $body =  Str::words($article->article_body, 20, '...');
                             ?>
-                            {!! $body !!}
+                            <a href="#{{ $article_num }}" data-toggle="modal">
+                                {!! $body !!}
+                            </a>
                             </td>
                            <td>
                                <a href="{{ route('backend.articles.edit', $article->id) }}" class="btn btn-sm btn-primary float-left">
                                    <i class="fas fa-pen"></i>
                                </a>
                                <?php
-                               
-
                                $slug = Str::slug('s-' . $article->created_at);
                                ?>
                                <!-- Delete Button trigger modal -->
@@ -90,7 +121,7 @@
                                         You are about to remove 
                                         <span class="bg-primary">
                                         Article number {{ $article->article_number }}   
-                                        </span> from this Chapter. Are you sure you want to proceed ?
+                                        </span> from {!! $chapter->chapter_name !!}. Are you sure you want to proceed ?
                                         </h5>
                                       </div>
                                       <div class="modal-footer">
