@@ -123,8 +123,8 @@ class ArticleController extends Controller
 
         $article->update([
             'article_number' => $request->article_number,
-            'chapter_id' => $request->chapter_id,
-            'part_id' => $request->part_id,
+            /*'chapter_id' => $request->chapter_id,
+            'part_id' => $request->part_id,*/
             'article_body' => $request->article_body,
             'updated_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
