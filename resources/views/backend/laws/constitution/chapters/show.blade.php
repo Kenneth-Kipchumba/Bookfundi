@@ -187,7 +187,7 @@
                                         You are about to remove 
                                         <span class="bg-primary">
                                         Article number {{ $article->article_number }}   
-                                        </span> from {!! $chapter->chapter_name !!}. Are you sure you want to proceed ?
+                                        </span> from <span class="bg-primary">{!! $chapter->chapter_name !!} </span>. Are you sure you want to proceed ?
                                         </h5>
                                       </div>
                                       <div class="modal-footer">
@@ -256,7 +256,7 @@
                                         <div class="modal-content">
                                           <div class="modal-header bg-warning">
                                             <h5 class="modal-title" id="exampleModalLabel">
-                                            You are about to remove {{ $part->part_name }} from this Chapter. Are you sure you want to proceed ?
+                                            You are about to remove <span class="bg-primary">{{ $part->part_name }} </span> from <span class="bg-primary">{{ $chapter->chapter_name }} </span> Are you sure you want to proceed ?
                                             </h5>
                                           </div>
                                           <div class="modal-footer">
@@ -296,5 +296,13 @@
     </div>
   </div>
 </div>
+
+<script>
+    ClassicEditor
+    .create( document.querySelector( '#article_body' ) )
+    .catch( error => {
+    console.error( error );
+    } );
+</script>
 
 @endsection
