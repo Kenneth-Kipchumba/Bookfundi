@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Laws\Constitution;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Chapter;
 use App\Models\SubArticle;
 use Illuminate\Http\Request;
 
@@ -75,12 +76,14 @@ class ArticleController extends Controller
     public function show(int $id)
     {
         $data['article'] = Article::find($id);
+        //dd($data['article']);
 
-        if ( ! $data['article'])
+        if (  $data['article'])
         {
 
             //$sub_article = new SubArticle;
             $data['sub_article'] = SubArticle::where('article_id', $id)->get();
+            //dd($data['sub_article']);
 
             //print_r($data['sub_article']);die();
 

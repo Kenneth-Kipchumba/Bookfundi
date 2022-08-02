@@ -54,16 +54,22 @@
                         
                         @foreach($articles as $article)
                         <tr>
-                           <td>
-                            {{ $article->article_number }}
-                           </td>
-                           <td>
                             <?php 
                               $body =  Str::words($article->article_body, 20, '...');
 
                               $article_num = Str::slug('a-' . $article->article_number);
                             ?>
-                            <a href="#{{ $article_num }}" data-toggle="modal">
+                           <td>
+                            <a href="#{{ $article_num }}" data-toggle="modal" title="Modal">
+                                {{ $article->article_number }}
+                            </a>
+                           </td>
+                           <td>
+                            
+                            <!--<a href="#{{ $article_num }}" data-toggle="modal">
+                                {!! $body !!}
+                            </a>-->
+                            <a href="{{ route('backend.articles.show', $article->id) }}" title="View">
                                 {!! $body !!}
                             </a>
                             <!-- Article View Modal -->

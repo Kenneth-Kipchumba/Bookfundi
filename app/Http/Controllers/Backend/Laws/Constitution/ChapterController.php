@@ -76,8 +76,14 @@ class ChapterController extends Controller
         $data['parts'] = Part::where('chapter_id', $id)->paginate(10);
         $data['articles'] = Article::where('chapter_id', $id)->paginate(10);
         //dd($data['articles']);
-
-        return view('backend.laws.constitution.chapters.show', $data);
+        if ($data['chapter'])
+        {
+            return view('backend.laws.constitution.chapters.show', $data);
+        }
+        else
+        {
+            return redirect()->back()->with('warning','Chapter was not found');
+        }
     }
 
     /**

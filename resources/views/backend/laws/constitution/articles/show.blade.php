@@ -8,7 +8,7 @@
         <div class="card-header">
            <div class="row">
                <div class="col-9">
-                <h1 class="text-primary">{{ $article->article_name }}</h1>
+                <h1 class="text-primary">Article {{ $article->article_number }}</h1>
                </div>
                <div class="col-3">
                 <div class="float-right">
@@ -20,8 +20,9 @@
 
                     <!-- Trigger modal -->
                     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#create_sub_article">
-                        Create New Sub Article
+                        Create Sub Article
                     </button>
+                    @include('backend/laws/constitution/articles/modals')
                 </div>
                </div>
            </div>
@@ -29,11 +30,9 @@
         <div class="card-body">
            <div class="row">
                        <div class="col-12">
-                           <h4>
-                               {{ $article->chapter . ' - ' . $article->part }}
-                           </h4>
+                           
                            <hr>
-                           {!! $article->article !!}
+                           {!! $article->article_body !!}
                            <hr>
                            @foreach($sub_article as $sub)
                            <div class="card card-success ml-5">
@@ -43,7 +42,12 @@
                                <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h6>{{ $sub->title }}</h6> 
+                                        <p>
+                                            <strong>
+                                                {{ $sub->sub_article_number }}
+                                            </strong>
+                                            {!! $sub->sub_article_body !!}
+                                        </p> 
                                     </div>
                                     <div class="col">
                        <?php
@@ -93,70 +97,6 @@
                           <i class="fas fa-pen"></i>
                         </button>
 
-<!-- Sub Article Edit Modal -->
-<div class="modal fade" id="<?= $slug; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="content">
-                  <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-header">
-                           <h3>Edit : <span style="text-decoration: underline;" class="text-info">{{ $sub->title ?? " "}}</span> </h3>
-                        </div>
-                        <div class="card-body">
-                           <form action="{{ route('backend.sub_articles.update', $sub->id) }}" method="POST">
-                            @csrf
-                            @method('PATCH')
-                            <input type="hidden" name="article_id" value="{{ $article->id }}">
-                            <div>
-                               <div class="mb-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ $sub->title }}">
-                                    @error('title')
-                                        <p class="text-danger">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>  
-                            </div>
-                            <div>
-                                <div class="mb-3">
-                                    <label for="edit-{{ $slug }}">Description</label>
-                                    @error('description')
-                                        <p class="text-danger">
-                                            {{ $message }}
-                                        </p>
-                                      @enderror
-                                    <textarea id="edit-{{ $slug }}" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
-                                        {{ $sub->description }}
-                                    </textarea>
-                                </div>
-                            </div>
-                              
-                            <button type="submit" class="btn btn-primary">Update</button>
-                           </form>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <script type="text/javascript">
-                ClassicEditor
-                .create( document.querySelector( '#edit-{{ $slug }}' ) )
-                .catch( error => {
-                console.error( error );
-                } );
-            </script>
-        </div>
-    </div>
-</div>
-<!-- End Sub Article Edit Modal -->
                                     </div>
                                 </div>
                                 <hr>
@@ -164,63 +104,66 @@
                                </div>
                            </div>
 
-                           <!-- Sub Sub Article Create Modal -->
-                            <div class="modal fade" id="create_sub_sub_article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-light">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="content">
-                                              <div class="container-fluid">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                       <h3>Create a Sub Sub Article for : <span style="text-decoration: underline;" class="text-info">{{ $sub->title ?? " "}}</span> </h3>
-                                                    </div>
-                                                    <div class="card-body">
-                                                       <form action="{{ route('backend.sub_articles.store') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="article_id" value="{{ $sub->id }}">
-                                                        <div>
-                                                           <div class="mb-3">
-                                                                <label for="title" class="form-label">Title</label>
-                                                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title">
-                                                                @error('title')
-                                                                    <p class="text-danger">
-                                                                        {{ $message }}
-                                                                    </p>
-                                                                @enderror
-                                                            </div>  
-                                                        </div>
-                                                        <div>
-                                                            <div class="mb-3">
-                                                                <label for="sub_article_description">Description</label>
-                                                                @error('description')
-                                                                    <p class="text-danger">
-                                                                        {{ $message }}
-                                                                    </p>
-                                                                  @enderror
-                                                                <textarea id="sub_article_description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
-                                                                    
-                                                                </textarea>
-                                                            </div>
-                                                        </div>
-                                                          
-                                                        <button type="submit" class="btn btn-primary">Create</button>
-                                                       </form>
-                                                    </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
+<!-- Sub Sub Article Create Modal -->
+<div class="modal fade" id="create_sub_sub_article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Create a Sub Sub Article for : 
+                                <span style="text-decoration: underline;" class="text-info">    {{ $sub->title ?? " "}}
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                        <form action="{{ route('backend.sub_articles.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="article_id" value="{{ $sub->id }}">
+                            <div>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title">
+                                @error('title')
+                                <p class="text-danger">
+                                    { $message }}
+                                </p>
+                                @enderror
+                            </div>  
                             </div>
-                            <!-- End Modal -->
+
+                            <div>
+                            <div class="mb-3">
+                                <label for="sub_article_description">Description</label>
+                                @error('description')
+                                <p class="text-danger">
+                                    {{ $message }}
+                                </p>
+                                @enderror
+                                <textarea id="sub_article_description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
+                                    
+                                </textarea>
+                            </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
                            @endforeach
                            
                        </div>
@@ -233,68 +176,12 @@
   </div>
 </div>
 
-<!-- Sub Article Create Modal -->
-<div class="modal fade" id="create_sub_article" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-success">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="content">
-                  <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-header">
-                           <h3>Create a Sub Article for : <span style="text-decoration: underline;" class="text-info">{{ $article->title ?? " "}}</span> </h3>
-                        </div>
-                        <div class="card-body">
-                           <form action="{{ route('backend.sub_articles.store') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="article_id" value="{{ $article->id }}">
-                            <div>
-                               <div class="mb-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title">
-                                    @error('title')
-                                        <p class="text-danger">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>  
-                            </div>
-                            <div>
-                                <div class="mb-3">
-                                    <label for="article_description">Description</label>
-                                    @error('description')
-                                        <p class="text-danger">
-                                            {{ $message }}
-                                        </p>
-                                      @enderror
-                                    <textarea id="article_description" name="description" class="form-control @error('description') is-invalid @enderror" rows="90">
-                                        
-                                    </textarea>
-                                </div>
-                            </div>
-                              
-                            <button type="submit" class="btn btn-success">Create</button>
-                           </form>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-<!-- End Sub Article Create Modal -->
+
 
 
 <script>
 ClassicEditor
-.create( document.querySelector( '#article_description' ) )
+.create( document.querySelector( '#sub_article_body' ) )
 .catch( error => {
 console.error( error );
 } );

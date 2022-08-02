@@ -38,25 +38,25 @@ class SubArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //dd();
+        //dd($request);
         $validated_data = $request->validate([
-            'title' => 'required',
-            'description' => 'required'
+            'sub_article_number' => 'required',
+            'sub_article_body' => 'required'
         ]);
         
         if ($validated_data)
         {
             $sub_article = [
-            'title' => $request->title,
             'article_id' => $request->article_id,
-            'description' => $request->description,
+            'sub_article_number' => $request->sub_article_number,
+            'sub_article_body' => $request->sub_article_body,
             'created_by' => auth()->user()->first_name . ' ' . auth()->user()->last_name
             ];
             
             //dd($sub_article);
             SubArticle::create($sub_article);
 
-            return redirect()->back()->with('success','Sub Article successfully added to the constitution');
+            return redirect()->back()->with('success','Sub Article successfully added to this article');
         }
         else
         {
@@ -101,15 +101,15 @@ class SubArticleController extends Controller
     public function update(Request $request, $id)
     {
         $validated_data = $request->validate([
-            'title' => 'required',
-            'description' => 'required'
+            'sub_article_number' => 'required',
+            'sub_article_body' => 'required'
         ]);
         //dd($validated_data);
         $sub_article = SubArticle::find($id);
 
         $sub_article->update([
-            'title' => $request->title,
-            'description' => $request->description
+            'sub_article_number' => $request->sub_article_number,
+            'sub_article_body' => $request->sub_article_body
         ]);
 
         return redirect()->back()->with('info','Sub Article details successfully Updated');
